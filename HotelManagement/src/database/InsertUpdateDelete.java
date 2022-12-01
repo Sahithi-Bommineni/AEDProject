@@ -5,6 +5,7 @@
 package database;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -19,8 +20,8 @@ public class InsertUpdateDelete {
         {
             con = ConnectionProvider.getCon();
             st=con.createStatement();
-            st.xecuteUpdate(Query);
-            if(!msg.equals)
+            st.executeUpdate(Query);
+            //if(!msg.equals)
         }
         catch(Exception e)
         {
