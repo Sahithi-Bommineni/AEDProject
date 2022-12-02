@@ -33,12 +33,12 @@ public class HomePage extends javax.swing.JFrame {
         joinButton = new javax.swing.JButton();
         bookButton = new javax.swing.JButton();
         manageButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1143, 500));
         setResizable(false);
 
         jSplitPane1.setDividerLocation(150);
@@ -56,14 +56,17 @@ public class HomePage extends javax.swing.JFrame {
         });
 
         loginButton.setText("Log In");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         joinButton.setText("Join");
 
         bookButton.setText("Book Stay");
 
         manageButton.setText("Manage Booking");
-
-        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -79,13 +82,8 @@ public class HomePage extends javax.swing.JFrame {
                             .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(joinButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(leftPanelLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(homeButton))
-                            .addGroup(leftPanelLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton1)))
+                        .addGap(26, 26, 26)
+                        .addComponent(homeButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -102,9 +100,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(bookButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(manageButton)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(leftPanel);
@@ -143,7 +139,18 @@ public class HomePage extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
+        HomePage homepanel = new HomePage();
+        homepanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+       LoginJFrame loginpanel = new LoginJFrame();
+       loginpanel.setVisible(true);
+       
+       dispose();
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +191,6 @@ public class HomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookButton;
     private javax.swing.JButton homeButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSplitPane jSplitPane1;
