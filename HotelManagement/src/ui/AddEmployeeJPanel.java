@@ -34,7 +34,7 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
         Agetxt = new javax.swing.JTextField();
         GenderLbl = new javax.swing.JLabel();
         JobLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        SalaryLbl = new javax.swing.JLabel();
         Salarytxt = new javax.swing.JTextField();
         AddressLbl = new javax.swing.JLabel();
         Addresstxt = new javax.swing.JTextField();
@@ -77,9 +77,9 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
         JobLbl.setText("Job");
         add(JobLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 226, 65, 27));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Salary");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 272, 65, 26));
+        SalaryLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SalaryLbl.setText("Salary");
+        add(SalaryLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 272, 65, 26));
 
         Salarytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         add(Salarytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 271, 174, 26));
@@ -112,12 +112,15 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
         SubmitBtn.setText("Submit");
         add(SubmitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 475, -1, -1));
 
+        buttonGroup1.add(MaleBtn);
         MaleBtn.setText("Male");
         add(MaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 185, 54, -1));
 
+        buttonGroup1.add(FemaleBtn);
         FemaleBtn.setText("Female");
         add(FemaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 185, -1, -1));
 
+        buttonGroup1.add(OthersBtn);
         OthersBtn.setText("Others");
         add(OthersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 185, -1, -1));
 
@@ -159,12 +162,12 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton OthersBtn;
     private javax.swing.JLabel PasswordLbl;
     private javax.swing.JTextField Passwordtxt;
+    private javax.swing.JLabel SalaryLbl;
     private javax.swing.JTextField Salarytxt;
     private javax.swing.JButton SubmitBtn;
     private javax.swing.JLabel UserNameLbl;
     private javax.swing.JTextField UserNametxt;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

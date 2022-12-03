@@ -56,7 +56,7 @@ public class AdminJframe extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(683, Short.MAX_VALUE))
         );
 
         AdminSplitPane.setLeftComponent(LeftPanel);
@@ -65,11 +65,11 @@ public class AdminJframe extends javax.swing.JFrame {
         RightPanel.setLayout(RightPanelLayout);
         RightPanelLayout.setHorizontalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+            .addGap(0, 1067, Short.MAX_VALUE)
         );
         RightPanelLayout.setVerticalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         AdminSplitPane.setRightComponent(RightPanel);
@@ -78,11 +78,11 @@ public class AdminJframe extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AdminSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(AdminSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AdminSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(AdminSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();
