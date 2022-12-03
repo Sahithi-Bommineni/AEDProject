@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import java.sql.*;
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,6 +60,11 @@ public class LoginJFrame extends javax.swing.JFrame {
         loginbtn.setBackground(new java.awt.Color(51, 153, 255));
         loginbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         loginbtn.setText("Login");
+        loginbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginbtnActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -160,6 +168,33 @@ public class LoginJFrame extends javax.swing.JFrame {
         homepanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
+        // TODO add your handling code here:
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=false","root","sahithi123");
+            String username = usernametxt.getText();
+            String password = passwordtxt.getText();
+            
+            Statement st = con.createStatement();
+            String sql = "select * from users where name = '"+username+"'and password='"+password+"'";
+            ResultSet rs = st.executeQuery(sql);
+            
+            if(rs.next()){
+                dispose();
+                HomePage homepanel = new HomePage();
+                homepanel.show();
+            }else{
+                JOptionPane.showMessageDialog(this, "username or password wrong");
+                usernametxt.setText("");
+                passwordtxt.setText("");
+            }
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
      * @param args the command line arguments

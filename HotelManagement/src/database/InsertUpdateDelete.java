@@ -21,7 +21,9 @@ public class InsertUpdateDelete {
             con = ConnectionProvider.getCon();
             st=con.createStatement();
             st.executeUpdate(Query);
-            //if(!msg.equals)
+            if(!msg.equals("")){
+                JOptionPane.showMessageDialog(null, msg);
+            }
         }
         catch(Exception e)
         {
