@@ -28,7 +28,7 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ViewRoomtbl = new javax.swing.JTable();
         Searchtxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -40,22 +40,22 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
         jLabel1.setText("Rooms List ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ViewRoomtbl.setBackground(new java.awt.Color(204, 204, 204));
+        ViewRoomtbl.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+        ViewRoomtbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Floor", "Room Type :", "Price", "No of Beds", "Availability"
+                "Room No", "Floor", "Room Type :", "Price", "No of Beds", "Availability", "Status Clean/Not"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ViewRoomtbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 760, 490));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 800, 490));
         getContentPane().add(Searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 100, 160, -1));
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -114,10 +114,10 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Searchtxt;
+    private javax.swing.JTable ViewRoomtbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
