@@ -46,13 +46,13 @@ public class DriverJFrame extends javax.swing.JFrame {
 
         Drivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Service Requested", "Time slot", "Status"
+                "Room No", "Car Type", "No of Passengers", "To", "Time Window", "Extra Requirements", "Status"
             }
         ));
         jScrollPane1.setViewportView(Drivertbl);
