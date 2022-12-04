@@ -19,8 +19,7 @@ public class tables {
         {
             con=ConnectionProvider.getCon();
             st=con.createStatement();
-            st.executeUpdate("create table users(name varchar(50),email varchar(100),password varchar(50),securityQuestion varchar(200), answer varchar(30),address varchar(200),status varchar(20))");
-            st.executeUpdate("create table login(username varchar(50),password varchar(50)");
+            st.executeUpdate("create table members(firstname varchar(50),lastname varchar(50),username varchar(50),password varchar(50),confirmpassword varchar(50),securityQuestion varchar(200), answer varchar(30))");
             JOptionPane.showMessageDialog(null,"Table created successfully" );
         }
         catch(Exception e)

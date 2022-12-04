@@ -38,7 +38,6 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1143, 500));
         setResizable(false);
 
         jSplitPane1.setDividerLocation(150);
@@ -63,6 +62,11 @@ public class HomePage extends javax.swing.JFrame {
         });
 
         joinButton.setText("Join");
+        joinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinButtonActionPerformed(evt);
+            }
+        });
 
         bookButton.setText("Book Stay");
 
@@ -151,6 +155,13 @@ public class HomePage extends javax.swing.JFrame {
        
        dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void joinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinButtonActionPerformed
+        // TODO add your handling code here:
+        JoinJFrame joinpanel = new JoinJFrame();
+        joinpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_joinButtonActionPerformed
 
     /**
      * @param args the command line arguments

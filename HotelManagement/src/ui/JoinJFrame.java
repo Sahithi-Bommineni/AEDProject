@@ -4,6 +4,10 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import database.InsertUpdateDelete;
+
+
 /**
  *
  * @author sahithi
@@ -26,33 +30,131 @@ public class JoinJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        homeButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        FirstNametxt = new javax.swing.JTextField();
+        LastNametxt = new javax.swing.JTextField();
+        UserNametxt = new javax.swing.JTextField();
+        Answertxt = new javax.swing.JTextField();
+        Passwordtxt = new javax.swing.JPasswordField();
+        CPasswordtxt = new javax.swing.JPasswordField();
+        sqcombobox = new javax.swing.JComboBox<>();
+        JoinButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 500));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("First Name");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 20));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(294, 294, 294)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(434, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(367, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
-        );
+        jLabel2.setText("Last Name");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        jLabel3.setText("Username");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+
+        jLabel4.setText("Password");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+
+        jLabel5.setText("Confirm Password");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+
+        jLabel6.setText("Security Question");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+
+        jLabel7.setText("Answer");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
+
+        homeButton.setBackground(new java.awt.Color(0, 0, 0));
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2022-11-30 at 8.57.36 PM.jpeg"))); // NOI18N
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 140));
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Become a Member");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 200, 20));
+
+        FirstNametxt.setText("jTextField1");
+        getContentPane().add(FirstNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 170, -1));
+
+        LastNametxt.setText("jTextField1");
+        getContentPane().add(LastNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 150, -1));
+
+        UserNametxt.setText("jTextField1");
+        getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 150, -1));
+
+        Answertxt.setText("jTextField1");
+        getContentPane().add(Answertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 150, -1));
+
+        Passwordtxt.setText("jPasswordField1");
+        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
+
+        CPasswordtxt.setText("jPasswordField1");
+        getContentPane().add(CPasswordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+
+        sqcombobox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sqcombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's your first pets name?", "What's your favourite city?", "What's your mothers maidens name?", "What's your native place?" }));
+        getContentPane().add(sqcombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+
+        JoinButton.setText("Join");
+        JoinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JoinButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JoinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, -1, -1));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel signup.png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 140));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+        HomePage homepanel = new HomePage();
+        homepanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void JoinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JoinButtonActionPerformed
+        // TODO add your handling code here:
+        String firstname = FirstNametxt.getText();
+        String lastname = LastNametxt.getText();
+        String username = UserNametxt.getText();
+        String password = Passwordtxt.getText();
+        String cpassword = CPasswordtxt.getText();
+        String securityques = (String)sqcombobox.getSelectedItem();
+        String answer = Answertxt.getText();
+        
+        if(firstname.equals("")|| lastname.equals("") || username.equals("")|| password.equals("")||cpassword.equals("")|| answer.equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Fill all the details");
+        }
+        else
+        {
+            String Query;
+            Query = "insert into members values('"+firstname+"','"+lastname+"','"+username+"','"+password+"','"+cpassword+"','"+securityques+"','"+answer+"')";
+            InsertUpdateDelete.setData(Query, "Registered Successfully");
+            setVisible(false);
+            new JoinJFrame().setVisible(true);
+        }
+    }//GEN-LAST:event_JoinButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,6 +192,23 @@ public class JoinJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField Answertxt;
+    private javax.swing.JPasswordField CPasswordtxt;
+    private javax.swing.JTextField FirstNametxt;
+    private javax.swing.JButton JoinButton;
+    private javax.swing.JTextField LastNametxt;
+    private javax.swing.JPasswordField Passwordtxt;
+    private javax.swing.JTextField UserNametxt;
+    private javax.swing.JButton homeButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> sqcombobox;
     // End of variables declaration//GEN-END:variables
 }
