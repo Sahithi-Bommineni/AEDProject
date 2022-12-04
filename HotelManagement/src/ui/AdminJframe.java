@@ -28,58 +28,100 @@ public class AdminJframe extends javax.swing.JFrame {
 
         AdminSplitPane = new javax.swing.JSplitPane();
         LeftPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        AddEmpButton = new javax.swing.JButton();
+        AddRoomsButton = new javax.swing.JButton();
+        CustomerListButton = new javax.swing.JButton();
         RightPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        LogoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jButton1.setText("Add Employee");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AdminSplitPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        LeftPanel.setBackground(new java.awt.Color(102, 102, 102));
+
+        AddEmpButton.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
+        AddEmpButton.setText("Add Employee");
+        AddEmpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddEmpButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Add Rooms");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AddRoomsButton.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
+        AddRoomsButton.setText("Add Rooms");
+        AddRoomsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AddRoomsButtonActionPerformed(evt);
             }
         });
+
+        CustomerListButton.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
+        CustomerListButton.setText("Customer List");
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
         LeftPanel.setLayout(LeftPanelLayout);
         LeftPanelLayout.setHorizontalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeftPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CustomerListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddEmpButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(AddRoomsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jButton1)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2)
-                .addContainerGap(683, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(AddEmpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CustomerListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         AdminSplitPane.setLeftComponent(LeftPanel);
+
+        RightPanel.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel1.setFont(new java.awt.Font("Ayuthaya", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Welcome Admin!!");
+
+        LogoutButton.setFont(new java.awt.Font("AppleGothic", 0, 13)); // NOI18N
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);
         RightPanel.setLayout(RightPanelLayout);
         RightPanelLayout.setHorizontalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1067, Short.MAX_VALUE)
+            .addGroup(RightPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LogoutButton)
+                .addContainerGap())
+            .addGroup(RightPanelLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jLabel1)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         RightPanelLayout.setVerticalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(RightPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LogoutButton)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel1)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         AdminSplitPane.setRightComponent(RightPanel);
@@ -98,19 +140,26 @@ public class AdminJframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpButtonActionPerformed
         // TODO add your handling code here:
-        AddEmployeeJPanel addemppanel = new AddEmployeeJPanel();
+        AddEmpJFrame addemppanel = new AddEmpJFrame();
         addemppanel.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AddEmpButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void AddRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRoomsButtonActionPerformed
         // TODO add your handling code here:
         AddRoomJFrame addroompanel = new AddRoomJFrame();
         addroompanel.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AddRoomsButtonActionPerformed
+
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
+        // TODO add your handling code here:
+        HomePage homepanel = new HomePage();
+        homepanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_LogoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +200,13 @@ public class AdminJframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddEmpButton;
+    private javax.swing.JButton AddRoomsButton;
     private javax.swing.JSplitPane AdminSplitPane;
+    private javax.swing.JButton CustomerListButton;
     private javax.swing.JPanel LeftPanel;
+    private javax.swing.JButton LogoutButton;
     private javax.swing.JPanel RightPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

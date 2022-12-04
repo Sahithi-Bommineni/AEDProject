@@ -55,31 +55,40 @@ public class JoinJFrame extends javax.swing.JFrame {
         sqcombobox = new javax.swing.JComboBox<>();
         JoinButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel1.setText("First Name");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 20));
 
+        jLabel2.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel2.setText("Last Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel3.setText("Email");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 70, 30));
 
+        jLabel4.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel4.setText("Password");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel5.setText("Confirm Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel6.setText("Security Question");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
         jLabel7.setText("Answer");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
         homeButton.setBackground(new java.awt.Color(0, 0, 0));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2022-11-30 at 8.57.36 PM.jpeg"))); // NOI18N
@@ -90,31 +99,41 @@ public class JoinJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 140));
 
+        jLabel8.setFont(new java.awt.Font("Bangla MN", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Become a Member");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 200, 20));
-        getContentPane().add(FirstNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 170, -1));
-        getContentPane().add(LastNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 150, -1));
-        getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 150, -1));
-        getContentPane().add(Answertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 150, -1));
-        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 150, -1));
-        getContentPane().add(CPasswordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 150, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 260, 50));
+        getContentPane().add(FirstNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 260, 30));
+        getContentPane().add(LastNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 260, 30));
+        getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 260, 30));
+        getContentPane().add(Answertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 260, 30));
+        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 260, 30));
+        getContentPane().add(CPasswordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 260, 30));
 
-        sqcombobox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sqcombobox.setFont(new java.awt.Font("AppleGothic", 0, 12)); // NOI18N
         sqcombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's your first pets name?", "What's your favourite city?", "What's your mothers maidens name?", "What's your native place?" }));
-        getContentPane().add(sqcombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+        getContentPane().add(sqcombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 260, 30));
 
+        JoinButton.setBackground(new java.awt.Color(204, 204, 204));
+        JoinButton.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         JoinButton.setText("Join");
         JoinButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JoinButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(JoinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, -1, -1));
+        getContentPane().add(JoinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 100, 30));
 
+        jLabel9.setFont(new java.awt.Font("Ayuthaya", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel signup.png"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 140));
+        jLabel9.setText("Its free to join!");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 210, 40));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel signup.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 140));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,6 +239,8 @@ public class JoinJFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField Passwordtxt;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

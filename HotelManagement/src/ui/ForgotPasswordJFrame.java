@@ -39,42 +39,59 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         loginbtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel2.setText("Oops ! Forgot Password ?");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel3.setText("Email :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 80, 30));
 
         Emailtxt.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        Emailtxt.setForeground(new java.awt.Color(255, 204, 102));
+        getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 230, 30));
 
         searchbtn.setBackground(new java.awt.Color(0, 0, 0));
         searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         searchbtn.setForeground(new java.awt.Color(255, 255, 51));
         searchbtn.setText("Search");
+        getContentPane().add(searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 190, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel4.setText("Security Question : ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         sqcombobox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         sqcombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's your first pets name?", "What's your favourite city?", "What's your mothers maidens name?", "What's your native place?" }));
+        getContentPane().add(sqcombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 232, 230, 30));
 
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel6.setText("Answer :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 277, 230, 30));
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel5.setText("New Password :");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 150, -1));
 
-        savebtn.setBackground(new java.awt.Color(0, 0, 0));
-        savebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        savebtn.setForeground(new java.awt.Color(255, 255, 0));
+        savebtn.setBackground(new java.awt.Color(153, 153, 153));
+        savebtn.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        savebtn.setForeground(new java.awt.Color(255, 255, 255));
         savebtn.setText("Save");
+        getContentPane().add(savebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 90, -1));
 
-        jLabel1.setText("Palm Tree Hotels");
+        jLabel1.setFont(new java.awt.Font("Apple Chancery", 1, 48)); // NOI18N
+        jLabel1.setText("Palm Tree Resorts");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
         homeButton.setBackground(new java.awt.Color(0, 0, 0));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2022-11-30 at 8.57.36 PM.jpeg"))); // NOI18N
@@ -83,92 +100,23 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                 homeButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 80, 60));
 
-        loginbtn.setBackground(new java.awt.Color(51, 153, 255));
-        loginbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        loginbtn.setBackground(new java.awt.Color(153, 153, 153));
+        loginbtn.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         loginbtn.setText("Login");
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);
             }
         });
+        getContentPane().add(loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 90, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 6, -1, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 230, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sqcombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(44, 44, 44)
-                                        .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(65, 65, 65)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(65, 65, 65)
-                                .addComponent(searchbtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(savebtn)
-                                .addGap(97, 97, 97)
-                                .addComponent(loginbtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(jLabel2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(homeButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel1))
-                    .addComponent(homeButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchbtn))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(sqcombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jLabel5)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(savebtn)
-                    .addComponent(loginbtn))
-                .addGap(65, 65, 65))
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,7 +179,10 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton loginbtn;
     private javax.swing.JButton savebtn;
     private javax.swing.JButton searchbtn;
