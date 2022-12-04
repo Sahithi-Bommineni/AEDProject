@@ -5,6 +5,7 @@
 package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +16,17 @@ public class ConnectionProvider {
     {
         try
         {
+            String user="root";
+            String pass="sahithi123";
+            String sqlconn="jdbc:mysql://localhost:3306/hotel?zeroDateTimeBehavior=CONVERT_TO_NULL";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","root","sahithi123");
+            Connection con = DriverManager.getConnection(sqlconn,user,pass);
             return con;
         }
         catch(Exception e)
         {
-            return null;
+            JOptionPane.showMessageDialog(null,e);
         }
+        return null;
     }
 }

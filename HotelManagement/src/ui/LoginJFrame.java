@@ -4,20 +4,25 @@
  */
 package ui;
 import java.sql.*;
-import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import database.ConnectionProvider;
 
 /**
  *
  * @author sahithi
  */
 public class LoginJFrame extends javax.swing.JFrame {
+    
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs=null;
 
     /**
      * Creates new form LoginJFrame1
      */
     public LoginJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -35,9 +40,9 @@ public class LoginJFrame extends javax.swing.JFrame {
         usernametxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         passwordtxt = new javax.swing.JPasswordField();
-        loginbtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        LoginButton = new javax.swing.JButton();
+        JoinButton = new javax.swing.JButton();
+        ForgotPasswordButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,30 +62,30 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         passwordtxt.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
-        loginbtn.setBackground(new java.awt.Color(51, 153, 255));
-        loginbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        loginbtn.setText("Login");
-        loginbtn.addActionListener(new java.awt.event.ActionListener() {
+        LoginButton.setBackground(new java.awt.Color(51, 153, 255));
+        LoginButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        LoginButton.setText("Login");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginbtnActionPerformed(evt);
+                LoginButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jButton1.setText("Join");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JoinButton.setBackground(new java.awt.Color(51, 153, 255));
+        JoinButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        JoinButton.setText("Join");
+        JoinButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JoinButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jButton2.setText("Forgot Password ?");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ForgotPasswordButton.setBackground(new java.awt.Color(51, 153, 255));
+        ForgotPasswordButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        ForgotPasswordButton.setText("Forgot Password ?");
+        ForgotPasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ForgotPasswordButtonActionPerformed(evt);
             }
         });
 
@@ -101,10 +106,10 @@ public class LoginJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(loginbtn))
+                        .addComponent(LoginButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(JoinButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -115,7 +120,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                             .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(ForgotPasswordButton)))
                 .addGap(208, 208, 208))
             .addGroup(layout.createSequentialGroup()
                 .addGap(248, 248, 248)
@@ -147,25 +152,25 @@ public class LoginJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(loginbtn))
+                        .addComponent(LoginButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jButton1)))
+                        .addComponent(JoinButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(ForgotPasswordButton)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
         // TODO add your handling code here:
        ForgotPasswordJFrame fppanel = new ForgotPasswordJFrame();
        fppanel.setVisible(true);
        
        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
@@ -174,53 +179,61 @@ public class LoginJFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
         int check=0;
-        String username = usernametxt.getText();
+        String email = usernametxt.getText();
         String password = passwordtxt.getText();
-        if(username.equals("")|| password.equals(""))
+        if(email.equals("")|| password.equals(""))
         {
             check=1;
             JOptionPane.showMessageDialog(null, "Enter all fields");
         }
-        else if(username.equals("admin")&& password.equals("admin"))
+        else if(email.equals("admin")&& password.equals("admin"))
         {
             check=1;
             setVisible(false);
             new AdminJframe().setVisible(true);
         }
-        /*try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=false","root","sahithi123");
-            String username = usernametxt.getText();
-            String password = passwordtxt.getText();
+        else
+        {
             
-            Statement st = con.createStatement();
-            String sql = "select * from users where name = '"+username+"'and password='"+password+"'";
-            ResultSet rs = st.executeQuery(sql);
-            
-            if(rs.next()){
-                dispose();
-                HomePage homepanel = new HomePage();
-                homepanel.show();
-            }else{
-                JOptionPane.showMessageDialog(this, "username or password wrong");
-                usernametxt.setText("");
-                passwordtxt.setText("");
-            }
-            
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }*/
-    }//GEN-LAST:event_loginbtnActionPerformed
+            //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
+            try{
+                String sql = "SELECT * FROM customerlogin WHERE email=? AND password=?";
+                ps=con.prepareStatement(sql);
+                ps.setString(1, usernametxt.getText());
+                ps.setString(2,passwordtxt.getText());
+                rs=ps.executeQuery();
+                if(rs.next())
+                {
+                    /*check=1;
+                    if(rs.getString(8).equals(true))
+                    {
+                    setVisible(false);
+                    new ManagerLoginJFrame().setVisible(true);
+                    }*/
+                    JOptionPane.showMessageDialog(null, "Login Successful");
+                    this.dispose();
+                    new ManagerLoginJFrame().setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Credentials");
+                    usernametxt.setText("");
+                    passwordtxt.setText("");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
+        }
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void JoinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JoinButtonActionPerformed
         // TODO add your handling code here:
         JoinJFrame joinpanel = new JoinJFrame();
         joinpanel.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_JoinButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,14 +272,14 @@ public class LoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ForgotPasswordButton;
+    private javax.swing.JButton JoinButton;
+    private javax.swing.JButton LoginButton;
     private javax.swing.JButton homeButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JButton loginbtn;
     private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
