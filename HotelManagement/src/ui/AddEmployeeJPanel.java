@@ -47,45 +47,52 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
         FemaleBtn = new javax.swing.JRadioButton();
         OthersBtn = new javax.swing.JRadioButton();
         JobCombobox = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        AddEmpLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AddEmpLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AddEmpLbl.setText("AddEmployee");
-        add(AddEmpLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 695, 26));
+        AddEmpLbl.setText("Add Employee");
+        add(AddEmpLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 26));
 
+        NameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         NameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NameLbl.setText("Name");
-        add(NameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 97, 65, 27));
+        add(NameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 65, 27));
 
         Nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        add(Nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 99, 174, -1));
+        add(Nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 174, -1));
 
+        AgeLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AgeLbl.setText("Age");
-        add(AgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 142, 65, 23));
+        add(AgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 65, 23));
 
         Agetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        add(Agetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 142, 174, -1));
+        add(Agetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 174, -1));
 
+        GenderLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         GenderLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         GenderLbl.setText("Gender");
-        add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 183, 65, 25));
+        add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 65, 25));
 
+        JobLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         JobLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JobLbl.setText("Job");
-        add(JobLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 226, 65, 27));
+        add(JobLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 65, 27));
 
+        SalaryLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SalaryLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SalaryLbl.setText("Salary");
-        add(SalaryLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 272, 65, 26));
+        add(SalaryLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 65, 26));
 
         Salarytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        add(Salarytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 271, 174, 26));
+        add(Salarytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 174, 26));
 
+        AddressLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AddressLbl.setText("Address");
-        add(AddressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 316, 65, 25));
+        add(AddressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 65, 25));
 
         Addresstxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Addresstxt.addActionListener(new java.awt.event.ActionListener() {
@@ -93,48 +100,53 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
                 AddresstxtActionPerformed(evt);
             }
         });
-        add(Addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 316, 174, 24));
+        add(Addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 174, 24));
 
+        UserNameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         UserNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameLbl.setText("User Name");
-        add(UserNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 359, -1, 26));
+        add(UserNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, 26));
 
+        PasswordLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         PasswordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PasswordLbl.setText("Password");
-        add(PasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 403, 65, 25));
+        add(PasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 65, 25));
 
         Passwordtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 403, 174, 26));
+        add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 174, 26));
 
         UserNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 359, 174, 26));
+        add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 174, 26));
 
+        SubmitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SubmitBtn.setText("Submit");
-        add(SubmitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 475, -1, -1));
+        add(SubmitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, -1, -1));
 
         buttonGroup1.add(MaleBtn);
+        MaleBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         MaleBtn.setText("Male");
-        add(MaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 185, 54, -1));
+        add(MaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 54, -1));
 
         buttonGroup1.add(FemaleBtn);
+        FemaleBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         FemaleBtn.setText("Female");
-        add(FemaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 185, -1, -1));
+        add(FemaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
         buttonGroup1.add(OthersBtn);
+        OthersBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         OthersBtn.setText("Others");
-        add(OthersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 185, -1, -1));
+        add(OthersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
-        JobCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JobCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Manager", "Receptionist", "HouseKeeping", "Driver", "Chef" }));
         JobCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JobComboboxActionPerformed(evt);
             }
         });
-        add(JobCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 228, 174, -1));
+        add(JobCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 174, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rooms.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Add employee.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddresstxtActionPerformed
@@ -168,6 +180,6 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel UserNameLbl;
     private javax.swing.JTextField UserNametxt;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

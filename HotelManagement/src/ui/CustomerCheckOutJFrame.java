@@ -48,43 +48,81 @@ public class CustomerCheckOutJFrame extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CustomerCheckOutLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         CustomerCheckOutLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerCheckOutLbl.setText("Customer CheckOut");
+        add(CustomerCheckOutLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 19, 210, 36));
 
+        RoomNumberLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         RoomNumberLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RoomNumberLbl.setText("Room Number");
+        add(RoomNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 73, -1, 20));
 
         RoomNotxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        add(RoomNotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 73, 139, -1));
 
+        SearchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SearchBtn.setText("Search");
+        add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(658, 73, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Customer Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 144, 139, 26));
 
         CustomerNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        add(CustomerNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 145, 137, 26));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Check In Date");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 189, 139, 26));
 
         CheckInDatetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        add(CheckInDatetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 190, 137, 26));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Check Out Date (Today)");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 232, -1, 30));
 
         CheckOutDatetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        add(CheckOutDatetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 232, 137, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel4.setText("Customer Mobile Number ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 280, -1, 26));
+        add(CustomerPhtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 280, 137, 28));
 
+        NoofdaysLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        NoofdaysLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoofdaysLbl.setText("Number Of Days Stay");
+        add(NoofdaysLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 225, 27));
+        add(Noofdaystxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 237, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Total Amount to Collect from Customer");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, 25));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 230, 237, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Email");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 225, 23));
+        add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, 237, -1));
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jButton1.setText("Check Out");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 100, -1));
 
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jButton2.setText("Clear");
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 90, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,102 +134,10 @@ public class CustomerCheckOutJFrame extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(RoomNumberLbl)
-                        .addGap(66, 66, 66)
-                        .addComponent(RoomNotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(SearchBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CustomerCheckOutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel4))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CustomerPhtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CustomerNametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                    .addComponent(CheckInDatetxt)
-                                    .addComponent(CheckOutDatetxt))
-                                .addGap(124, 124, 124)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NoofdaysLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(64, 64, 64)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Emailtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(Noofdaystxt)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(jButton2)))))
-                .addContainerGap(182, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(CustomerCheckOutLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(RoomNotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SearchBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(RoomNumberLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CustomerNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NoofdaysLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Noofdaystxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CheckOutDatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(3, 3, 3)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CustomerPhtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CheckInDatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(102, 102, 102)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 504, 1200, 331));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-out-sign-arrow-2.jpg"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 840));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -215,6 +161,7 @@ public class CustomerCheckOutJFrame extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

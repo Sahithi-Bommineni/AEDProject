@@ -53,13 +53,17 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         Pricetxt = new javax.swing.JTextField();
         AlloteRoomBtn = new javax.swing.JButton();
         ClearBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomerCheckInLbl.setText("Customer CheckIn");
+        getContentPane().add(CustomerCheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 21, -1, 30));
 
         CustomerNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerNameLbl.setText("Name");
+        getContentPane().add(CustomerNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 86, 124, 23));
 
         CustomerNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CustomerNametxt.addActionListener(new java.awt.event.ActionListener() {
@@ -67,24 +71,32 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 CustomerNametxtActionPerformed(evt);
             }
         });
+        getContentPane().add(CustomerNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 86, 121, -1));
 
         PhLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PhLbl.setText("Mobile Number");
+        getContentPane().add(PhLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 127, 124, 25));
 
         Phtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Phtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 128, 121, -1));
 
         NationalityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NationalityLbl.setText("Nationality");
+        getContentPane().add(NationalityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 170, 124, 23));
 
         Nationalitytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Nationalitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 170, 121, -1));
 
         GenderLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         GenderLbl.setText("Gender");
+        getContentPane().add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 211, 124, 25));
 
         GenderBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        getContentPane().add(GenderBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 212, 121, -1));
 
         EmailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         EmailLbl.setText("Email");
+        getContentPane().add(EmailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 255, 124, 26));
 
         Emailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Emailtxt.addActionListener(new java.awt.event.ActionListener() {
@@ -92,151 +104,61 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 EmailtxtActionPerformed(evt);
             }
         });
+        getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 257, 121, -1));
 
         IDproofLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IDproofLbl.setText("ID Proof");
+        getContentPane().add(IDproofLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 304, 124, 23));
 
         IDProoftxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(IDProoftxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 304, 121, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Address");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 345, 124, 25));
 
         Addresstxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 346, 121, -1));
 
         CheckInLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CheckInLbl.setText("Check In Date(Today)");
+        getContentPane().add(CheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 388, -1, 25));
 
         CheckIntxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(CheckIntxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 389, 121, -1));
 
         BedLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BedLbl.setText("Beds");
+        getContentPane().add(BedLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 86, 92, 23));
 
         BedBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single ", "Double ", "Triple", " " }));
+        getContentPane().add(BedBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 86, 118, -1));
 
         RoomTypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RoomTypeLbl.setText("Room Type");
+        getContentPane().add(RoomTypeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 127, 92, 25));
 
         TypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "Non-AC", " " }));
+        getContentPane().add(TypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 128, 118, -1));
 
         RoomNoLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RoomNoLbl.setText("Room No");
+        getContentPane().add(RoomNoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 171, 92, 20));
+        getContentPane().add(RoomNotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 170, 118, -1));
 
         PriceLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PriceLbl.setText("Price");
+        getContentPane().add(PriceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 215, 92, -1));
+        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 212, 118, -1));
 
         AlloteRoomBtn.setText("Allote Rooms");
+        getContentPane().add(AlloteRoomBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, -1, -1));
 
         ClearBtn.setText("Clear");
+        getContentPane().add(ClearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 107, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CustomerCheckInLbl)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NationalityLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PhLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CustomerNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CheckInLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(IDproofLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EmailLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(GenderLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CustomerNametxt)
-                            .addComponent(Phtxt)
-                            .addComponent(Nationalitytxt)
-                            .addComponent(GenderBox, 0, 121, Short.MAX_VALUE)
-                            .addComponent(Emailtxt)
-                            .addComponent(IDProoftxt)
-                            .addComponent(Addresstxt)
-                            .addComponent(CheckIntxt))
-                        .addGap(268, 268, 268)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BedLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(RoomTypeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                    .addComponent(RoomNoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(PriceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Pricetxt)
-                                    .addComponent(RoomNotxt)
-                                    .addComponent(TypeBox, 0, 118, Short.MAX_VALUE)
-                                    .addComponent(BedBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(AlloteRoomBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ClearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(75, 75, 75)))))
-                .addGap(408, 408, 408))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(CustomerCheckInLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CustomerNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CustomerNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BedLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BedBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PhLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Phtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RoomTypeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Nationalitytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(NationalityLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(RoomNoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(RoomNotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(GenderLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GenderBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PriceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EmailLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(AlloteRoomBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IDproofLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(IDProoftxt))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(ClearBtn)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CheckInLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CheckIntxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(393, 393, 393))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CheckIn.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,5 +234,6 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RoomTypeLbl;
     private javax.swing.JComboBox<String> TypeBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
