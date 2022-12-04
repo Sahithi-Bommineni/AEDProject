@@ -69,6 +69,11 @@ public class LoginJFrame extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jButton1.setText("Join");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -171,7 +176,21 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
-        try{
+        int check=0;
+        String username = usernametxt.getText();
+        String password = passwordtxt.getText();
+        if(username.equals("")|| password.equals(""))
+        {
+            check=1;
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        }
+        else if(username.equals("admin")&& password.equals("admin"))
+        {
+            check=1;
+            setVisible(false);
+            new AdminJframe().setVisible(true);
+        }
+        /*try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=false","root","sahithi123");
             String username = usernametxt.getText();
@@ -193,8 +212,15 @@ public class LoginJFrame extends javax.swing.JFrame {
             
         }catch(Exception e){
             System.out.println(e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JoinJFrame joinpanel = new JoinJFrame();
+        joinpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
