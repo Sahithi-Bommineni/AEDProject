@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+//import database.ConnectionProvider;
 
+import database.ConnectionProvider;
+import java.sql.*;
 import javax.swing.JOptionPane;
-import database.InsertUpdateDelete;
 
 
 /**
@@ -13,12 +15,17 @@ import database.InsertUpdateDelete;
  * @author sahithi
  */
 public class JoinJFrame extends javax.swing.JFrame {
+    
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs=null;
 
     /**
      * Creates new form JoinJFrame
      */
     public JoinJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -41,7 +48,7 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         FirstNametxt = new javax.swing.JTextField();
         LastNametxt = new javax.swing.JTextField();
-        UserNametxt = new javax.swing.JTextField();
+        Emailtxt = new javax.swing.JTextField();
         Answertxt = new javax.swing.JTextField();
         Passwordtxt = new javax.swing.JPasswordField();
         CPasswordtxt = new javax.swing.JPasswordField();
@@ -50,7 +57,6 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,7 +66,7 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel2.setText("Last Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
-        jLabel3.setText("Username");
+        jLabel3.setText("Email");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         jLabel4.setText("Password");
@@ -87,24 +93,12 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Become a Member");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 200, 20));
-
-        FirstNametxt.setText("jTextField1");
         getContentPane().add(FirstNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 170, -1));
-
-        LastNametxt.setText("jTextField1");
         getContentPane().add(LastNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 150, -1));
-
-        UserNametxt.setText("jTextField1");
-        getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 150, -1));
-
-        Answertxt.setText("jTextField1");
+        getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 150, -1));
         getContentPane().add(Answertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 150, -1));
-
-        Passwordtxt.setText("jPasswordField1");
-        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
-
-        CPasswordtxt.setText("jPasswordField1");
-        getContentPane().add(CPasswordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 150, -1));
+        getContentPane().add(CPasswordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 150, -1));
 
         sqcombobox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         sqcombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's your first pets name?", "What's your favourite city?", "What's your mothers maidens name?", "What's your native place?" }));
@@ -136,23 +130,48 @@ public class JoinJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String firstname = FirstNametxt.getText();
         String lastname = LastNametxt.getText();
-        String username = UserNametxt.getText();
+        String email = Emailtxt.getText();
         String password = Passwordtxt.getText();
         String cpassword = CPasswordtxt.getText();
         String securityques = (String)sqcombobox.getSelectedItem();
         String answer = Answertxt.getText();
         
-        if(firstname.equals("")|| lastname.equals("") || username.equals("")|| password.equals("")||cpassword.equals("")|| answer.equals(""))
+        if(firstname.equals("")|| lastname.equals("") || email.equals("")|| password.equals("")||cpassword.equals("")|| answer.equals(""))
         {
-            JOptionPane.showMessageDialog(null,"Fill all the details");
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            FirstNametxt.setText("");
+            LastNametxt.setText("");
+            Emailtxt.setText("");
+            Passwordtxt.setText("");
+            CPasswordtxt.setText("");
+            Answertxt.setText("");
         }
         else
         {
-            String Query;
-            Query = "insert into members values('"+firstname+"','"+lastname+"','"+username+"','"+password+"','"+cpassword+"','"+securityques+"','"+answer+"')";
-            InsertUpdateDelete.setData(Query, "Registered Successfully");
-            setVisible(false);
-            new JoinJFrame().setVisible(true);
+          try{
+              String sql = "INSERT INTO customerlogin (firstname,lastname,email,password,cpassword,securityques,answer) VALUES (?,?,?,?,?,?,?)";
+              ps=con.prepareStatement(sql);
+              ps.setString(1, firstname);
+              ps.setString(2,lastname);
+              ps.setString(3, email);
+              ps.setString(4,password);
+              ps.setString(5, cpassword);
+              ps.setString(6,securityques);
+              ps.setString(7,answer);
+              ps.execute();
+              //Statement st=con.createStatement();
+              //st.executeUpdate(sql);
+              FirstNametxt.setText("");
+              LastNametxt.setText("");
+              Emailtxt.setText("");
+              Passwordtxt.setText("");
+              CPasswordtxt.setText("");
+              Answertxt.setText("");
+              
+          }catch(Exception e)
+          {
+              JOptionPane.showMessageDialog(null,e);
+          }
         }
     }//GEN-LAST:event_JoinButtonActionPerformed
 
@@ -194,11 +213,11 @@ public class JoinJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Answertxt;
     private javax.swing.JPasswordField CPasswordtxt;
+    private javax.swing.JTextField Emailtxt;
     private javax.swing.JTextField FirstNametxt;
     private javax.swing.JButton JoinButton;
     private javax.swing.JTextField LastNametxt;
     private javax.swing.JPasswordField Passwordtxt;
-    private javax.swing.JTextField UserNametxt;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
