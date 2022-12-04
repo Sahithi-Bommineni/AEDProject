@@ -37,7 +37,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         TimeTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         ExtraReqTxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Submitbtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        ToLocTxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,14 +90,14 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Time Window :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         TimeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimeTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(TimeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 140, -1));
+        getContentPane().add(TimeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, 140, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 0));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -110,16 +112,24 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 140, -1));
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Submitbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Submitbtn.setText("Submit");
+        Submitbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SubmitbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
+        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("To Location:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
+        getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 140, -1));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/taxi.jpg"))); // NOI18N
+        jLabel7.setText("From");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1260, 960));
 
         pack();
@@ -141,9 +151,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExtraReqTxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SubmitbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,8 +194,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField ExtraReqTxt;
     private javax.swing.JTextField NoOfPassTxt;
     private javax.swing.JTextField RoomNtxt;
+    private javax.swing.JButton Submitbtn;
     private javax.swing.JTextField TimeTxt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField ToLocTxt;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -194,5 +205,6 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
