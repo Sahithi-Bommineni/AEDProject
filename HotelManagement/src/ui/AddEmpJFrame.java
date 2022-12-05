@@ -4,17 +4,28 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sahithi
  */
 public class AddEmpJFrame extends javax.swing.JFrame {
 
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs=null;
+    
     /**
      * Creates new form AddEmpJFrame
      */
     public AddEmpJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -26,6 +37,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         AddEmpLbl = new javax.swing.JLabel();
         NameLbl = new javax.swing.JLabel();
         Nametxt = new javax.swing.JTextField();
@@ -46,199 +58,218 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         Passwordtxt = new javax.swing.JTextField();
         PasswordLbl = new javax.swing.JLabel();
         SubmitBtn = new javax.swing.JButton();
+        ViewEmpButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AddEmpLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AddEmpLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AddEmpLbl.setText("Add Employee");
+        getContentPane().add(AddEmpLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 580, 26));
 
-        NameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        NameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         NameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NameLbl.setText("Name");
+        getContentPane().add(NameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 65, 27));
 
+        Nametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 530, 30));
 
-        AgeLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        AgeLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         AgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AgeLbl.setText("Age");
+        getContentPane().add(AgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 65, 23));
 
+        Agetxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Agetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Agetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 174, -1));
 
-        GenderLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        GenderLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         GenderLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         GenderLbl.setText("Gender");
+        getContentPane().add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 65, 25));
 
-        MaleBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        buttonGroup1.add(MaleBtn);
+        MaleBtn.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         MaleBtn.setText("Male");
+        getContentPane().add(MaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 70, -1));
 
-        FemaleBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        buttonGroup1.add(FemaleBtn);
+        FemaleBtn.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         FemaleBtn.setText("Female");
+        getContentPane().add(FemaleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
-        OthersBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        buttonGroup1.add(OthersBtn);
+        OthersBtn.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         OthersBtn.setText("Others");
+        getContentPane().add(OthersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
-        JobCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Manager", "Receptionist", "HouseKeeping", "Driver", "Chef" }));
-        JobCombobox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JobComboboxActionPerformed(evt);
-            }
-        });
+        JobCombobox.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
+        JobCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Receptionist", "HouseKeeping", "Driver", "Chef" }));
+        getContentPane().add(JobCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 194, 180, 30));
 
-        JobLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        JobLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         JobLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JobLbl.setText("Job");
+        getContentPane().add(JobLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 60, 27));
 
-        SalaryLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        SalaryLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         SalaryLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SalaryLbl.setText("Salary");
+        getContentPane().add(SalaryLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 65, 26));
 
+        Salarytxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Salarytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Salarytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 180, 26));
 
-        AddressLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        AddressLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         AddressLbl.setText("Address");
+        getContentPane().add(AddressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 80, 25));
 
+        Addresstxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Addresstxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Addresstxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddresstxtActionPerformed(evt);
-            }
-        });
+        getContentPane().add(Addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 530, 24));
 
-        UserNameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        UserNameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         UserNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameLbl.setText("User Name");
+        getContentPane().add(UserNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, 26));
 
+        UserNametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         UserNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 174, 26));
 
+        Passwordtxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Passwordtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 180, 26));
 
-        PasswordLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        PasswordLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PasswordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PasswordLbl.setText("Password");
+        getContentPane().add(PasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 100, 25));
 
-        SubmitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        SubmitBtn.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         SubmitBtn.setText("Submit");
+        SubmitBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SubmitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 130, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(NameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AgeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GenderLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(MaleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FemaleBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(OthersBtn))
-                            .addComponent(Agetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(482, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(AddEmpLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(JobLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)
-                            .addComponent(JobCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(SalaryLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)
-                            .addComponent(Salarytxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(AddressLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)
-                            .addComponent(Addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(UserNameLbl)
-                            .addGap(51, 51, 51)
-                            .addComponent(UserNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(PasswordLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)
-                            .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(240, 240, 240)
-                            .addComponent(SubmitBtn)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Agetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(GenderLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(MaleBtn)
-                        .addComponent(FemaleBtn)
-                        .addComponent(OthersBtn)))
-                .addContainerGap(315, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AddEmpLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(164, 164, 164)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(JobLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JobCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(13, 13, 13)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(SalaryLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Salarytxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(14, 14, 14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(AddressLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(25, 25, 25)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(UserNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(UserNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(14, 14, 14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PasswordLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(44, 44, 44)
-                    .addComponent(SubmitBtn)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        ViewEmpButton.setText("View Employees");
+        ViewEmpButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ViewEmpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewEmpButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ViewEmpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 130, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel-staff-set-maids-cleaning-260nw-1012520026.jpg-2.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 100));
+
+        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
+        BackButton.setText("Back");
+        BackButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 50, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JobComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JobComboboxActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JobComboboxActionPerformed
+        setVisible(false);
+        new AdminJframe().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void AddresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddresstxtActionPerformed
+    private void SubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddresstxtActionPerformed
+        String name = Nametxt.getText();
+        int age = Integer.parseInt(Agetxt.getText());
+        String username = UserNametxt.getText();
+        String password = Passwordtxt.getText();
+        String address = Addresstxt.getText();
+        String job = (String)JobCombobox.getSelectedItem();
+        int salary = Integer.parseInt(Salarytxt.getText());
+        String gender = " ";
+  
+                // If condition to check if jRadioButton2 is selected.
+                if (MaleBtn.isSelected()) {
+  
+                    gender = "Male";
+                }
+  
+                else if (FemaleBtn.isSelected()) {
+  
+                    gender = "Female";
+                }
+                else if (OthersBtn.isSelected()) {
+  
+                    gender = "Other";
+                }
+                   
+        if(name.equals("")|| password.equals("")||username.equals("")|| address.equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            Nametxt.setText("");
+            Agetxt.setText("");
+            UserNametxt.setText("");
+            Passwordtxt.setText("");
+            Addresstxt.setText("");
+            Salarytxt.setText("");
+            buttonGroup1.clearSelection();
+        }
+        else
+        {
+          try{
+              String sql = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
+              ps=con.prepareStatement(sql);
+              ps.setString(1, name);
+              ps.setInt(2,age);
+              ps.setString(3, gender);
+              ps.setString(4,job);
+              ps.setString(5, address);
+              ps.setInt(6,salary);
+              ps.setString(7,username);
+              ps.setString(8, password);
+              ps.execute();
+              //Statement st=con.createStatement();
+              //st.executeUpdate(sql);
+              Nametxt.setText("");
+              Agetxt.setText("");
+              UserNametxt.setText("");
+              Passwordtxt.setText("");
+              Addresstxt.setText("");
+              Salarytxt.setText("");
+              buttonGroup1.clearSelection();
+              
+          }catch(Exception e)
+          {
+              JOptionPane.showMessageDialog(null,e);
+          }
+        }
+    }//GEN-LAST:event_SubmitBtnActionPerformed
+
+    private void ViewEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEmpButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ViewEmployeeJFrame().setVisible(true);
+    }//GEN-LAST:event_ViewEmpButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,6 +312,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Addresstxt;
     private javax.swing.JLabel AgeLbl;
     private javax.swing.JTextField Agetxt;
+    private javax.swing.JButton BackButton;
     private javax.swing.JRadioButton FemaleBtn;
     private javax.swing.JLabel GenderLbl;
     private javax.swing.JComboBox<String> JobCombobox;
@@ -296,5 +328,9 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     private javax.swing.JButton SubmitBtn;
     private javax.swing.JLabel UserNameLbl;
     private javax.swing.JTextField UserNametxt;
+    private javax.swing.JButton ViewEmpButton;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

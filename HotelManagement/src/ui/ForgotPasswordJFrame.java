@@ -4,6 +4,10 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import java.sql.*;
+import database.ConnectionProvider;
+
 /**
  *
  * @author sahithi
@@ -16,6 +20,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
     public ForgotPasswordJFrame() {
         initComponents();
     }
+    String email;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +67,11 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         searchbtn.setForeground(new java.awt.Color(255, 255, 51));
         searchbtn.setText("Search");
+        searchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -134,6 +144,20 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         loginpanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
+        // TODO add your handling code here:
+        int check=0;
+        email=Emailtxt.getText();
+        if(email.equals(""))
+        {
+            check=1;
+            JOptionPane.showMessageDialog(null, "Please enter email");
+        }
+        else{
+            //ResultSet rs =
+        }
+    }//GEN-LAST:event_searchbtnActionPerformed
 
     /**
      * @param args the command line arguments
