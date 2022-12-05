@@ -5,11 +5,15 @@
 package ui;
 
 import database.ConnectionProvider;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -26,12 +30,17 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
     public ViewEmployeeJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        populateTable();
         
     }
     
     public void populateTable()
     {
         try{
+            String sql = "SELECT * FROM employee";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            emptable.setModel(DbUtils.resultSetToTableModel(rs));
             
         }catch(Exception e)
         {
@@ -48,6 +57,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         emptable = new javax.swing.JTable();
@@ -76,7 +86,6 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(845, 600));
@@ -124,11 +133,6 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 839, 273));
 
         UpdateButton.setText("Update");
-        UpdateButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UpdateButtonMouseClicked(evt);
-            }
-        });
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateButtonActionPerformed(evt);
@@ -163,12 +167,6 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         jPanel1.add(txtSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 430, 183, -1));
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 462, 183, -1));
         jPanel1.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 401, 181, -1));
-
-        txtAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 430, 181, -1));
         jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 462, 181, -1));
 
@@ -192,12 +190,15 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(SearchComponent, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 160, -1));
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Male");
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 373, -1, -1));
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Female");
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 373, -1, -1));
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Other");
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 373, -1, -1));
 
@@ -242,18 +243,24 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/*
+
     private void emptableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptableMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) emptable.getModel();
-        String name = model.getValueAt(emptable.getSelectedRow(),0).toString();
-        String age = model.getValueAt(emptable.getSelectedRow(),1).toString();
-        String gender = model.getValueAt(emptable.getSelectedRow(),2).toString();
-        String job = model.getValueAt(emptable.getSelectedRow(),3).toString();
-        String address = model.getValueAt(emptable.getSelectedRow(),4).toString();
-        String salary = model.getValueAt(emptable.getSelectedRow(),5).toString();
-        String username = model.getValueAt(emptable.getSelectedRow(),6).toString();
-        String password = model.getValueAt(emptable.getSelectedRow(),7).toString();
+        int r=emptable.getSelectedRow();
+        String click = (emptable.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM employee WHERE name='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String name = rs.getString(1);
+                String age = rs.getString(2);
+                String gender = rs.getString(3);
+                String job = rs.getString(4);
+                String address = rs.getString(5);
+                String salary = rs.getString(6);
+                String username = rs.getString(7);
+                String password = rs.getString(8);
 
         if ("Male".equals(gender)) {
 
@@ -273,48 +280,22 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         txtAddress.setText(address);
         txtSalary.setText(salary);
         txtUsername.setText(username);
-        String securityques = (String)sqcombobox.getSelectedItem();
+        //String job = (String)jComboBox1.getSelectedItem();
         txtPassword.setText(password);
-
+                     
+            }
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_emptableMouseClicked
-
-    private void UpdateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateButtonMouseClicked
-        // TODO add your handling code here:
-        int selectedRowIndex=emptable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) emptable.getModel();
-        String name = model.getValueAt(emptable.getSelectedRow(),0).toString();
-        String empid = model.getValueAt(emptable.getSelectedRow(),1).toString();
-        String age = model.getValueAt(emptable.getSelectedRow(),2).toString();
-        //String gender = model.getValueAt(emptable.getSelectedRow(),3).toString();
-        String level = model.getValueAt(emptable.getSelectedRow(),5).toString();
-        String team_info = model.getValueAt(emptable.getSelectedRow(),6).toString();
-        String title = model.getValueAt(emptable.getSelectedRow(),7).toString();
-        String start_date = model.getValueAt(emptable.getSelectedRow(),4).toString();
-        String ph_no = model.getValueAt(emptable.getSelectedRow(),8).toString();
-        String email = model.getValueAt(emptable.getSelectedRow(),9).toString();
-
-        txtName.setText(name);
-        txtEmpid.setText(empid);
-        txtAge.setText(age);
-        //txtGender.setText(gender);
-        txtStartdate.setText(start_date);
-        txtSalary.setText(level);
-        txtAddress.setText(team_info);
-        txtTitle.setText(title);
-        txtUsername.setText(ph_no);
-        txtPassword.setText(email);
-
-    }//GEN-LAST:event_UpdateButtonMouseClicked
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
 
-        DefaultTableModel model = (DefaultTableModel) emptable.getModel();
-        if(emptable.getSelectedRowCount()==1){
-            //Employee selectedEmployee = (Employee) model.getValueAt(emptable.getSelectedRow(),0);
-            String name = txtName.getText();
-            int empid = Integer.parseInt(txtEmpid.getText());
-            int age = Integer.parseInt(txtAge.getText());
-            String gender = "";
+        String name=txtName.getText();
+        String age=txtAge.getText();
+        String gender = "";
             // If condition to check if jRadioButton2 is selected.
             if (jRadioButton1.isSelected()) {
 
@@ -329,48 +310,54 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
                 gender = "Other";
             }
-            String start_date=txtStartdate.getText();
-            int level = Integer.parseInt(txtSalary.getText());
-            String team_info=txtAddress.getText();
-            String title=txtAddress.getText();
-            long ph_no= Long.parseLong(txtUsername.getText());
-            String email = txtPassword.getText();
-            /*String empid = model.getValueAt(emptable.getSelectedRow(),1).toString();
-            String age = model.getValueAt(emptable.getSelectedRow(),2).toString();
-            //String gender = model.getValueAt(emptable.getSelectedRow(),3).toString();
-            String level = model.getValueAt(emptable.getSelectedRow(),5).toString();
-            String team_info = model.getValueAt(emptable.getSelectedRow(),6).toString();
-            String title = model.getValueAt(emptable.getSelectedRow(),7).toString();
-            String start_date = model.getValueAt(emptable.getSelectedRow(),4).toString();
-            String ph_no = model.getValueAt(emptable.getSelectedRow(),8).toString();
-            String email = model.getValueAt(emptable.getSelectedRow(),9).toString();//
-
-            model.setValueAt(name, emptable.getSelectedRow(), 0);
-            model.setValueAt(empid,emptable.getSelectedRow(),1);
-            model.setValueAt(age,emptable.getSelectedRow(),2);
-            model.setValueAt(gender,emptable.getSelectedRow(),3);
-            model.setValueAt(start_date,emptable.getSelectedRow(),4);
-            model.setValueAt(level,emptable.getSelectedRow(),5);
-            model.setValueAt(team_info,emptable.getSelectedRow(),6);
-            model.setValueAt(title,emptable.getSelectedRow(),7);
-            model.setValueAt(ph_no,emptable.getSelectedRow(),8);
-            model.setValueAt(email,emptable.getSelectedRow(),9);
-
-            JOptionPane.showMessageDialog(this,"Updated Successfully!");
-        }
-        else {
-            if(emptable.getRowCount()==0){
-                JOptionPane.showMessageDialog(this,"This is an empty table.");
+        String address=txtAddress.getText();
+        String salary=txtSalary.getText();
+        String username=txtUsername.getText();
+        String password = txtPassword.getText();
+        String job = (String)jComboBox1.getSelectedItem();
+        
+        String sql="UPDATE employee(name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
+        try{
+            //ps=con.prepareStatement(sql);
+            if(name.equals("")|| age.equals("") || gender.equals("")|| salary.equals("")||username.equals("")|| address.equals("")||password.equals(""))
+            {
+                JOptionPane.showMessageDialog(null,"Please fill all the details");
+                txtName.setText("");
+                txtAge.setText("");
+                txtAddress.setText("");
+                txtSalary.setText("");
+                txtUsername.setText("");
+                //String job = (String)jComboBox1.getSelectedItem();
+                txtPassword.setText("");
+                buttonGroup1.clearSelection();
             }
-            else{
-                JOptionPane.showMessageDialog(this,"Please select atleast one row.");
-            }
+            else
+            {
+              ps=con.prepareStatement(sql);
+              ps.setString(1, name);
+              ps.setString(2,age);
+              ps.setString(3, gender);
+              ps.setString(4,job);
+              ps.setString(5, address);
+              ps.setString(6,salary);
+              ps.setString(7,username);
+              ps.setString(8, password);
+              ps.execute();
+        
+              txtName.setText("");
+              txtAge.setText("");
+              txtAddress.setText("");
+              txtSalary.setText("");
+              txtUsername.setText("");
+        //String job = (String)jComboBox1.getSelectedItem();
+              txtPassword.setText("");
+              buttonGroup1.clearSelection();
+              
+            } 
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_UpdateButtonActionPerformed
-
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
 
     private void SearchComponentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchComponentFocusGained
         // TODO add your handling code here:
@@ -408,19 +395,27 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) emptable.getModel();
-        if(emptable.getSelectedRowCount()==1){
-            model.removeRow(emptable.getSelectedRow());
-            JOptionPane.showMessageDialog(this,"Deleted Successfully.");
-        }
-        else{
-            if(emptable.getRowCount()==0)
-            {
-                JOptionPane.showMessageDialog(this,"This is an empty table.");
+        String name=txtName.getText();
+        String sql = "DELETE FROM employee WHERE name='"+name+"'";
+        try{
+            ps=con.prepareCall(sql);
+            int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(i==JOptionPane.YES_OPTION){
+                ps.execute();
+                JOptionPane.showMessageDialog(null,"Deleted Successfully.");
+                txtName.setText("");
+                txtAge.setText("");
+                txtAddress.setText("");
+                txtSalary.setText("");
+                txtUsername.setText("");
+        //String job = (String)jComboBox1.getSelectedItem();
+                txtPassword.setText("");
+                buttonGroup1.clearSelection();
+                
             }
-            else{
-                JOptionPane.showMessageDialog(this,"Please select atleast one row to delete.");
-            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
@@ -471,6 +466,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Password;
     private javax.swing.JTextField SearchComponent;
     private javax.swing.JButton UpdateButton;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTable emptable;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
