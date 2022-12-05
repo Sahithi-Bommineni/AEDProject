@@ -248,8 +248,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
               ps.setString(7,username);
               ps.setString(8, password);
               ps.execute();
-              //Statement st=con.createStatement();
-              //st.executeUpdate(sql);
+              
               Nametxt.setText("");
               Agetxt.setText("");
               UserNametxt.setText("");
