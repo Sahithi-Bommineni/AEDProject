@@ -242,7 +242,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/*
     private void emptableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptableMouseClicked
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) emptable.getModel();
@@ -343,7 +343,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
             String title = model.getValueAt(emptable.getSelectedRow(),7).toString();
             String start_date = model.getValueAt(emptable.getSelectedRow(),4).toString();
             String ph_no = model.getValueAt(emptable.getSelectedRow(),8).toString();
-            String email = model.getValueAt(emptable.getSelectedRow(),9).toString();*/
+            String email = model.getValueAt(emptable.getSelectedRow(),9).toString();//
 
             model.setValueAt(name, emptable.getSelectedRow(), 0);
             model.setValueAt(empid,emptable.getSelectedRow(),1);
