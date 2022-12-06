@@ -26,12 +26,13 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     public AddRoomJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        populateTable();
     }
     
     public void populateTable()
     {
         try{
-            String sql = "SELECT * FROM employee";
+            String sql = "SELECT * FROM room";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             roomtable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -227,6 +228,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String bedtype = (String)bedtypecombobox.getSelectedItem();
         String ac = (String)accombobox.getSelectedItem();
         String price = PriceTxt.getText();
+        
         if(roomno.equals("")|| floor.equals("")||price.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
@@ -262,7 +264,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int r=roomtable.getSelectedRow();
         String click = (roomtable.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM room WHERE name='"+click+"'";
+        String sql = "SELECT * FROM room WHERE r='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
@@ -325,7 +327,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
         // TODO add your handling code here:
         String roomno=roomnoTxt.getText();
-        String sql = "DELETE FROM employee WHERE name='"+roomno+"'";
+        String sql = "DELETE FROM employee WHERE roomno='"+roomno+"'";
         try{
             ps=con.prepareCall(sql);
             int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
