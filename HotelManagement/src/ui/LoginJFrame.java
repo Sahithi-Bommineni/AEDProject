@@ -150,19 +150,16 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-        int check=0;
         String email = usernametxt.getText();
         String password = passwordtxt.getText();
         if(email.equals("")|| password.equals(""))
         {
-            check=1;
             JOptionPane.showMessageDialog(null, "Enter all fields");
         }
-        else if(email.equals("admin")&& password.equals("admin"))
+        else if(email.equals("staff")&& password.equals("staff") )
         {
-            check=1;
-            setVisible(false);
-            new AdminJframe().setVisible(true);
+            StaffLoginJFrame staffpanel = new StaffLoginJFrame();
+            staffpanel.setVisible(true);
         }
         else
         {
@@ -173,6 +170,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                 ps=con.prepareStatement(sql);
                 ps.setString(1, usernametxt.getText());
                 ps.setString(2,passwordtxt.getText());
+                //ps.setString(WIDTH, sql);
                 rs=ps.executeQuery();
                 if(rs.next())
                 {
@@ -182,7 +180,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                     setVisible(false);
                     new ManagerLoginJFrame().setVisible(true);
                     }*/
-                    JOptionPane.showMessageDialog(null, "Login Successful");
+                    //JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose();
                     new ManagerLoginJFrame().setVisible(true);
                 }
