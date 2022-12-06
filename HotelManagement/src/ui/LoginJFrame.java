@@ -61,7 +61,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         usernametxt.setBackground(new java.awt.Color(51, 51, 51));
         usernametxt.setFont(new java.awt.Font("Ayuthaya", 1, 14)); // NOI18N
         usernametxt.setForeground(new java.awt.Color(255, 255, 255));
-        usernametxt.setText("Enter Username");
         usernametxt.setBorder(null);
         usernametxt.setMinimumSize(new java.awt.Dimension(60, 20));
         usernametxt.setPreferredSize(new java.awt.Dimension(60, 23));
@@ -75,7 +74,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         passwordtxt.setBackground(new java.awt.Color(51, 51, 51));
         passwordtxt.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         passwordtxt.setForeground(new java.awt.Color(255, 255, 255));
-        passwordtxt.setText("Enter Password");
         passwordtxt.setBorder(null);
         getContentPane().add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 180, 30));
 
@@ -152,19 +150,16 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-        int check=0;
         String email = usernametxt.getText();
         String password = passwordtxt.getText();
         if(email.equals("")|| password.equals(""))
         {
-            check=1;
             JOptionPane.showMessageDialog(null, "Enter all fields");
         }
-        else if(email.equals("admin")&& password.equals("admin"))
+        else if(email.equals("staff")&& password.equals("staff") )
         {
-            check=1;
-            setVisible(false);
-            new AdminJframe().setVisible(true);
+            StaffLoginJFrame staffpanel = new StaffLoginJFrame();
+            staffpanel.setVisible(true);
         }
         else
         {
@@ -175,6 +170,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                 ps=con.prepareStatement(sql);
                 ps.setString(1, usernametxt.getText());
                 ps.setString(2,passwordtxt.getText());
+                //ps.setString(WIDTH, sql);
                 rs=ps.executeQuery();
                 if(rs.next())
                 {
@@ -184,7 +180,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                     setVisible(false);
                     new ManagerLoginJFrame().setVisible(true);
                     }*/
-                    JOptionPane.showMessageDialog(null, "Login Successful");
+                    //JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose();
                     new ManagerLoginJFrame().setVisible(true);
                 }
