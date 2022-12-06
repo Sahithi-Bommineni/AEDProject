@@ -26,12 +26,13 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     public AddRoomJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        populateTable();
     }
     
     public void populateTable()
     {
         try{
-            String sql = "SELECT * FROM employee";
+            String sql = "SELECT * FROM room";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             roomtable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -59,11 +60,6 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         PriceTxt = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        BedsTxt = new javax.swing.JTextField();
-        savebtn = new javax.swing.JButton();
-        Updatebtn = new javax.swing.JButton();
-        deletebtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         roomtypecombobox = new javax.swing.JComboBox<>();
@@ -108,23 +104,6 @@ public class AddRoomJFrame extends javax.swing.JFrame {
 
         PriceTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         getContentPane().add(PriceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 90, -1));
-
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel6.setText("No of Beds :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
-        getContentPane().add(BedsTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, -1));
-
-        savebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        savebtn.setText("Save");
-        getContentPane().add(savebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, -1, -1));
-
-        Updatebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        Updatebtn.setText("Update");
-        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, -1, -1));
-
-        deletebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        deletebtn.setText("Remove");
-        getContentPane().add(deletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 570, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel8.setText("Room Type :");
@@ -249,6 +228,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String bedtype = (String)bedtypecombobox.getSelectedItem();
         String ac = (String)accombobox.getSelectedItem();
         String price = PriceTxt.getText();
+        
         if(roomno.equals("")|| floor.equals("")||price.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
@@ -284,7 +264,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int r=roomtable.getSelectedRow();
         String click = (roomtable.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM room WHERE name='"+click+"'";
+        String sql = "SELECT * FROM room WHERE r='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
@@ -347,7 +327,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
         // TODO add your handling code here:
         String roomno=roomnoTxt.getText();
-        String sql = "DELETE FROM employee WHERE name='"+roomno+"'";
+        String sql = "DELETE FROM employee WHERE roomno='"+roomno+"'";
         try{
             ps=con.prepareCall(sql);
             int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -403,14 +383,11 @@ public class AddRoomJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JTextField BedsTxt;
     private javax.swing.JTextField FloorTxt;
     private javax.swing.JTextField PriceTxt;
-    private javax.swing.JButton Updatebtn;
     private javax.swing.JComboBox<String> accombobox;
     private javax.swing.JButton addroombutton;
     private javax.swing.JComboBox<String> bedtypecombobox;
-    private javax.swing.JButton deletebtn;
     private javax.swing.JButton deletebutton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -419,13 +396,11 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField roomnoTxt;
     private javax.swing.JTable roomtable;
     private javax.swing.JComboBox<String> roomtypecombobox;
-    private javax.swing.JButton savebtn;
     // End of variables declaration//GEN-END:variables
 }
