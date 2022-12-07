@@ -48,7 +48,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         roomtype=(String)TypeBox.getSelectedItem();
         try{
             //ResultSet rs=Select.getData("Select * from ");
-            String sql = "SELECT * FROM room WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'";
+            String sql = "SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next())
@@ -268,7 +268,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         roomno=(String)jComboBox2.getSelectedItem();
         try{
-            String sql = "SELECT * FROM room WHERE roomno='"+roomno+"'";
+            String sql = "SELECT * FROM rooms WHERE roomno='"+roomno+"'";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
