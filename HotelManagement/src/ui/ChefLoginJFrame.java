@@ -41,7 +41,7 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabel1.setText("Your Orders Are Here !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         ChefTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,29 +56,29 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ChefTbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 560, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 560, 310));
 
         Searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Searchbtn.setText("Search");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, -1, -1));
+        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, -1, -1));
 
         SearchTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 90, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Status :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 590, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
 
         Statustxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StatustxtActionPerformed(evt);
             }
         });
-        getContentPane().add(Statustxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, -1, -1));
+        getContentPane().add(Statustxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
 
         Updatebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Updatebtn.setText("Update");
@@ -87,10 +87,10 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
                 UpdatebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 640, -1, -1));
+        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chef.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1200, 820));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, -150, 1200, 820));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
