@@ -88,6 +88,7 @@ public class IndoorGames extends javax.swing.JFrame {
         getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 288, 108, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Indoor games.jpeg"))); // NOI18N
+        jLabel2.setText("S");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
