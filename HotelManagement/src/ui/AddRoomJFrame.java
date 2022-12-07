@@ -32,7 +32,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     public void populateTable()
     {
         try{
-            String sql = "SELECT * FROM room";
+            String sql = "SELECT * FROM rooms";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             roomtable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -226,8 +226,8 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String floor = FloorTxt.getText();
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
-        String ac = (String)accombobox.getSelectedItem();
         String price = PriceTxt.getText();
+        String status = statustxt.getText();
         
         if(roomno.equals("")|| floor.equals("")||price.equals(""))
         {
@@ -239,14 +239,14 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         else
         {
           try{
-              String sql = "INSERT INTO room (roomno,floor,roomtype,bedtype,ac,price) VALUES (?,?,?,?,?,?)";
+              String sql = "INSERT INTO room (roomno,floor,roomtype,bedtype,price,status) VALUES (?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setString(1, roomno);
               ps.setString(2,floor);
               ps.setString(3, roomtype);
               ps.setString(4,bedtype);
-              ps.setString(5, ac);
-              ps.setString(6,price);
+              ps.setString(5, price);
+              ps.setString(6,status);
               ps.execute();
               
               roomnoTxt.setText("");
