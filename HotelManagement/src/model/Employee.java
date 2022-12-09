@@ -8,7 +8,16 @@ package model;
  *
  * @author sahithi
  */
-public class HotelManagement {
+public class Employee {
+    
+    private String name;
+    private int age;
+    private String gender;
+    private String job;
+    private int address;
+    private int salary;
+    private String username;
+    private long password;
 
     /**
      * @param args the command line arguments

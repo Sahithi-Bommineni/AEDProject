@@ -182,7 +182,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                     }*/
                     //JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose();
-                    new ManagerLoginJFrame().setVisible(true);
+                    new CustomerServiceJFrame().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Incorrect Credentials");

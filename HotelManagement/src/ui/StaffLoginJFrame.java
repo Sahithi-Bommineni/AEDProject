@@ -66,7 +66,7 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
         getContentPane().add(usernametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 180, 30));
         getContentPane().add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 180, 30));
 
-        rolecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Manager", "Receptionist", "Housekeeping", "Driver", "Chef" }));
+        rolecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Manager", "Receptionist", "Housekeeping", "Driver", "Chef" }));
         getContentPane().add(rolecombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 180, 30));
 
         LogInButton.setFont(new java.awt.Font("AppleGothic", 0, 24)); // NOI18N
@@ -105,22 +105,22 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = usernametxt.getText();
         String password = passwordtxt.getText();
+        String job = rolecombobox.getSelectedItem().toString();
         if(username.equals("")|| password.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         }
-        /*else if(email.equals("admin")&& password.equals("admin") )
+        else if(username.equals("admin")&& password.equals("admin") && job.equals("Admin") )
         {
-            check=1;
             setVisible(false);
             new AdminJframe().setVisible(true);
-        }*/
+        }
         else
         {
             
             //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
             try{
-                String sql = "SELECT * FROM employee WHERE username=? AND password=? AND job=?";
+                String sql = "SELECT * FROM employee WHERE username=? AND password=?";
                 ps=con.prepareStatement(sql);
                 ps.setString(1, usernametxt.getText());
                 ps.setString(2,passwordtxt.getText());
@@ -128,31 +128,32 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
                 rs=ps.executeQuery();
                 if(rs.next())
                 {
-                    String role = (String)rolecombobox.getSelectedItem();
-                    if(username.equals("admin")&& password.equals("admin") && role.equals("Admin")){
+                    //String role = (String)rolecombobox.getSelectedItem();
+                    /*if(username.equals("admin")&& password.equals("admin") && role.equals("Admin")){
                         setVisible(false);
-                        new AdminJframe().setVisible(true);
-                    }
-                    else if(role.equals("Manager")){
+                        new AdminJframe().setVisible(true);*/
+                    String r = rs.getString("job");
+                    String u = rs.getString("username");
+                    if(job.equalsIgnoreCase("Manager")){
                         this.dispose();
                         new ManagerLoginJFrame().setVisible(true);
                     }
-                    else if(role.equals("Receptionist")){
+                    else if(job.equalsIgnoreCase("Housekeeping")){
                         this.dispose();
-                        new ManagerLoginJFrame().setVisible(true);
+                        new HouseKeepingJFrame().setVisible(true);
                     }
-                    else if(role.equals("Housekeeping")){
-                        this.dispose();
-                        new ManagerLoginJFrame().setVisible(true);
-                    }
-                    else if(role.equals("Driver"))
+                    else if(job.equalsIgnoreCase("Driver"))
                     {
                         this.dispose();
-                        new ManagerLoginJFrame().setVisible(true);
+                        new DriverJFrame().setVisible(true);
                     }
-                    else if(role.equals("Chef")){
+                    else if(job.equalsIgnoreCase("Chef")){
                         this.dispose();
-                        new ManagerLoginJFrame().setVisible(true);
+                        new ChefLoginJFrame().setVisible(true);
+                    }
+                    else if(job.equalsIgnoreCase("Coordinator")){
+                        this.dispose();
+                        new GymSupervisorLoginJFrame().setVisible(true);
                     }
                 }
                 else{

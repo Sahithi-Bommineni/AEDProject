@@ -49,89 +49,97 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 700));
+        setMinimumSize(new java.awt.Dimension(800, 700));
+        setPreferredSize(new java.awt.Dimension(800, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel1.setText("Room No :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel2.setText("Service ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setText("Room Cleaning :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel4.setText("Restroom Cleaning :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel5.setText("Everything :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel6.setText("Any special instructions:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel7.setText("Time window :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, -1, -1));
-        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+
+        RoomNoTxt.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
+        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
 
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton1.setText("Yes");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton2.setText("No");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
 
         buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton3.setText("Yes");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
+        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
 
         buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton4.setText("No");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, -1, -1));
+        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
 
         buttonGroup3.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton5.setText("Yes");
-        getContentPane().add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
+        getContentPane().add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 70, -1));
 
         buttonGroup3.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jRadioButton6.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton6.setText("No");
-        getContentPane().add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
-        getContentPane().add(SplInstructionstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 150, -1));
+        getContentPane().add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
+        SplInstructionstxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        getContentPane().add(SplInstructionstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 210, -1));
+
+        jComboBox1.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Submit");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 500, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housekeeping-1-scaled (1).jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, -100, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

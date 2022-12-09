@@ -81,13 +81,14 @@
     <Component class="javax.swing.JComboBox" name="rolecombobox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Admin"/>
-            <StringItem index="1" value="Manager"/>
-            <StringItem index="2" value="Receptionist"/>
-            <StringItem index="3" value="Housekeeping"/>
-            <StringItem index="4" value="Driver"/>
-            <StringItem index="5" value="Chef"/>
+          <StringArray count="7">
+            <StringItem index="0" value="Select"/>
+            <StringItem index="1" value="Admin"/>
+            <StringItem index="2" value="Manager"/>
+            <StringItem index="3" value="Receptionist"/>
+            <StringItem index="4" value="Housekeeping"/>
+            <StringItem index="5" value="Driver"/>
+            <StringItem index="6" value="Chef"/>
           </StringArray>
         </Property>
       </Properties>
