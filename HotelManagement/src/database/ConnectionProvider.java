@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author sahithi
  */
 public class ConnectionProvider {
+    Connection con = null;
     public static Connection getCon()
     {
         try
