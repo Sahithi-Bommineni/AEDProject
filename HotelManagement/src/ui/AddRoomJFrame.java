@@ -13,15 +13,18 @@ import net.proteanit.sql.DbUtils;
 
 /**
  *
- * @author nikhithajarabana
+ * @author koushalamshala
  */
 public class AddRoomJFrame extends javax.swing.JFrame {
 
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs =null;
+    
     /**
-     * Creates new form AddRoomJFrame
+     */
+    /**
+     * Creates new form AddRoomFrame
      */
     public AddRoomJFrame() {
         initComponents();
@@ -52,78 +55,49 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        roomnoTxt = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        FloorTxt = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        PriceTxt = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        RoomNoLbl = new javax.swing.JLabel();
+        FloorLbl = new javax.swing.JLabel();
+        RoomNotxt = new javax.swing.JTextField();
+        Floortxt = new javax.swing.JTextField();
+        RoomtypeLbl = new javax.swing.JLabel();
         roomtypecombobox = new javax.swing.JComboBox<>();
-        accombobox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         bedtypecombobox = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        Pricetxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomtable = new javax.swing.JTable();
-        addroombutton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        deletebutton = new javax.swing.JButton();
-        BackButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        AddRoomBtn = new javax.swing.JButton();
+        UpdateBtn = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        jLabel1.setText("More Rooms More Space ! ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel2.setText("Room No :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        RoomNoLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        RoomNoLbl.setText("Room No :");
 
-        roomnoTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        getContentPane().add(roomnoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 90, -1));
+        FloorLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        FloorLbl.setText("Floor :");
 
-        jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel3.setText("Floor :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        RoomtypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        RoomtypeLbl.setText("Room Type:");
 
-        FloorTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        getContentPane().add(FloorTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 90, -1));
+        roomtypecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "NON AC" }));
 
-        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel4.setText("Bed Type :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, 20));
+        jLabel2.setText("Bed Type:");
 
-        jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel5.setText("Price :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, -1));
-
-        PriceTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        getContentPane().add(PriceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 90, -1));
-
-        jLabel8.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel8.setText("Room Type :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, 30));
-
-        jLabel10.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jLabel10.setText("AC/Non AC :");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 30));
-
-        roomtypecombobox.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        roomtypecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Standard", "Deluxe", "Suite" }));
-        getContentPane().add(roomtypecombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 100, 30));
-
-        accombobox.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        accombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "Non AC" }));
-        getContentPane().add(accombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 90, 30));
-
-        bedtypecombobox.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         bedtypecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Twin", "Queen", "King" }));
-        getContentPane().add(bedtypecombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 90, 30));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Price:");
 
         roomtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,83 +107,104 @@ public class AddRoomJFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Floor", "Room Type", "Bed Type", "Ac/Non AC", "Price"
+                "ROOM NO", "FLOOR", "ROOM TYPE", "BED TYPE", "PRICE", "STATUS"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         roomtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 roomtableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(roomtable);
-        if (roomtable.getColumnModel().getColumnCount() > 0) {
-            roomtable.getColumnModel().getColumn(0).setResizable(false);
-            roomtable.getColumnModel().getColumn(1).setResizable(false);
-            roomtable.getColumnModel().getColumn(2).setResizable(false);
-            roomtable.getColumnModel().getColumn(3).setResizable(false);
-            roomtable.getColumnModel().getColumn(4).setResizable(false);
-            roomtable.getColumnModel().getColumn(5).setResizable(false);
-        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 620, 300));
-
-        addroombutton.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        addroombutton.setText("Add Room");
-        addroombutton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addroombutton.addActionListener(new java.awt.event.ActionListener() {
+        AddRoomBtn.setText("Add Rooms");
+        AddRoomBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addroombuttonActionPerformed(evt);
+                AddRoomBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(addroombutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 80, -1));
 
-        jButton2.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        jButton2.setText("Update");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        UpdateBtn.setText("Update");
+        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                UpdateBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, 80, 20));
 
-        deletebutton.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        deletebutton.setText("Delete");
-        deletebutton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        deletebutton.addActionListener(new java.awt.event.ActionListener() {
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletebuttonActionPerformed(evt);
+                DeleteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 80, -1));
 
-        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
-        BackButton.setText("Back");
-        BackButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BackButton)
+                    .addComponent(RoomNoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(FloorLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(RoomNotxt)
+                    .addComponent(Floortxt, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RoomtypeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(roomtypecombobox, 0, 101, Short.MAX_VALUE)
+                    .addComponent(Pricetxt))
+                .addGap(86, 86, 86)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bedtypecombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AddRoomBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(UpdateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(BackButton)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RoomNoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RoomNotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RoomtypeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roomtypecombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bedtypecombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FloorLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Floortxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(Pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AddRoomBtn)
+                        .addGap(38, 38, 38)
+                        .addComponent(UpdateBtn)
+                        .addGap(37, 37, 37)
+                        .addComponent(DeleteBtn)))
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,51 +215,53 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         new AdminJframe().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void addroombuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addroombuttonActionPerformed
+    private void AddRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRoomBtnActionPerformed
         // TODO add your handling code here:
-        String roomno = roomnoTxt.getText();
-        String floor = FloorTxt.getText();
+        String roomno = RoomNotxt.getText();
+        String floor = Floortxt.getText();
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
-        String price = PriceTxt.getText();
-        String status = statustxt.getText();
+        String price = Pricetxt.getText();
+        //String status = statustxt.getText();
         
         if(roomno.equals("")|| floor.equals("")||price.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
-            roomnoTxt.setText("");
-            FloorTxt.setText("");
-            PriceTxt.setText("");
+            RoomNotxt.setText("");
+            Floortxt.setText("");
+            Pricetxt.setText("");
         }
         else
         {
           try{
-              String sql = "INSERT INTO room (roomno,floor,roomtype,bedtype,price,status) VALUES (?,?,?,?,?,?)";
+              String sql = "INSERT INTO rooms (roomno,floor,roomtype,bedtype,price,status) VALUES (?,?,?,?,?,'Not Booked')";
               ps=con.prepareStatement(sql);
               ps.setString(1, roomno);
               ps.setString(2,floor);
               ps.setString(3, roomtype);
               ps.setString(4,bedtype);
               ps.setString(5, price);
-              ps.setString(6,status);
+              //ps.setString(6,status);
               ps.execute();
               
-              roomnoTxt.setText("");
-              FloorTxt.setText("");
-              PriceTxt.setText("");
+              RoomNotxt.setText("");
+              Floortxt.setText("");
+              Pricetxt.setText("");
+              setVisible(false);
+              new AddRoomJFrame().setVisible(true);
               
           }catch(Exception e)
           {
               JOptionPane.showMessageDialog(null,e);
           }
         }
-    }//GEN-LAST:event_addroombuttonActionPerformed
+    }//GEN-LAST:event_AddRoomBtnActionPerformed
 
     private void roomtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomtableMouseClicked
         // TODO add your handling code here:
         int r=roomtable.getSelectedRow();
         String click = (roomtable.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM room WHERE r='"+click+"'";
+        String sql = "SELECT * FROM rooms WHERE r='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
@@ -273,12 +270,12 @@ public class AddRoomJFrame extends javax.swing.JFrame {
                 String floor = rs.getString(2);
                 String roomtype = rs.getString(3);
                 String bedtype = rs.getString(4);
-                String ac = rs.getString(5);
-                String price = rs.getString(6);
+                String price = rs.getString(5);
+                String status = rs.getString(6);
                 
-                roomnoTxt.setText(roomno);
-                FloorTxt.setText(floor);
-                PriceTxt.setText(price);        
+                RoomNotxt.setText(roomno);
+                Floortxt.setText(floor);
+                Pricetxt.setText(price);        
             }   
         }catch(Exception e)
         {
@@ -286,23 +283,22 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_roomtableMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         // TODO add your handling code here:
-        String roomno = roomnoTxt.getText();
-        String floor = FloorTxt.getText();
+        String roomno = RoomNotxt.getText();
+        String floor = Floortxt.getText();
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
-        String ac = (String)accombobox.getSelectedItem();
-        String price = PriceTxt.getText();
+        String price = Pricetxt.getText();
         
-        String sql="UPDATE room(roomno,floor,roomtype,bedtype,ac,price) VALUES (?,?,?,?,?,?)";
+        String sql="UPDATE room(roomno,floor,roomtype,bedtype,price) VALUES (?,?,?,?,?)";
         try{
             if(roomno.equals("")|| floor.equals("")||price.equals(""))
             {
                 JOptionPane.showMessageDialog(null,"Please fill all the details");
-                roomnoTxt.setText("");
-                FloorTxt.setText("");
-                PriceTxt.setText("");
+                RoomNotxt.setText("");
+                Floortxt.setText("");
+                Pricetxt.setText("");
             }
             else
             {
@@ -311,39 +307,40 @@ public class AddRoomJFrame extends javax.swing.JFrame {
               ps.setString(2,floor);
               ps.setString(3, roomtype);
               ps.setString(4,bedtype);
-              ps.setString(5, ac);
-              ps.setString(6,price);
+              ps.setString(5,price);
               ps.execute();
               
-              roomnoTxt.setText("");
-              FloorTxt.setText("");
-              PriceTxt.setText(""); 
+              RoomNotxt.setText("");
+              Floortxt.setText("");
+              Pricetxt.setText("");
             } 
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_UpdateBtnActionPerformed
 
-    private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-        String roomno=roomnoTxt.getText();
-        String sql = "DELETE FROM employee WHERE roomno='"+roomno+"'";
+        String roomno=RoomNotxt.getText();
+        String sql = "DELETE FROM rooms WHERE roomno='"+roomno+"'";
         try{
             ps=con.prepareCall(sql);
             int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(i==JOptionPane.YES_OPTION){
                 ps.execute();
                 JOptionPane.showMessageDialog(null,"Deleted Successfully.");
-                roomnoTxt.setText("");
-                FloorTxt.setText("");
-                PriceTxt.setText("");
+                RoomNotxt.setText("");
+                Floortxt.setText("");
+                Pricetxt.setText("");
+                setVisible(false);
+                new AddRoomJFrame().setVisible(true);
                 
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_deletebuttonActionPerformed
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,24 +379,20 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddRoomBtn;
     private javax.swing.JButton BackButton;
-    private javax.swing.JTextField FloorTxt;
-    private javax.swing.JTextField PriceTxt;
-    private javax.swing.JComboBox<String> accombobox;
-    private javax.swing.JButton addroombutton;
+    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JLabel FloorLbl;
+    private javax.swing.JTextField Floortxt;
+    private javax.swing.JTextField Pricetxt;
+    private javax.swing.JLabel RoomNoLbl;
+    private javax.swing.JTextField RoomNotxt;
+    private javax.swing.JLabel RoomtypeLbl;
+    private javax.swing.JButton UpdateBtn;
     private javax.swing.JComboBox<String> bedtypecombobox;
-    private javax.swing.JButton deletebutton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField roomnoTxt;
     private javax.swing.JTable roomtable;
     private javax.swing.JComboBox<String> roomtypecombobox;
     // End of variables declaration//GEN-END:variables

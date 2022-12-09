@@ -99,9 +99,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomerCheckInLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -147,7 +145,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         EmailLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         EmailLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EmailLbl.setText("Email");
-        getContentPane().add(EmailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 124, 26));
+        getContentPane().add(EmailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 124, 26));
 
         Emailtxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Emailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -223,6 +221,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
         AlloteRoomBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AlloteRoomBtn.setText("Allote Rooms");
+        AlloteRoomBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlloteRoomBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(AlloteRoomBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         ClearBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -272,12 +275,88 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
-                Pricetxt.setText(rs.getString(4));
+                Pricetxt.setText(rs.getString(5));
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void AlloteRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlloteRoomBtnActionPerformed
+        // TODO add your handling code here:
+        int id=1;
+        String name = CustomerNametxt.getText();
+        long mobileno = Long.parseLong(Phtxt.getText());
+        String nationality = Nationalitytxt.getText();
+        String email = Emailtxt.getText();
+        String address = Addresstxt.getText();
+        String idproof = IDProoftxt.getText();
+        String roomType = (String)TypeBox.getSelectedItem();
+        String bedType = (String)BedBox.getSelectedItem();
+        String roomNo = (String)jComboBox2.getSelectedItem();
+        String gender = (String)GenderBox.getSelectedItem();
+        String price = Pricetxt.getText();
+        String checkIn = CheckIntxt.getText();
+                
+        if(name.equals("")|| nationality.equals("")|| email.equals("")||address.equals("")||idproof.equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            CustomerNametxt.setText("");
+            Phtxt.setText("");
+            Nationalitytxt.setText("");
+            Emailtxt.setText("");
+            Addresstxt.setText("");
+            IDProoftxt.setText("");
+        }
+        else
+        {
+          try{
+              String query = "Select max(id) from customers";
+              ps=con.prepareStatement(query);
+              rs = ps.executeQuery();
+              while(rs.next())
+              {
+                  id=rs.getInt(1);
+              }
+              id=id+1;
+              if(!price.equals("")){
+                  query = "UPDATE rooms set status='Booked' WHERE roomno='"+roomNo+"'";
+                  ps=con.prepareStatement(query);
+                  ps.executeUpdate();
+                  String sql = "INSERT INTO customers (id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                  ps=con.prepareStatement(sql);
+                  ps.setInt(1,id);
+                  ps.setString(2, name);
+                  ps.setLong(3,mobileno);
+                  ps.setString(4,nationality);
+                  ps.setString(5, gender);
+                  ps.setString(6,email);
+                  ps.setString(7, idproof);
+                  ps.setString(8, address);
+                  ps.setString(9,checkIn);
+                  ps.setString(10,roomNo);
+                  ps.setString(11, bedType);
+                  ps.setString(12, roomType);
+                  ps.setString(13, price);
+                  ps.execute();
+                  
+                  CustomerNametxt.setText("");
+                  Phtxt.setText("");
+                  Nationalitytxt.setText("");
+                  Emailtxt.setText("");
+                  Addresstxt.setText("");
+                  IDProoftxt.setText("");
+                  setVisible(false);
+                  new CustomerCheckInJFrame().setVisible(true);
+              }
+             
+              
+          }catch(Exception e)
+          {
+              JOptionPane.showMessageDialog(null,e);
+          }
+        }
+    }//GEN-LAST:event_AlloteRoomBtnActionPerformed
 
     /**
      * @param args the command line arguments

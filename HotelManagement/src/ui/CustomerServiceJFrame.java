@@ -31,21 +31,22 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         HouseKeepingbtn = new javax.swing.JButton();
         Driverbtn = new javax.swing.JButton();
         Foodbtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        GamesButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 153));
         jLabel1.setText("We are at your service 24/7");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 0, 153));
         jLabel2.setText("Please select the service you would like . ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
 
         HouseKeepingbtn.setBackground(new java.awt.Color(153, 0, 153));
         HouseKeepingbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -56,53 +57,74 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
                 HouseKeepingbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(HouseKeepingbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 170, 30));
+        getContentPane().add(HouseKeepingbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 170, 30));
 
         Driverbtn.setBackground(new java.awt.Color(153, 0, 153));
         Driverbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Driverbtn.setForeground(new java.awt.Color(255, 255, 255));
-        Driverbtn.setText("Driver");
+        Driverbtn.setText("Cab Service");
         Driverbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DriverbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Driverbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 170, 30));
+        getContentPane().add(Driverbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 170, 30));
 
         Foodbtn.setBackground(new java.awt.Color(153, 0, 153));
         Foodbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Foodbtn.setForeground(new java.awt.Color(255, 255, 255));
         Foodbtn.setText("Food");
-        getContentPane().add(Foodbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 170, 30));
-
-        jButton2.setBackground(new java.awt.Color(153, 0, 153));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Indoor Gym/Games");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Foodbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                FoodbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 170, 30));
+        getContentPane().add(Foodbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 170, 30));
+
+        GamesButton.setBackground(new java.awt.Color(153, 0, 153));
+        GamesButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        GamesButton.setForeground(new java.awt.Color(255, 255, 255));
+        GamesButton.setText("Indoor Gym/Games");
+        GamesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GamesButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GamesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 170, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CustomerService_2.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, -100, 1370, 1080));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, -150, 1370, 1080));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void HouseKeepingbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HouseKeepingbtnActionPerformed
         // TODO add your handling code here:
+        HousekeepingserviceJFrame housekeeping = new HousekeepingserviceJFrame();
+        housekeeping.setVisible(true);
+        dispose();
     }//GEN-LAST:event_HouseKeepingbtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void GamesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GamesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        IndoorGames games = new IndoorGames();
+        games.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_GamesButtonActionPerformed
 
     private void DriverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DriverbtnActionPerformed
         // TODO add your handling code here:
+        DriverServiceJFrame driver = new DriverServiceJFrame();
+        driver.setVisible(true);
+        dispose();
     }//GEN-LAST:event_DriverbtnActionPerformed
+
+    private void FoodbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodbtnActionPerformed
+        // TODO add your handling code here:
+        FoodServiceJFrame food = new FoodServiceJFrame();
+        food.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_FoodbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,8 +164,8 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Driverbtn;
     private javax.swing.JButton Foodbtn;
+    private javax.swing.JButton GamesButton;
     private javax.swing.JButton HouseKeepingbtn;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

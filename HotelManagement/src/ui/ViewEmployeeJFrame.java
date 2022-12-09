@@ -316,7 +316,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String job = (String)jComboBox1.getSelectedItem();
         
-        String sql="UPDATE employee(name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
+        String sql="UPDATE employee SET (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
         try{
             //ps=con.prepareStatement(sql);
             if(name.equals("")|| age.equals("") || gender.equals("")|| salary.equals("")||username.equals("")|| address.equals("")||password.equals(""))
@@ -398,6 +398,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         String name=txtName.getText();
         String sql = "DELETE FROM employee WHERE name='"+name+"'";
         try{
+            int r=emptable.getSelectedRow();
             ps=con.prepareCall(sql);
             int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(i==JOptionPane.YES_OPTION){
@@ -411,6 +412,8 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         //String job = (String)jComboBox1.getSelectedItem();
                 txtPassword.setText("");
                 buttonGroup1.clearSelection();
+                setVisible(false);
+                new ViewEmployeeJFrame().setVisible(true);
                 
             }
             

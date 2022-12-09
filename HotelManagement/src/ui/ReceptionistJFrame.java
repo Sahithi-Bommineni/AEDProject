@@ -42,6 +42,11 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("CheckOut");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Customer Details Bill");
 
@@ -86,9 +91,16 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
     private void CheckInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckInButtonActionPerformed
         // TODO add your handling code here:
        CustomerCheckInJFrame checkinpanel = new CustomerCheckInJFrame();
-        checkinpanel.setVisible(true);
-        dispose();
+       checkinpanel.setVisible(true);
+       dispose();
     }//GEN-LAST:event_CheckInButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       CheckOutJFrame checkinpanel = new CheckOutJFrame();
+       checkinpanel.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

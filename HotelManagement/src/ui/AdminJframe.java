@@ -11,7 +11,7 @@ package ui;
 public class AdminJframe extends javax.swing.JFrame {
 
     /**
-     * Creates new form viewjframe
+     * Creates new form adminJframe
      */
     public AdminJframe() {
         initComponents();
