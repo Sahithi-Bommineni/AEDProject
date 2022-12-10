@@ -4,17 +4,42 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class ChefLoginJFrame extends javax.swing.JFrame {
+    
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form ChefLoginJFrame
      */
     public ChefLoginJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM chef";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            ChefTbl.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -32,16 +57,22 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         Searchbtn = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Statustxt = new javax.swing.JTextField();
         Updatebtn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        BackButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         jLabel1.setText("Your Orders Are Here !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         ChefTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,58 +85,111 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
                 "Room No", "Type", "Where ?", "Dishes ", "Status"
             }
         ));
+        ChefTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChefTblMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ChefTbl);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 560, 310));
 
-        Searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Searchbtn.setText("Search");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, -1, -1));
+        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
 
-        SearchTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 90, -1));
+        SearchTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel2.setText("Status :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 100, -1));
 
-        Statustxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StatustxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Statustxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
-
-        Updatebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Updatebtn.setBackground(new java.awt.Color(204, 204, 204));
+        Updatebtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Updatebtn.setText("Update");
         Updatebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdatebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
+        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 100, 30));
 
+        jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Served", "Pending" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 150, 30));
+
+        BackButton.setBackground(new java.awt.Color(204, 204, 204));
+        BackButton.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 120, 30));
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chef.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, -150, 1200, 820));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, -160, 1200, 820));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchTxtActionPerformed
-
-    private void StatustxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatustxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StatustxtActionPerformed
-
     private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
         // TODO add your handling code here:
+        String roomno = SearchTxt.getText();
+        String status = (String)jComboBox1.getSelectedItem();
+        String sql = "UPDATE chef SET status = ? WHERE roomno = ?";
+        try{
+            if(status.equalsIgnoreCase("Select Status")){
+                JOptionPane.showMessageDialog(null, "Please select status");
+            }
+            else{
+                ps=con.prepareStatement(sql);
+                ps.setString(1,status);
+                ps.setString(2,roomno);
+                ps.execute();
+                
+                jComboBox1.setSelectedItem("Select Status");
+                new ChefLoginJFrame().setVisible(true);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_UpdatebtnActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new StaffLoginJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void ChefTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChefTblMouseClicked
+        // TODO add your handling code here:
+        int r = ChefTbl.getSelectedRow();
+        String click = (ChefTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM chef WHERE roomno ='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String roomno = rs.getString(1);
+                String roomcleaning = rs.getString(2);
+                String restroom = rs.getString(3);
+                String splins = rs.getString(4);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                
+                //searchtxt.isEditable(false);
+                SearchTxt.setText(roomno);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "e");
+        }
+    }//GEN-LAST:event_ChefTblMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,11 +227,12 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JTable ChefTbl;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JButton Searchbtn;
-    private javax.swing.JTextField Statustxt;
     private javax.swing.JButton Updatebtn;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

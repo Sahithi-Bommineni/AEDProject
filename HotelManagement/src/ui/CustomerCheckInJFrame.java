@@ -98,6 +98,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         AlloteRoomBtn = new javax.swing.JButton();
         ClearBtn = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
+        BackButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -246,6 +247,17 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 287, 120, -1));
 
+        BackButton.setBackground(new java.awt.Color(204, 204, 204));
+        BackButton.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 120, 30));
+
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CheckIn.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -30, -1, -1));
@@ -361,6 +373,12 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AlloteRoomBtnActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ReceptionistJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,6 +417,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Addresstxt;
     private javax.swing.JButton AlloteRoomBtn;
+    private javax.swing.JButton BackButton;
     private javax.swing.JComboBox<String> BedBox;
     private javax.swing.JLabel BedLbl;
     private javax.swing.JLabel CheckInLbl;

@@ -4,17 +4,34 @@
  */
 package ui;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import database.ConnectionProvider;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class HousekeepingserviceJFrame extends javax.swing.JFrame {
+    
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form HousekeepingserviceJFrame
      */
     public HousekeepingserviceJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        dateTxt.setText(myFormat.format(cal.getTime()));
     }
 
     /**
@@ -28,12 +45,10 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         RoomNoTxt = new javax.swing.JTextField();
@@ -41,17 +56,21 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        SplInstructionstxt = new javax.swing.JTextField();
+        dateTxt = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        SplInstructionstxt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 700));
-        setMinimumSize(new java.awt.Dimension(800, 700));
-        setPreferredSize(new java.awt.Dimension(800, 700));
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(880, 580));
+        setMinimumSize(new java.awt.Dimension(880, 580));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(880, 580));
+        setSize(new java.awt.Dimension(880, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -59,98 +78,150 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jLabel2.setText("Service ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        jLabel2.setText("Services:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setText("Room Cleaning :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel4.setText("Restroom Cleaning :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jLabel5.setText("Everything :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel6.setText("Any special instructions:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jLabel7.setText("Time window :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+        jLabel7.setText("Date :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
         RoomNoTxt.setFont(new java.awt.Font("AppleGothic", 0, 18)); // NOI18N
-        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
+        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 90, -1));
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton1.setText("Yes");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton2.setText("No");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton3.setText("Yes");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
+        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         buttonGroup2.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jRadioButton4.setText("No");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
+        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
-        buttonGroup3.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jRadioButton5.setText("Yes");
-        getContentPane().add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 70, -1));
-
-        buttonGroup3.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jRadioButton6.setText("No");
-        getContentPane().add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
-
-        SplInstructionstxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        getContentPane().add(SplInstructionstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 210, -1));
+        dateTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        getContentPane().add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 240, -1));
 
         jComboBox1.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 240, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Submit");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, -1, -1));
+
+        BackButton.setBackground(new java.awt.Color(153, 204, 255));
+        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Back");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 30));
+
+        SplInstructionstxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        getContentPane().add(SplInstructionstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 240, -1));
+
+        jLabel9.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel9.setText("Time window :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housekeeping-1-scaled (1).jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, -100, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, -100, 1050, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+        setVisible(false);
+        new CustomerServiceJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        int roomno = Integer.parseInt(RoomNoTxt.getText());
+        String roomcleaning = " ";
+        if(jRadioButton1.isSelected()){
+            roomcleaning = "Yes";
+        }
+        else if(jRadioButton2.isSelected()){
+            roomcleaning = "No";
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select either YES or NO");
+        }
+        String restroom = " ";
+        if(jRadioButton3.isSelected()){
+            restroom = "Yes";
+        }
+        else if(jRadioButton4.isSelected()){
+            restroom = "No";
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select either YES or NO");
+        }
+        String splins = SplInstructionstxt.getText();
+        String time = (String)jComboBox1.getSelectedItem();
+        String date = dateTxt.getText();
+        
+        if(RoomNoTxt.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter room number");
+        }
+        else{
+        Connection con = ConnectionProvider.getCon();
+            try{
+                String sql = "INSERT INTO housekeeping(roomno,roomcleaning,restroom,splins,date,time) VALUES (?,?,?,?,?,?)";
+                ps=con.prepareStatement(sql);
+                ps.setInt(1,roomno);
+                ps.setString(2, roomcleaning);
+                ps.setString(3, restroom);
+                ps.setString(4, splins);
+                ps.setString(5, date);
+                ps.setString(6, time);
+                ps.execute();
+                
+                RoomNoTxt.setText("");
+                buttonGroup1.clearSelection();
+                buttonGroup2.clearSelection();
+                SplInstructionstxt.setText("");
+                jComboBox1.setSelectedItem("Select Time");
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,26 +259,25 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JTextField RoomNoTxt;
     private javax.swing.JTextField SplInstructionstxt;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JTextField dateTxt;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     // End of variables declaration//GEN-END:variables
 }

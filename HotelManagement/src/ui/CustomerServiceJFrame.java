@@ -32,16 +32,21 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         Driverbtn = new javax.swing.JButton();
         Foodbtn = new javax.swing.JButton();
         GamesButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(300, 118, 800, 500));
+        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 153));
         jLabel1.setText("We are at your service 24/7");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 0, 153));
@@ -92,6 +97,18 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(GamesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 170, 30));
 
+        BackButton.setBackground(new java.awt.Color(153, 0, 153));
+        BackButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 20));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CustomerService_2.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, -150, 1370, 1080));
 
@@ -125,6 +142,12 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         food.setVisible(true);
         dispose();
     }//GEN-LAST:event_FoodbtnActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +185,7 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton Driverbtn;
     private javax.swing.JButton Foodbtn;
     private javax.swing.JButton GamesButton;

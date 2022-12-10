@@ -45,6 +45,11 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
         EmpDirbtn.setBackground(new java.awt.Color(255, 255, 204));
         EmpDirbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         EmpDirbtn.setText("Employee Directory ");
+        EmpDirbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpDirbtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(EmpDirbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
         Roomsbtn.setBackground(new java.awt.Color(255, 255, 204));
@@ -75,7 +80,7 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Hotel Manager.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, -60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,6 +88,12 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
     private void ClockinbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClockinbtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ClockinbtnActionPerformed
+
+    private void EmpDirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpDirbtnActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ViewEmployeeJFrame().setVisible(true);
+    }//GEN-LAST:event_EmpDirbtnActionPerformed
 
     /**
      * @param args the command line arguments
