@@ -55,11 +55,21 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
         Roomsbtn.setBackground(new java.awt.Color(255, 255, 204));
         Roomsbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Roomsbtn.setText("List of Rooms");
+        Roomsbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RoomsbtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(Roomsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 290, 150, -1));
 
         Bookingsbtn.setBackground(new java.awt.Color(255, 255, 204));
         Bookingsbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Bookingsbtn.setText("Bookings ");
+        Bookingsbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BookingsbtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(Bookingsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 350, 140, -1));
 
         Clockinbtn.setBackground(new java.awt.Color(255, 255, 204));
@@ -94,6 +104,16 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
         setVisible(false);
         new ViewEmployeeJFrame().setVisible(true);
     }//GEN-LAST:event_EmpDirbtnActionPerformed
+
+    private void RoomsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomsbtnActionPerformed
+        // TODO add your handling code here:
+            setVisible(false);
+        new ViewRoomsJFrame().setVisible(true);
+    }//GEN-LAST:event_RoomsbtnActionPerformed
+
+    private void BookingsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingsbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BookingsbtnActionPerformed
 
     /**
      * @param args the command line arguments

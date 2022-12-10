@@ -78,9 +78,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(50, 118));
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 50));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -147,6 +145,11 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         Salarytxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Salarytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Salarytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SalarytxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Salarytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 180, 26));
 
         AddressLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -164,6 +167,11 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         UserNametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         UserNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        UserNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                UserNametxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 174, 26));
 
         Passwordtxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
@@ -210,7 +218,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         getContentPane().add(lblage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 60, 20));
         getContentPane().add(lblJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 100, 20));
         getContentPane().add(lblSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 80, 20));
-        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 160, 30));
+        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 200, 30));
         getContentPane().add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 180, 20));
 
         Jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
@@ -320,6 +328,32 @@ public class AddEmpJFrame extends javax.swing.JFrame {
             lblage.setText("");
         }
     }//GEN-LAST:event_AgetxtKeyReleased
+
+    private void SalarytxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SalarytxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[0-9]{3,5}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Salarytxt.getText());
+        if(!match.matches()){
+            lblSal.setText("Salary is incorrect");
+        }
+        else{
+            lblSal.setText("");
+        }
+    }//GEN-LAST:event_SalarytxtKeyReleased
+
+    private void UserNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserNametxtKeyReleased
+        // TODO add your handling code here:
+                String PATTERN="^[0-9]{5,7}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(UserNametxt.getText());
+        if(!match.matches()){
+            lblUser.setText("User Name should only have digits");
+        }
+        else{
+            lblUser.setText("");
+        }
+    }//GEN-LAST:event_UserNametxtKeyReleased
 
     /**
      * @param args the command line arguments

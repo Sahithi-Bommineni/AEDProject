@@ -27,92 +27,70 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CheckInButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Checkinbtn = new javax.swing.JButton();
+        checkoutbtn = new javax.swing.JButton();
+        Invoicebtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CheckInButton.setText("CheckIn");
-        CheckInButton.addActionListener(new java.awt.event.ActionListener() {
+        Checkinbtn.setBackground(new java.awt.Color(0, 0, 0));
+        Checkinbtn.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        Checkinbtn.setForeground(new java.awt.Color(255, 255, 255));
+        Checkinbtn.setText("Customer Check-in");
+        Checkinbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckInButtonActionPerformed(evt);
+                CheckinbtnActionPerformed(evt);
             }
         });
+        getContentPane().add(Checkinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 180, 50));
 
-        jButton2.setText("CheckOut");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        checkoutbtn.setBackground(new java.awt.Color(0, 0, 0));
+        checkoutbtn.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        checkoutbtn.setForeground(new java.awt.Color(255, 255, 255));
+        checkoutbtn.setText("Customer Check-out");
+        checkoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                checkoutbtnActionPerformed(evt);
             }
         });
+        getContentPane().add(checkoutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 180, 50));
 
-        jButton3.setText("Customer Details Bill");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Invoicebtn.setBackground(new java.awt.Color(0, 0, 0));
+        Invoicebtn.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        Invoicebtn.setForeground(new java.awt.Color(255, 255, 255));
+        Invoicebtn.setText("Customer Invoice");
+        Invoicebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                InvoicebtnActionPerformed(evt);
             }
         });
+        getContentPane().add(Invoicebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 50));
 
-        jButton4.setText("jButton1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CheckInButton)
-                        .addGap(173, 173, 173)
-                        .addComponent(jButton4))
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
-                .addContainerGap(415, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton4)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(CheckInButton)
-                        .addGap(18, 18, 18)))
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(347, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/young-businesswoman-standing-show-card-receptionist-female-stands-reception-desk-cartoon-character_1150-43045.jpg.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CheckInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckInButtonActionPerformed
+    private void CheckinbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckinbtnActionPerformed
         // TODO add your handling code here:
-       CustomerCheckInJFrame checkinpanel = new CustomerCheckInJFrame();
-       checkinpanel.setVisible(true);
-       dispose();
-    }//GEN-LAST:event_CheckInButtonActionPerformed
+        setVisible(false);
+        new CustomerCheckInJFrame().setVisible(true);
+    }//GEN-LAST:event_CheckinbtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void checkoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutbtnActionPerformed
         // TODO add your handling code here:
-       CheckOutJFrame checkinpanel = new CheckOutJFrame();
-       checkinpanel.setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        setVisible(false);
+        new CheckOutJFrame().setVisible(true);
+    }//GEN-LAST:event_checkoutbtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void InvoicebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoicebtnActionPerformed
         // TODO add your handling code here:
-        CustomerDetailsBill billpanel = new CustomerDetailsBill();
-        billpanel.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        setVisible(false);
+        new CustomerDetailsBill().setVisible(true);
+    }//GEN-LAST:event_InvoicebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,9 +129,9 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CheckInButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton Checkinbtn;
+    private javax.swing.JButton Invoicebtn;
+    private javax.swing.JButton checkoutbtn;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
