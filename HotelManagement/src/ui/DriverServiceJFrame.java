@@ -4,6 +4,14 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nikhithajarabana
@@ -13,8 +21,13 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     /**
      * Creates new form DriverServiceJFrame
      */
+    
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs=null;
     public DriverServiceJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -40,6 +53,8 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         Submitbtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ToLocTxt = new javax.swing.JTextField();
+        lblRoom = new javax.swing.JLabel();
+        lblPassengers = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +77,12 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
                 RoomNtxtActionPerformed(evt);
             }
         });
-        getContentPane().add(RoomNtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
+        RoomNtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                RoomNtxtKeyReleased(evt);
+            }
+        });
+        getContentPane().add(RoomNtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 110, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 0));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -82,6 +102,11 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         NoOfPassTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoOfPassTxtActionPerformed(evt);
+            }
+        });
+        NoOfPassTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NoOfPassTxtKeyReleased(evt);
             }
         });
         getContentPane().add(NoOfPassTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, -1));
@@ -126,6 +151,8 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel8.setText("To Location:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
         getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 140, -1));
+        getContentPane().add(lblRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 110, 20));
+        getContentPane().add(lblPassengers, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 160, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/taxi.jpg"))); // NOI18N
@@ -153,7 +180,79 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
 
     private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
+                int Room = Integer.parseInt(RoomNtxt.getText());
+                String Car = (String)jComboBox1.getSelectedItem();
+        int Passenger = Integer.parseInt(NoOfPassTxt.getText());
+        String ToLoc = ToLocTxt.getText();
+        String TimeWin = TimeTxt.getText();
+        String ExReq = ExtraReqTxt.getText();
+        
+  
+                
+                   
+        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||TimeTxt.equals("")||ExtraReqTxt.equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            RoomNtxt.setText("");
+            NoOfPassTxt.setText("");
+            ToLocTxt.setText("");
+            TimeTxt.setText("");
+            ExtraReqTxt.setText("");
+           
+        }
+        else
+        {
+          try{
+              String sql = "INSERT INTO Driver (RoomNo,CarType,NoofPassengers,ToLocation,TimeWindow,ExtraRequirements) VALUES (?,?,?,?,?,?)";
+              ps=con.prepareStatement(sql);
+              ps.setInt(1, Room);
+              ps.setString(3, Car);
+              ps.setInt(2,Passenger);
+              ps.setString(4,ToLoc);
+              ps.setString(5, TimeWin);
+              ps.setString(8, ExReq);
+              ps.execute();
+              
+              RoomNtxt.setText("");
+              NoOfPassTxt.setText("");
+              ToLocTxt.setText("");
+              TimeTxt.setText("");
+              ExtraReqTxt.setText("");
+              
+              
+          }catch(Exception e)
+          {
+              JOptionPane.showMessageDialog(null,e);
+          }
+        
+    }                        
     }//GEN-LAST:event_SubmitbtnActionPerformed
+
+    private void RoomNtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RoomNtxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[0-9]{3,3}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(RoomNtxt.getText());
+        if(!match.matches()){
+            lblRoom.setText("Room No is incorrect");
+        }
+        else{
+            lblRoom.setText("");
+        }        
+    }//GEN-LAST:event_RoomNtxtKeyReleased
+
+    private void NoOfPassTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoOfPassTxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[0-9]{1,2}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(NoOfPassTxt.getText());
+        if(!match.matches()){
+            lblPassengers.setText("Please give numbers only");
+        }
+        else{
+            lblPassengers.setText("");
+        }        
+    }//GEN-LAST:event_NoOfPassTxtKeyReleased
 
     /**
      * @param args the command line arguments
@@ -206,5 +305,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblPassengers;
+    private javax.swing.JLabel lblRoom;
     // End of variables declaration//GEN-END:variables
 }
