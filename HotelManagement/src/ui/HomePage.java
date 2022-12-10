@@ -38,6 +38,8 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(70, 118, 0, 0));
+        setLocation(new java.awt.Point(50, 118));
         setResizable(false);
 
         jSplitPane1.setDividerLocation(150);

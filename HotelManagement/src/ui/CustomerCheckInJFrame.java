@@ -6,6 +6,7 @@ package ui;
 
 import database.ConnectionProvider;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -18,9 +19,10 @@ import javax.swing.JOptionPane;
  */
 public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    ResultSet rs;
+    Statement st;
+    PreparedStatement ps;
     
     /**
      * Creates new form CustomerCheckInJFrame
@@ -47,10 +49,10 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         bedtype = (String)BedBox.getSelectedItem();
         roomtype=(String)TypeBox.getSelectedItem();
         try{
-            //ResultSet rs=Select.getData("Select * from ");
-            String sql = "SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'";
-            ps=con.prepareStatement(sql);
-            rs=ps.executeQuery();
+            //ResultSet rs=Select.getData("SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'");
+            //String sql = "SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'";
+            st=con.createStatement();
+            rs=st.executeQuery("SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'");
             while(rs.next())
             {
                 jComboBox2.addItem(rs.getString(1));
@@ -271,9 +273,10 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         roomno=(String)jComboBox2.getSelectedItem();
         try{
-            String sql = "SELECT * FROM rooms WHERE roomno='"+roomno+"'";
-            ps=con.prepareStatement(sql);
-            rs=ps.executeQuery();
+            //ResultSet rs=Select.getData("SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'");
+            //String sql = "SELECT * FROM rooms WHERE roomno='"+roomno+"'";
+            st=con.createStatement();
+            rs=st.executeQuery("SELECT * FROM rooms WHERE roomno='"+roomno+"'");
             while(rs.next()){
                 Pricetxt.setText(rs.getString(5));
             }
@@ -286,7 +289,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int id=1;
         String name = CustomerNametxt.getText();
-        long mobileno = Long.parseLong(Phtxt.getText());
+        String mobileno = Phtxt.getText();
         String nationality = Nationalitytxt.getText();
         String email = Emailtxt.getText();
         String address = Addresstxt.getText();
@@ -311,7 +314,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         else
         {
           try{
-              String query = "Select max(id) from customers";
+              String query = "Select max(id) from checkin";
               ps=con.prepareStatement(query);
               rs = ps.executeQuery();
               while(rs.next())
@@ -323,11 +326,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                   query = "UPDATE rooms set status='Booked' WHERE roomno='"+roomNo+"'";
                   ps=con.prepareStatement(query);
                   ps.executeUpdate();
-                  String sql = "INSERT INTO customers (id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                  String sql = "INSERT INTO checkin (id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
                   ps=con.prepareStatement(sql);
                   ps.setInt(1,id);
                   ps.setString(2, name);
-                  ps.setLong(3,mobileno);
+                  ps.setString(3,mobileno);
                   ps.setString(4,nationality);
                   ps.setString(5, gender);
                   ps.setString(6,email);
