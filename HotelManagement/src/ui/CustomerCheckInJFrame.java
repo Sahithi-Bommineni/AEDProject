@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -99,6 +101,10 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         ClearBtn = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         BackButton = new javax.swing.JButton();
+        lblName = new javax.swing.JLabel();
+        lblMN = new javax.swing.JLabel();
+        lblE = new javax.swing.JLabel();
+        lblNation = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,10 +118,20 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         CustomerNameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         CustomerNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         CustomerNameLbl.setText("Name");
+        CustomerNameLbl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CustomerNameLblKeyReleased(evt);
+            }
+        });
         getContentPane().add(CustomerNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 124, 23));
 
         CustomerNametxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         CustomerNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CustomerNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CustomerNametxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(CustomerNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 121, -1));
 
         PhLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -125,6 +141,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
         Phtxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Phtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Phtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                PhtxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Phtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 121, -1));
 
         NationalityLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -134,6 +155,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
         Nationalitytxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Nationalitytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nationalitytxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NationalitytxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Nationalitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 121, -1));
 
         GenderLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -152,6 +178,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
         Emailtxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Emailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Emailtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                EmailtxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 121, -1));
 
         IDproofLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -257,6 +288,10 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 120, 30));
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 160, 20));
+        getContentPane().add(lblMN, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 70, 170, 20));
+        getContentPane().add(lblE, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, 20));
+        getContentPane().add(lblNation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 140, 20));
 
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CheckIn.jpg"))); // NOI18N
@@ -379,6 +414,62 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         new ReceptionistJFrame().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
+    private void CustomerNameLblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CustomerNameLblKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CustomerNameLblKeyReleased
+
+    private void CustomerNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CustomerNametxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[a-zA-Z]{3,20}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(CustomerNametxt.getText());
+        if(!match.matches()){
+            lblName.setText("Name is incorrect");
+        }
+        else{
+            lblName.setText("");
+        }
+    }//GEN-LAST:event_CustomerNametxtKeyReleased
+
+    private void PhtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PhtxtKeyReleased
+        // TODO add your handling code here:
+                String PATTERN="^[0-9]{10,10}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Phtxt.getText());
+        if(!match.matches()){
+            lblMN.setText("Phone Number is not valid");
+        }
+        else{
+            lblMN.setText("");
+        }
+    }//GEN-LAST:event_PhtxtKeyReleased
+
+    private void EmailtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailtxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[a-zA-Z0-9]{4,30}[@][a-zA-Z]{2,10}[.][a-zA-Z]{1,5}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Emailtxt.getText());
+        if(!match.matches()){
+            lblE.setText("Email is incorrect");
+        }
+        else{
+            lblE.setText("");
+        }
+    }//GEN-LAST:event_EmailtxtKeyReleased
+
+    private void NationalitytxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NationalitytxtKeyReleased
+        // TODO add your handling code here:
+                String PATTERN="^[a-zA-Z]{4,20}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Nationalitytxt.getText());
+        if(!match.matches()){
+            lblNation.setText("Nationality is incorrect");
+        }
+        else{
+            lblNation.setText("");
+        }
+    }//GEN-LAST:event_NationalitytxtKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -444,5 +535,9 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblE;
+    private javax.swing.JLabel lblMN;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblNation;
     // End of variables declaration//GEN-END:variables
 }

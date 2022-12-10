@@ -7,6 +7,8 @@ package ui;
 
 import database.ConnectionProvider;
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 
@@ -56,6 +58,9 @@ public class JoinJFrame extends javax.swing.JFrame {
         JoinButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        lblFN = new javax.swing.JLabel();
+        lblLN = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,8 +110,26 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Become a Member");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 260, 50));
+
+        FirstNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FirstNametxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(FirstNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 260, 30));
+
+        LastNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                LastNametxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(LastNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 260, 30));
+
+        Emailtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                EmailtxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 260, 30));
         getContentPane().add(Answertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 260, 30));
         getContentPane().add(Passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 260, 30));
@@ -133,6 +156,9 @@ public class JoinJFrame extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel signup.png"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 140));
+        getContentPane().add(lblFN, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 210, 20));
+        getContentPane().add(lblLN, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 180, 30));
+        getContentPane().add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 267, 160, 20));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, 370));
@@ -213,6 +239,46 @@ public class JoinJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JoinButtonActionPerformed
 
+    private void FirstNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FirstNametxtKeyReleased
+        // TODO add your handling code here:
+        String PATTERN="^[a-zA-Z]{3,30}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(FirstNametxt.getText());
+        if(!match.matches()){
+            lblFN.setText("First Name is incorrect");
+        }
+        else{
+            lblFN.setText("");
+        }
+    }//GEN-LAST:event_FirstNametxtKeyReleased
+
+    private void LastNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LastNametxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[a-zA-Z]{3,30}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(LastNametxt.getText());
+        if(!match.matches()){
+            lblLN.setText("Last Name is incorrect");
+        }
+        else{
+            lblLN.setText("");
+        }
+    }//GEN-LAST:event_LastNametxtKeyReleased
+
+    private void EmailtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailtxtKeyReleased
+        // TODO add your handling code here:
+        String PATTERN="^[a-zA-Z0-9]{4,30}[@][a-zA-Z]{2,10}[.][a-zA-Z]{1,5}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Emailtxt.getText());
+        if(!match.matches()){
+            lblEmail.setText("Email is incorrect");
+        }
+        else{
+            lblEmail.setText("");
+        }
+
+    }//GEN-LAST:event_EmailtxtKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +334,9 @@ public class JoinJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFN;
+    private javax.swing.JLabel lblLN;
     private javax.swing.JComboBox<String> sqcombobox;
     // End of variables declaration//GEN-END:variables
 }

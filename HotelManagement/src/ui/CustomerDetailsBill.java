@@ -4,12 +4,15 @@
  */
 package ui;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project.*;
+import javax.swing.table.TableModel;
+import java.sql.ResultSet;
+import database.*;
 
 /**
  *
@@ -154,7 +157,7 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         ResultSet rs=Select.getData("Select *from customer where Checkout is NULL");
-        DefaultTableModel model =(DefaultTbaleModel)jTable1.getModel();
+        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
         try
         {
             while(rs.next())
@@ -173,8 +176,8 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         // TODO add your handling code here:
         String checkoutDate=SearchCheckOuttxt.getText();
-         ResultSet rs=Select.getData("Select *from customer where Checkout ='"+checkoutDate+"'");
-        DefaultTableModel model =(DefaultTbaleModel)jTable1.getModel();
+         ResultSet rs= Select.getData("Select *from customer where Checkout ='"+checkoutDate+"'");
+        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
         model.setRowCount(0);
         try
         {
