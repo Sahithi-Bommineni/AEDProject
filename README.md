@@ -1,6 +1,7 @@
 # AEDProject
 
+![UMLHMClassDiagram](https://user-images.githubusercontent.com/113314797/206876068-bdf6e6fb-61e7-4b75-a218-1148851f9a19.jpg)
 
 
 
-[UMLClassDiagram](https://user-images.githubusercontent.com/113314797/206875938-d1178d29-a9e2-4624-ab50-1a915270f503.jpg)
+
