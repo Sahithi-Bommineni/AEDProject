@@ -133,8 +133,7 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
                 String people = rs.getString(2);
                 String option = rs.getString(3);
                 String time = rs.getString(4);
-                String date = rs.getString(5);
-                String game = rs.getString(6);
+                String game = rs.getString(5);
                 
                 //searchtxt.isEditable(false);
                 //searchtxt.setText(roomno);
