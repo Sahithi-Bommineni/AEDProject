@@ -173,11 +173,11 @@ public class IndoorGames extends javax.swing.JFrame {
                 ps.setString(5, game);
                 ps.execute();
 
-                RoomNoTxt.setText("");
                 buttonGroup1.clearSelection();
-                buttonGroup2.clearSelection();
-                SplInstructionstxt.setText("");
-                jComboBox1.setSelectedItem("Select Time");
+                TimeSlotCombo.setSelectedItem("Select Time");
+                NoOfPeopleCombo.setSelectedItem(1);
+                GameCombo.setSelectedItem("Select Game");
+                
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
             }
