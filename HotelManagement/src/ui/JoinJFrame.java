@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class JoinJFrame extends javax.swing.JFrame {
     
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form JoinJFrame
@@ -59,6 +59,8 @@ public class JoinJFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(300, 118, 0, 0));
+        setMaximumSize(new java.awt.Dimension(800, 510));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -145,6 +147,22 @@ public class JoinJFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    public boolean checkEmail(String email){
+        boolean checkUser = false;
+        String query = "SELECT * FROM customerlogin WHERE email =?";
+        
+        try{
+            ps = ConnectionProvider.getCon().prepareStatement(query);
+            ps.setString(1,email);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                checkUser = true;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return checkUser;
+    }
     private void JoinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JoinButtonActionPerformed
         // TODO add your handling code here:
         String firstname = FirstNametxt.getText();
@@ -158,12 +176,13 @@ public class JoinJFrame extends javax.swing.JFrame {
         if(firstname.equals("")|| lastname.equals("") || email.equals("")|| password.equals("")||cpassword.equals("")|| answer.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
-            FirstNametxt.setText("");
-            LastNametxt.setText("");
-            Emailtxt.setText("");
-            Passwordtxt.setText("");
+        }
+        else if(checkEmail(email)){
+            JOptionPane.showMessageDialog(null, "This Email Id already exists");
+        }
+        else if(!password.equals(cpassword)){
+            JOptionPane.showMessageDialog(null, "Password doesn't match");
             CPasswordtxt.setText("");
-            Answertxt.setText("");
         }
         else
         {

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -17,9 +18,14 @@ import java.util.ArrayList;
  */
 public class EmployeeData {
     
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     public ArrayList<Employee> empdata;
     
-    
+    public EmployeeData(){
+        this.empdata= new ArrayList<Employee>();
+    }
     
     public ArrayList<Employee> getEmpDatafromDB(){
         ArrayList<Employee> EmployeeData1 = new ArrayList();
@@ -55,9 +61,9 @@ public class EmployeeData {
     }
  
     public Employee addEmp(){
-        Employee newEmp = new Employee();
-        empdata.add(newEmp);
-        return newEmp;
+        Employee addemp = new Employee();
+        empdata.add(addemp);
+        return addemp;
     }
     
     public void deleteEmp(Employee emp){
@@ -65,7 +71,7 @@ public class EmployeeData {
             String username = emp.getUsername();
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            String query = "USE aed_hotel";
+            String query = "USE hotel";
             st.executeQuery(query);
             query = "DELETE FROM employee WHERE username = '"+username+"'";
             st.executeUpdate(query);
@@ -75,17 +81,15 @@ public class EmployeeData {
         }
     }
     
-    public void createEmpTable(Employee emp){
-        try{
+    public void createEmpTable() throws SQLException{
+        //try{
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            String query = "USE aed_hotel";
+            String query = "USE hotel";
             st.executeUpdate(query);
-            query = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?))";
+            query = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
             st.executeUpdate(query);
-        }catch(Exception e){
-            System.out.print(e.getMessage());
-        }
-        
-    }
+            //String sql = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
+            //ps=con.prepareStatement(sql);  
+            }   
 }
