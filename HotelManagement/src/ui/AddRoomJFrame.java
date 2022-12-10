@@ -392,7 +392,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
 
     private void RoomNotxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RoomNotxtKeyReleased
         // TODO add your handling code here:
-            String PATTERN="^[0-9]{1,2}$";
+            String PATTERN="^[0-9]{3,3}$";
         Pattern patt=Pattern.compile(PATTERN);
         Matcher match=patt.matcher(RoomNotxt.getText());
         if(!match.matches()){
@@ -418,7 +418,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
 
     private void PricetxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PricetxtKeyReleased
         // TODO add your handling code here:
-        String PATTERN="^[0-9]{10,10}$";
+        String PATTERN="^[0-9]{3,4}$";
         Pattern patt=Pattern.compile(PATTERN);
         Matcher match=patt.matcher(Pricetxt.getText());
         if(!match.matches()){

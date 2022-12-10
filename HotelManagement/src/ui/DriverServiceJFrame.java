@@ -8,6 +8,8 @@ import database.ConnectionProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -28,6 +30,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     public DriverServiceJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        DateTxt.setText(myFormat.format(cal.getTime()));
     }
 
     /**
@@ -55,6 +60,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         ToLocTxt = new javax.swing.JTextField();
         lblRoom = new javax.swing.JLabel();
         lblPassengers = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        DateTxt = new javax.swing.JTextField();
+        BackButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,14 +136,14 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Extra Requirements :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
 
         ExtraReqTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExtraReqTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 140, -1));
+        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 140, -1));
 
         Submitbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Submitbtn.setText("Submit");
@@ -144,7 +152,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
                 SubmitbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
+        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,6 +161,22 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 140, -1));
         getContentPane().add(lblRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 110, 20));
         getContentPane().add(lblPassengers, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 160, 20));
+
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Date :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 400, 90, -1));
+        getContentPane().add(DateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 140, -1));
+
+        BackButton.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        BackButton.setText("Back");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 80, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/taxi.jpg"))); // NOI18N
@@ -185,38 +209,42 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         int Passenger = Integer.parseInt(NoOfPassTxt.getText());
         String ToLoc = ToLocTxt.getText();
         String TimeWin = TimeTxt.getText();
+        String Date = DateTxt.getText();
         String ExReq = ExtraReqTxt.getText();
         
   
                 
                    
-        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||TimeTxt.equals("")||ExtraReqTxt.equals(""))
+        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||TimeTxt.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
             RoomNtxt.setText("");
             NoOfPassTxt.setText("");
             ToLocTxt.setText("");
             TimeTxt.setText("");
+            DateTxt.setText("");
             ExtraReqTxt.setText("");
            
         }
         else
         {
           try{
-              String sql = "INSERT INTO Driver (RoomNo,CarType,NoofPassengers,ToLocation,TimeWindow,ExtraRequirements) VALUES (?,?,?,?,?,?)";
+              String sql = "INSERT INTO Driver (RoomNo,CarType,NoofPassengers,ToLocation,TimeWindow,Date,ExtraRequirements) VALUES (?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setInt(1, Room);
-              ps.setString(3, Car);
-              ps.setInt(2,Passenger);
+              ps.setString(2, Car);
+              ps.setInt(3,Passenger);
               ps.setString(4,ToLoc);
               ps.setString(5, TimeWin);
-              ps.setString(8, ExReq);
+              ps.setString(6, Date);
+              ps.setString(7, ExReq);
               ps.execute();
               
               RoomNtxt.setText("");
               NoOfPassTxt.setText("");
               ToLocTxt.setText("");
               TimeTxt.setText("");
+              DateTxt.setText("");
               ExtraReqTxt.setText("");
               
               
@@ -254,6 +282,12 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_NoOfPassTxtKeyReleased
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new CustomerServiceJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +324,8 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
+    private javax.swing.JTextField DateTxt;
     private javax.swing.JTextField ExtraReqTxt;
     private javax.swing.JTextField NoOfPassTxt;
     private javax.swing.JTextField RoomNtxt;
@@ -305,6 +341,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblPassengers;
     private javax.swing.JLabel lblRoom;
     // End of variables declaration//GEN-END:variables
