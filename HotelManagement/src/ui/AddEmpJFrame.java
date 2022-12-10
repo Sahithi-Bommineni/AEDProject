@@ -8,6 +8,8 @@ import database.ConnectionProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +40,6 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        AddEmpLbl = new javax.swing.JLabel();
         NameLbl = new javax.swing.JLabel();
         Nametxt = new javax.swing.JTextField();
         AgeLbl = new javax.swing.JLabel();
@@ -61,15 +62,16 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         ViewEmpButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblage = new javax.swing.JLabel();
+        lblJ = new javax.swing.JLabel();
+        lblSal = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
+        lblPass = new javax.swing.JLabel();
+        Jlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        AddEmpLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        AddEmpLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AddEmpLbl.setText("Add Employee");
-        getContentPane().add(AddEmpLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 580, 26));
 
         NameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         NameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -78,6 +80,11 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         Nametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NametxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 530, 30));
 
         AgeLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -87,6 +94,11 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         Agetxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Agetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Agetxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                AgetxtKeyReleased(evt);
+            }
+        });
         getContentPane().add(Agetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 174, -1));
 
         GenderLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -184,9 +196,15 @@ public class AddEmpJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 50, -1));
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 320, 20));
+        getContentPane().add(lblage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 60, 20));
+        getContentPane().add(lblJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 100, 20));
+        getContentPane().add(lblSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 80, 20));
+        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 160, 30));
+        getContentPane().add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 180, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, 400));
+        Jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
+        getContentPane().add(Jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,6 +288,32 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         new ViewEmployeeJFrame().setVisible(true);
     }//GEN-LAST:event_ViewEmpButtonActionPerformed
 
+    private void NametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NametxtKeyReleased
+        // TODO add your handling code here:
+        String PATTERN="^[a-zA-Z]{3,30}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Nametxt.getText());
+        if(!match.matches()){
+            lblName.setText("Name is incorrect");
+        }
+        else{
+            lblName.setText("");
+        }
+    }//GEN-LAST:event_NametxtKeyReleased
+
+    private void AgetxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgetxtKeyReleased
+        // TODO add your handling code here:
+            String PATTERN="^[0-9]{1,2}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Agetxt.getText());
+        if(!match.matches()){
+            lblage.setText("Age is incorrect");
+        }
+        else{
+            lblage.setText("");
+        }
+    }//GEN-LAST:event_AgetxtKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -306,7 +350,6 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddEmpLbl;
     private javax.swing.JLabel AddressLbl;
     private javax.swing.JTextField Addresstxt;
     private javax.swing.JLabel AgeLbl;
@@ -314,6 +357,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JRadioButton FemaleBtn;
     private javax.swing.JLabel GenderLbl;
+    private javax.swing.JLabel Jlabel;
     private javax.swing.JComboBox<String> JobCombobox;
     private javax.swing.JLabel JobLbl;
     private javax.swing.JRadioButton MaleBtn;
@@ -330,6 +374,11 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     private javax.swing.JButton ViewEmpButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblJ;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPass;
+    private javax.swing.JLabel lblSal;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JLabel lblage;
     // End of variables declaration//GEN-END:variables
 }
