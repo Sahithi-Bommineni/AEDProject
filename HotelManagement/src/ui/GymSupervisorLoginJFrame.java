@@ -37,17 +37,17 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel1.setText("Games and Gym Bookings ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         SearchTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 90, -1));
 
         Searchbtn.setText("Search ");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, -1, -1));
+        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,7 +62,7 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 500, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 500, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

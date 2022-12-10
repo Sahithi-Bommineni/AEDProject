@@ -4,17 +4,28 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author koushalamshala
  */
 public class IndoorGames extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form IndoorGames
      */
     public IndoorGames() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -38,6 +49,8 @@ public class IndoorGames extends javax.swing.JFrame {
         IndoorGames = new javax.swing.JRadioButton();
         GameLbl = new javax.swing.JLabel();
         GameCombo = new javax.swing.JComboBox<>();
+        BackButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,12 +100,89 @@ public class IndoorGames extends javax.swing.JFrame {
         GameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Billiards", "Table Tennis", "PlayStation", "Carrom", "Chess" }));
         getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 288, 108, -1));
 
+        BackButton.setBackground(new java.awt.Color(153, 204, 255));
+        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Back");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 100, 30));
+
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
+        jButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Indoor games.jpeg"))); // NOI18N
         jLabel2.setText("S");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new CustomerServiceJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String roomno = (String)RoomNoCombo.getSelectedItem();
+        String game;
+        String option = " ";
+        if(IndoorGames.isSelected()){
+            option = "Game";
+            GameCombo.setEditable(true);
+            if(GameCombo.equals("Select Game")){
+                JOptionPane.showMessageDialog(null, "Please select game");
+            }
+            else{
+                game=(String)GameCombo.getSelectedItem();
+            }
+        }
+        else if(GymLbl.isSelected()){
+            option = "Gym";
+            GameCombo.setEditable(false);
+        }
+        String people = (String)NoOfPeopleCombo.getSelectedItem();
+        String time = (String)TimeSlotCombo.getSelectedItem();
+        if(TimeSlotCombo.equals("Select Time Slot")){
+            JOptionPane.showMessageDialog(null, "Please select time slot");
+        }
+        else{
+            Connection con = ConnectionProvider.getCon();
+            
+            try{
+                String sql = "INSERT INTO games(roomno,time,people,option,game) VALUES (?,?,?,?,?)";
+                ps=con.prepareStatement(sql);
+                ps.setString(1,roomno);
+                ps.setString(2, time);
+                ps.setString(3, people);
+                ps.setString(4, option);
+                ps.setString(5, game);
+                ps.execute();
+
+                RoomNoTxt.setText("");
+                buttonGroup1.clearSelection();
+                buttonGroup2.clearSelection();
+                SplInstructionstxt.setText("");
+                jComboBox1.setSelectedItem("Select Time");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +220,7 @@ public class IndoorGames extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JComboBox<String> GameCombo;
     private javax.swing.JLabel GameLbl;
     private javax.swing.JRadioButton GymLbl;
@@ -141,6 +232,7 @@ public class IndoorGames extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> TimeSlotCombo;
     private javax.swing.JLabel TimeSlotLbl;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
