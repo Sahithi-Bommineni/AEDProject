@@ -18,6 +18,22 @@ public class Employee {
     private int salary;
     private String username;
     private String password;
+    
+    public Employee()
+    {
+        
+    }
+    
+    public Employee(String name, int age, String gender, String job, String address, int salary,String username, String password){
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
+        this.job= job;
+        this.salary = salary;
+        this.username = username;
+        this.password = password;
+    }
 
     public String getName() {
         return name;

@@ -16,6 +16,18 @@ public class Room {
     String bedtype;
     int price;
     String status;
+    
+    public Room(){
+    
+}
+    public Room(int roomno,int floor, String roomtype, String bedtype, int price, String status){
+        this.roomno=roomno;
+        this.floor=floor;
+        this.roomtype=roomtype;
+        this.bedtype=bedtype;
+        this.price=price;
+        this.status=status;
+    }
 
     public int getRoomno() {
         return roomno;

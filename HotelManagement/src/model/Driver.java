@@ -16,6 +16,21 @@ public class Driver {
     String location;
     String time;
     String date;
+    
+    public Driver(){
+        
+    }
+    
+    public Driver(int roomno,String cartype,int passengers,String location,String time, String date){
+        this.roomno=roomno;
+        this.cartype=cartype;
+        this.date=date;
+        this.time=time;
+        this.location=location;
+        this.passengers=passengers;
+        this.requirements=requirements;
+        
+    }
 
     public String getDate() {
         return date;
