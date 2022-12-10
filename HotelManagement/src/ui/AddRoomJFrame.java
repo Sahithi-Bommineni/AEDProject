@@ -11,9 +11,10 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
+
+import model.Room;
 
 /**
  *
@@ -263,14 +264,14 @@ public class AddRoomJFrame extends javax.swing.JFrame {
 
     private void AddRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRoomBtnActionPerformed
         // TODO add your handling code here:
-        String roomno = RoomNotxt.getText();
-        String floor = Floortxt.getText();
+        int roomno = Integer.parseInt(RoomNotxt.getText());
+        int floor = Integer.parseInt(Floortxt.getText());
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
-        String price = Pricetxt.getText();
+        int price = Integer.parseInt(Pricetxt.getText());
         //String status = statustxt.getText();
         
-        if(roomno.equals("")|| floor.equals("")||price.equals(""))
+        if(RoomNotxt.equals("")|| Floortxt.equals("")||Pricetxt.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
             RoomNotxt.setText("");
@@ -279,14 +280,21 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         }
         else
         {
+            Connection con = ConnectionProvider.getCon();
+            Room r = new Room();
+            r.setRoomno(roomno);
+            r.setFloor(floor);
+            r.setRoomtype(roomtype);
+            r.setBedtype(bedtype);
+            r.setPrice(price);
           try{
               String sql = "INSERT INTO rooms (roomno,floor,roomtype,bedtype,price,status) VALUES (?,?,?,?,?,'Not Booked')";
               ps=con.prepareStatement(sql);
-              ps.setString(1, roomno);
-              ps.setString(2,floor);
+              ps.setInt(1, roomno);
+              ps.setInt(2,floor);
               ps.setString(3, roomtype);
               ps.setString(4,bedtype);
-              ps.setString(5, price);
+              ps.setInt(5, price);
               //ps.setString(6,status);
               ps.execute();
               

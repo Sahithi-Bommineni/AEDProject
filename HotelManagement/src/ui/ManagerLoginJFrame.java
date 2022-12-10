@@ -89,7 +89,6 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Hotel Manager.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, -60, -1, -1));
 
         pack();
@@ -113,6 +112,8 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
     private void BookingsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingsbtnActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        new CustomerDetailsBill().setVisible(true);
     }//GEN-LAST:event_BookingsbtnActionPerformed
 
     /**

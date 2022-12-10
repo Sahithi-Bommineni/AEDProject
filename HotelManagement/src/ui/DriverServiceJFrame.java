@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import model.Driver;
 
 /**
  *
@@ -210,8 +211,17 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         }
         else
         {
+          Connection con = ConnectionProvider.getCon();
+          Driver d = new Driver();
+          d.setRoomno(roomno);
+          d.setCartype(cartype);
+          d.setDate(date);
+          d.setTime(time);
+          d.setLocation(location);
+          d.setPassengers(passenger);
+          d.setRequirements(requirements);
           try{
-              String sql = "INSERT INTO Driver (RoomNo,CarType,NoofPassengers,ToLocation,TimeWindow,Date,ExtraRequirements) VALUES (?,?,?,?,?,?,?)";
+              String sql = "INSERT INTO Driver (roomno,cartype,passenger,location,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setInt(1, roomno);
               ps.setString(2, cartype);

@@ -12,7 +12,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.Employee;
-import model.EmployeeData;
 
 /**
  *
@@ -23,9 +22,6 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
-    Employee emp;
-    EmployeeData empdata;
     
     /**
      * Creates new form AddEmpJFrame
@@ -266,6 +262,15 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         else
         {
         Connection con = ConnectionProvider.getCon();
+        Employee r = new Employee();
+        r.setName(name);
+        r.setAge(age);
+        r.setGender(gender);
+        r.setJob(job);
+        r.setSalary(salary);
+        r.setAddress(address);
+        r.setUsername(username);
+        r.setPassword(password);
         
           try{
               //Employee e = empdata.addEmp();
@@ -289,6 +294,8 @@ public class AddEmpJFrame extends javax.swing.JFrame {
               Addresstxt.setText("");
               Salarytxt.setText("");
               buttonGroup1.clearSelection();
+              
+              con.close();
               
           }catch(Exception e)
           {

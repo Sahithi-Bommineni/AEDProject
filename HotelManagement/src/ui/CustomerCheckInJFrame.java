@@ -58,6 +58,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
             while(rs.next())
             {
                 jComboBox2.addItem(rs.getString(1));
+                //jComboBox2.addItem(rs.getString(2));
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);

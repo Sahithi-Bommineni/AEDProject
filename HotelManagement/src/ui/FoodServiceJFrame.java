@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import model.Chef;
 
 /**
  *
@@ -206,8 +207,14 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         }
         else{
         Connection con = ConnectionProvider.getCon();
-            try{
-                String sql = "INSERT INTO chef(roomno,mealtype,location,order) VALUES (?,?,?,?)";
+        Chef c = new Chef();
+        c.setRoomno(roomno);
+        c.setMealtype(mealtype);
+        c.setLocation(location);
+        c.setSpecial_instructions(order);
+        //c.setStatus(status);
+        try{
+                String sql = "INSERT INTO chef(roomno,mealtype,location,special_instructions) VALUES (?,?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setInt(1,roomno);
                 ps.setString(2, mealtype);
@@ -221,8 +228,11 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
                 jCheckBox3.setSelected(false);
                 buttonGroup2.clearSelection();
                 OrderTxt.setText("");
+                
+                con.close();
+                
             }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error");
             }
         }
     }//GEN-LAST:event_OderbtnActionPerformed

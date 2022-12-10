@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.sql.ResultSet;
 import database.*;
+import java.sql.PreparedStatement;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -20,15 +22,36 @@ import database.*;
  */
 public class CustomerDetailsBill extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form CustomerDetailsBill
      */
     public CustomerDetailsBill() {
         initComponents();
-        SimpleDateFormat myFormat= new SimpleDateFormat("yyyy/MM/dd");
+        con = ConnectionProvider.getCon();
+        populateTable();
+        
+        /*SimpleDateFormat myFormat= new SimpleDateFormat("yyyy/MM/dd");
         Calendar cal=Calendar.getInstance();
-        SearchCheckOuttxt.setText(myFormat.format(cal.getTime()));
+        SearchCheckOuttxt.setText(myFormat.format(cal.getTime()));*/
         }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM checkin";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,15 +68,9 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         SearchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        ExitBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
 
         CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -64,11 +81,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
         SearchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SearchBtn.setText("Search");
-        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchBtnActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,14 +97,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        ExitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        ExitBtn.setText("Exit");
-        ExitBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitBtnActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
@@ -106,9 +110,7 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ExitBtn)
-                        .addGap(30, 30, 30))
+                        .addGap(30, 721, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +133,7 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ExitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchBtn)
@@ -149,73 +149,55 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBtnActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_ExitBtnActionPerformed
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
-        ResultSet rs=Select.getData("Select *from customer where Checkout is NULL");
-        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-        try
-        {
-            while(rs.next())
-            {
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16)});
-            }
-            rs.close();
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        
-    }//GEN-LAST:event_formComponentShown
-
-    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
-        // TODO add your handling code here:
-        String checkoutDate=SearchCheckOuttxt.getText();
-         ResultSet rs= Select.getData("Select *from customer where Checkout ='"+checkoutDate+"'");
-        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-        model.setRowCount(0);
-        try
-        {
-            while(rs.next())
-            {
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16)});
-            }
-            rs.close();
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_SearchBtnActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int index=jTable1.getSelectedRow();
         TableModel model=jTable1.getModel();
-        String id=model.getValueAt(index,0).toString();
-        try
-        {
-            if((new File("E:\\"+id+".pdf")).exists())
+        String click=model.getValueAt(index,0).toString();
+        String sql = "SELECT * FROM checkin WHERE id='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String id = rs.getString(1);
+                String name = rs.getString(2);
+                String mobileno = rs.getString(3);
+                String gender = rs.getString(5);
+                String nationality = rs.getString(4);
+                String email = rs.getString(6);
+                String idproof = rs.getString(7);
+                String address = rs.getString(8);
+                String checkin = rs.getString(9);
+                String roomno =rs.getString(10);
+                String bedType = rs.getString(11);
+                String roomType = rs.getString(12);
+                String price = rs.getString(13);
+                String daysstayed = rs.getString(14);
+                String totalamt = rs.getString(15);
+                String checkout = rs.getString(16);
+
+            try
             {
-                Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler E:\\"+id+".pdf");
+                if((new File("Users/sahithi/Desktop/aedproject0.pdf")).exists())
+                {
+                    Process p = Runtime
+                            .getRuntime()
+                            .exec("rundll32 url.dll,FileProtocolHeader "+"/Users/sahithi/Desktop/aedproject0.pdf");
                 
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"File is not exist");
+                }
             }
-            else
+            catch(Exception e)
             {
-                JOptionPane.showMessageDialog(null,"File is not exist");
+                JOptionPane.showMessageDialog(null,e);
             }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e);
-        }
+            }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
@@ -255,7 +237,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CustomerDetailsBillLbl;
-    private javax.swing.JButton ExitBtn;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JLabel SearchCheckOutLbl;
     private javax.swing.JTextField SearchCheckOuttxt;
