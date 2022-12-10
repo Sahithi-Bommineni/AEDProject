@@ -45,7 +45,8 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         homeButton = new javax.swing.JButton();
         loginbtn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        ExitBtn = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,6 +98,11 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         savebtn.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         savebtn.setForeground(new java.awt.Color(255, 255, 255));
         savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(savebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("Apple Chancery", 1, 48)); // NOI18N
@@ -123,10 +129,22 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 90, -1));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 6, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 230, 30));
+
+        ExitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        ExitBtn.setText("Exit");
+        ExitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ExitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 34, -1, 34));
+
+        jPasswordField1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 230, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+        jLabel9.setText("jLabel9");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,9 +173,65 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter email");
         }
         else{
-            //ResultSet rs =
+            ResultSet rs =Select.getData("Select *from users where email='"+email+"'");
+            try
+            {
+                if(rs.next())
+                {
+                    check=1;
+                    sqcombobox.setEditable(false);
+                    Emailtxt.setEditable(false);
+                    sqcombobox.setEditable(false);
+                }
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
+        if(check==0)
+            JOptionPane.showMessageDialog(null,"Email doesnot exists");
     }//GEN-LAST:event_searchbtnActionPerformed
+
+    private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBtnActionPerformed
+        // TODO add your handling code here:
+        int a=JOptionPane.showConfirmDailog(null,"Do you really want to close the application");
+        if(a==0)
+            System.exit(0);
+    }//GEN-LAST:event_ExitBtnActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+        // TODO add your handling code here:
+        int check=0;
+        String securityQuestion=sqcombobox.getActionCommand();
+        String answer=jTextField1.getText();
+        String newPassword=jPasswordField1.getText();
+        if(answer.equals("") || newPassword equals(""))
+        {
+            check=1;
+            JOptionPane.showMessageDialog(null,"All Field are Required");
+        }
+        else
+        {
+                Resultset rs=Select.getData("Select from where email= '"+email+"' and securityQuestion='"+securityQuestion+"' and answer='"+answer+"'");
+                try
+                {
+                    if(rs.next())
+                    {
+                        check=1;
+                        InsertUpdateDelete.setData("Update users set password='"+newPassword+"' where email ='"+email+"'","Password Set Successfull");
+                        setVisible(false);
+                        new ForgotPassword().setVisible(true);
+                    }
+                }
+                catch(Exception e)
+                {
+                JOptionPane.showMessageDialog(null,e);
+                }
+        }
+        if(check==0)
+            JOptionPane.showMessageDialog(null,"Incorrect Answer");
+    }//GEN-LAST:event_savebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +270,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Emailtxt;
+    private javax.swing.JButton ExitBtn;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -205,8 +280,8 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton loginbtn;
     private javax.swing.JButton savebtn;
     private javax.swing.JButton searchbtn;
