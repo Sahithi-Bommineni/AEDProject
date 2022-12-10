@@ -4,6 +4,13 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author nikhithajarabana
@@ -13,8 +20,26 @@ public class DriverJFrame extends javax.swing.JFrame {
     /**
      * Creates new form DriverJFrame
      */
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs=null;
     public DriverJFrame() {
         initComponents();
+          con = ConnectionProvider.getCon();
+        populateTable();      
+    }
+      public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM driver";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            Drivertbl.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -31,7 +56,7 @@ public class DriverJFrame extends javax.swing.JFrame {
         Drivertbl = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         StatusTxt = new javax.swing.JTextField();
-        Savebtn = new javax.swing.JButton();
+        Updatebtn = new javax.swing.JButton();
         searchtxt = new javax.swing.JTextField();
         searchbtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -46,15 +71,20 @@ public class DriverJFrame extends javax.swing.JFrame {
 
         Drivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Car Type", "No of Passengers", "To", "Time Window", "Extra Requirements", "Status"
+                "Room No", "Car Type", "No of Passengers", "To", "Time Window", "Date", "Extra Requirements", "Status"
             }
         ));
+        Drivertbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DrivertblMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Drivertbl);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 630, 310));
@@ -69,11 +99,16 @@ public class DriverJFrame extends javax.swing.JFrame {
                 StatusTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(StatusTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, -1, -1));
+        getContentPane().add(StatusTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 90, -1));
 
-        Savebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        Savebtn.setText("Confirm");
-        getContentPane().add(Savebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, -1));
+        Updatebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Updatebtn.setText("Confirm");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, -1));
         getContentPane().add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 100, -1));
 
         searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -89,6 +124,60 @@ public class DriverJFrame extends javax.swing.JFrame {
     private void StatusTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_StatusTxtActionPerformed
+
+    private void DrivertblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DrivertblMouseClicked
+        // TODO add your handling code here:
+                int r=Drivertbl.getSelectedRow();
+        String click = (Drivertbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM driver WHERE name='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String Room = rs.getString(1);
+                String Car = rs.getString(2);
+                String Passengers = rs.getString(3);
+                String ToLoc = rs.getString(4);
+                String TimeWin = rs.getString(5);
+                String Date = rs.getString(6);
+                String ExReq = rs.getString(7);
+                String Status =rs.getString(8);
+
+        
+       
+        StatusTxt.setText(Status);
+                     
+            }
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        
+    }                                     
+    }//GEN-LAST:event_DrivertblMouseClicked
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+            String Status=StatusTxt.getText();
+            String sql="UPDATE driver SET (Room,Car,Passengers,ToLocation,Time,Date,ExtraRequirements,status) VALUES (?,?,?,?,?,?,?,?)";
+               try{
+            //ps=con.prepareStatement(sql);
+            if(Status.equals(""))
+            {
+                JOptionPane.showMessageDialog(null,"Please update the status of your ride");
+                StatusTxt.setText("");
+                
+                }
+            else
+            {
+              ps=con.prepareStatement(sql);
+              ps.setString(8, Status);
+              
+               } 
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_UpdatebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,8 +216,8 @@ public class DriverJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Drivertbl;
-    private javax.swing.JButton Savebtn;
     private javax.swing.JTextField StatusTxt;
+    private javax.swing.JButton Updatebtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -136,4 +225,6 @@ public class DriverJFrame extends javax.swing.JFrame {
     private javax.swing.JButton searchbtn;
     private javax.swing.JTextField searchtxt;
     // End of variables declaration//GEN-END:variables
+
+
 }

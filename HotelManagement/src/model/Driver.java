@@ -15,6 +15,15 @@ public class Driver {
     int passengers;
     String location;
     String time;
+    String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
     String requirements;
 
     public int getRoomno() {
