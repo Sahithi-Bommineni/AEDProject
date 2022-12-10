@@ -20,9 +20,10 @@ public class DriverJFrame extends javax.swing.JFrame {
     /**
      * Creates new form DriverJFrame
      */
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs
+            ;
     public DriverJFrame() {
         initComponents();
           con = ConnectionProvider.getCon();
@@ -55,19 +56,25 @@ public class DriverJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Drivertbl = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        StatusTxt = new javax.swing.JTextField();
         Updatebtn = new javax.swing.JButton();
         searchtxt = new javax.swing.JTextField();
         searchbtn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(1100, 500));
+        setMinimumSize(new java.awt.Dimension(1100, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1100, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lets Go ! Vroom  !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         Drivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,94 +93,87 @@ public class DriverJFrame extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(Drivertbl);
+        if (Drivertbl.getColumnModel().getColumnCount() > 0) {
+            Drivertbl.getColumnModel().getColumn(0).setResizable(false);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 630, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 820, 310));
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Status :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, -1, -1));
 
-        StatusTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StatusTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(StatusTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 90, -1));
-
-        Updatebtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Updatebtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Updatebtn.setText("Confirm");
         Updatebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdatebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, -1));
-        getContentPane().add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 100, -1));
+        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 260, -1, -1));
 
-        searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        searchtxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        getContentPane().add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, 100, -1));
+
+        searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         searchbtn.setText("Search");
-        getContentPane().add(searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, -1, -1));
+        getContentPane().add(searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, -1, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Picked", "Dropped" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 150, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cars.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void StatusTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StatusTxtActionPerformed
-
     private void DrivertblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DrivertblMouseClicked
         // TODO add your handling code here:
-                int r=Drivertbl.getSelectedRow();
+        int r=Drivertbl.getSelectedRow();
         String click = (Drivertbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM driver WHERE name='"+click+"'";
+        String sql = "SELECT * FROM driver WHERE roomno='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
             if(rs.next()){
-                String Room = rs.getString(1);
-                String Car = rs.getString(2);
-                String Passengers = rs.getString(3);
-                String ToLoc = rs.getString(4);
-                String TimeWin = rs.getString(5);
-                String Date = rs.getString(6);
-                String ExReq = rs.getString(7);
-                String Status =rs.getString(8);
-
-        
-       
-        StatusTxt.setText(Status);
-                     
-            }
-            
+                String roomno = rs.getString(1);
+                String car = rs.getString(2);
+                String passengers = rs.getString(3);
+                String location = rs.getString(4);
+                String time = rs.getString(5);
+                String date = rs.getString(6);
+                String requirements = rs.getString(7);
+                String status =rs.getString(8);
+                
+                searchtxt.setText(roomno);      
+            }   
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
-        
-    }                                     
+        }                                     
     }//GEN-LAST:event_DrivertblMouseClicked
 
     private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
         // TODO add your handling code here:
-            String Status=StatusTxt.getText();
-            String sql="UPDATE driver SET (Room,Car,Passengers,ToLocation,Time,Date,ExtraRequirements,status) VALUES (?,?,?,?,?,?,?,?)";
-               try{
-            //ps=con.prepareStatement(sql);
-            if(Status.equals(""))
-            {
-                JOptionPane.showMessageDialog(null,"Please update the status of your ride");
-                StatusTxt.setText("");
+            String roomno = searchtxt.getText();
+            String status = (String)jComboBox1.getSelectedItem();
+            String sql = "UPDATE housekeeping SET status = ? WHERE roomno = ?";
+            try{
+                if(status.equalsIgnoreCase("Select Status")){
+                JOptionPane.showMessageDialog(null, "Please select status");
+            }
+            else{
+                ps=con.prepareStatement(sql);
+                ps.setString(1,status);
+                ps.setString(2,roomno);
+                ps.execute();
                 
-                }
-            else
-            {
-              ps=con.prepareStatement(sql);
-              ps.setString(8, Status);
-              
-               } 
+                jComboBox1.setSelectedItem("Select Status");
+                new HouseKeepingJFrame().setVisible(true);
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -216,8 +216,8 @@ public class DriverJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Drivertbl;
-    private javax.swing.JTextField StatusTxt;
     private javax.swing.JButton Updatebtn;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

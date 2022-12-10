@@ -4,17 +4,28 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class FoodServiceJFrame extends javax.swing.JFrame {
+    
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form FoodServiceJFrame
      */
     public FoodServiceJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -26,138 +37,201 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BFRbtn = new javax.swing.JRadioButton();
-        LRbtn = new javax.swing.JRadioButton();
-        DRbtn = new javax.swing.JRadioButton();
         DineInRbtn = new javax.swing.JRadioButton();
         RSBtn = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         OrderTxt = new javax.swing.JTextField();
         Oderbtn = new javax.swing.JButton();
         RoomNoTxt = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        BackButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel1.setFont(new java.awt.Font("AppleGothic", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Want Some Yummy Food ? Order Here !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Room No:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
-
-        buttonGroup1.add(BFRbtn);
-        BFRbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        BFRbtn.setText("Breakfast");
-        BFRbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BFRbtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BFRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
-
-        buttonGroup1.add(LRbtn);
-        LRbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        LRbtn.setText("Lunch");
-        getContentPane().add(LRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
-
-        buttonGroup1.add(DRbtn);
-        DRbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        DRbtn.setText("Dinner");
-        DRbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DRbtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
         buttonGroup2.add(DineInRbtn);
-        DineInRbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        DineInRbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        DineInRbtn.setForeground(new java.awt.Color(0, 51, 51));
         DineInRbtn.setText("Dine-in");
-        getContentPane().add(DineInRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
+        getContentPane().add(DineInRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
         buttonGroup2.add(RSBtn);
-        RSBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        RSBtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        RSBtn.setForeground(new java.awt.Color(0, 51, 51));
         RSBtn.setText("Room Service");
-        RSBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RSBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RSBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
+        getContentPane().add(RSBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Type :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Where would you like your food served?");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Order :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel6.setText("(You can find the menu in your room.)");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+        OrderTxt.setBackground(new java.awt.Color(0, 51, 51));
+        OrderTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        OrderTxt.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(OrderTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 240, 30));
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel7.setText("(Please enter the dishes along with quantity.)");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, 20));
-
-        OrderTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(OrderTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 310, -1));
-
-        Oderbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Oderbtn.setBackground(new java.awt.Color(0, 51, 51));
+        Oderbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        Oderbtn.setForeground(new java.awt.Color(255, 255, 255));
         Oderbtn.setText("Order ");
         Oderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OderbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Oderbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
-        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+        getContentPane().add(Oderbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+
+        RoomNoTxt.setBackground(new java.awt.Color(0, 51, 51));
+        RoomNoTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        RoomNoTxt.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(RoomNoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 200, 30));
+
+        jCheckBox1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(0, 51, 51));
+        jCheckBox1.setText("Breakfast");
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, 30));
+
+        jCheckBox2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(0, 51, 51));
+        jCheckBox2.setText("Lunch");
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+
+        jCheckBox3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jCheckBox3.setForeground(new java.awt.Color(0, 51, 51));
+        jCheckBox3.setText("Dinner");
+        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+
+        BackButton.setBackground(new java.awt.Color(0, 51, 51));
+        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Back");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FoodServide.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DRbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DRbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DRbtnActionPerformed
-
-    private void BFRbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFRbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BFRbtnActionPerformed
-
-    private void RSBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RSBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RSBtnActionPerformed
-
-    private void OrderTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OrderTxtActionPerformed
-
     private void OderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OderbtnActionPerformed
         // TODO add your handling code here:
+        int roomno = Integer.parseInt(RoomNoTxt.getText());
+        String mealtype = " ";
+        if(jCheckBox1.isSelected()|| jCheckBox2.isSelected()||jCheckBox3.isSelected()){
+            try{
+                if(jCheckBox1.isSelected())
+                {
+                    mealtype = "Breakfast";
+                }
+                else if(jCheckBox2.isSelected()){
+                    mealtype = "Lunch";
+                }
+                else if(jCheckBox3.isSelected()){
+                    mealtype = "Dinner";
+                }
+                else if(jCheckBox1.isSelected() && jCheckBox2.isSelected()){
+                    mealtype ="Breakfast,Lunch";
+                }
+                else if(jCheckBox1.isSelected() && jCheckBox3.isSelected()){
+                mealtype ="Breakfast,Dinner";
+                }
+                else if(jCheckBox2.isSelected() && jCheckBox3.isSelected()){
+                    mealtype ="Lunch,Dinner";
+                }
+                else{
+                    mealtype ="Breakfast,Lunch,Dinner";
+                } 
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select atleast one mealtype");
+            
+        }
+        String location = " ";
+        if(DineInRbtn.isSelected()){
+            location = "Dine In";
+        }
+        else if(RSBtn.isSelected()){
+            location = "Room Service";
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select either YES or NO");
+        }
+        String order = OrderTxt.getText();
+        
+        if(RoomNoTxt.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter room number");
+        }
+        else{
+        Connection con = ConnectionProvider.getCon();
+            try{
+                String sql = "INSERT INTO chef(roomno,mealtype,location,order) VALUES (?,?,?,?)";
+                ps=con.prepareStatement(sql);
+                ps.setInt(1,roomno);
+                ps.setString(2, mealtype);
+                ps.setString(3, location);
+                ps.setString(4, order);
+                ps.execute();
+                
+                RoomNoTxt.setText("");
+                jCheckBox1.setSelected(false);
+                jCheckBox2.setSelected(false);
+                jCheckBox3.setSelected(false);
+                buttonGroup2.clearSelection();
+                OrderTxt.setText("");
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            }
+        }
     }//GEN-LAST:event_OderbtnActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new CustomerServiceJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,23 +269,21 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton BFRbtn;
-    private javax.swing.JRadioButton DRbtn;
+    private javax.swing.JButton BackButton;
     private javax.swing.JRadioButton DineInRbtn;
-    private javax.swing.JRadioButton LRbtn;
     private javax.swing.JButton Oderbtn;
     private javax.swing.JTextField OrderTxt;
     private javax.swing.JRadioButton RSBtn;
     private javax.swing.JTextField RoomNoTxt;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

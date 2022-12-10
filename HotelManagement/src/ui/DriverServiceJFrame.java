@@ -24,9 +24,10 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
      * Creates new form DriverServiceJFrame
      */
     
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs=null;
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
+        
     public DriverServiceJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
@@ -52,123 +53,115 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         NoOfPassTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        TimeTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         ExtraReqTxt = new javax.swing.JTextField();
         Submitbtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ToLocTxt = new javax.swing.JTextField();
         lblRoom = new javax.swing.JLabel();
-        lblPassengers = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         DateTxt = new javax.swing.JTextField();
         BackButton = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        lblPassengers = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(1100, 500));
+        setMinimumSize(new java.awt.Dimension(1100, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1100, 500));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1100, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Let's go! Vroom !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Room No :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        RoomNtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RoomNtxtActionPerformed(evt);
-            }
-        });
+        RoomNtxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         RoomNtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 RoomNtxtKeyReleased(evt);
             }
         });
-        getContentPane().add(RoomNtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 110, -1));
+        getContentPane().add(RoomNtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 150, 30));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Car Type :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
 
+        jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUV", "Sedan", "Hatchback", "Mini Van", " " }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 140, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 150, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("No of Passengers :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        NoOfPassTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoOfPassTxtActionPerformed(evt);
-            }
-        });
+        NoOfPassTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         NoOfPassTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 NoOfPassTxtKeyReleased(evt);
             }
         });
-        getContentPane().add(NoOfPassTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, -1));
+        getContentPane().add(NoOfPassTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 100, 30));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Time Window :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
-
-        TimeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TimeTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TimeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, 140, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Extra Requirements :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        ExtraReqTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExtraReqTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 140, -1));
+        ExtraReqTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 280, 30));
 
-        Submitbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Submitbtn.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         Submitbtn.setText("Submit");
         Submitbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubmitbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, -1, -1));
+        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 120, 30));
 
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("To Location:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
-        getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 140, -1));
-        getContentPane().add(lblRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 110, 20));
-        getContentPane().add(lblPassengers, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 160, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        ToLocTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 280, 30));
+        getContentPane().add(lblRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 110, 20));
+
+        jLabel9.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Date :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 400, 90, -1));
-        getContentPane().add(DateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 140, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 90, -1));
 
-        BackButton.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        DateTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        getContentPane().add(DateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 140, 30));
+
+        BackButton.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         BackButton.setText("Back");
         BackButton.setBorder(null);
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,52 +169,41 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 80, 20));
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 90, 30));
+
+        jComboBox2.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 220, 30));
+
+        lblPassengers.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(lblPassengers, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 120, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/taxi.jpg"))); // NOI18N
         jLabel7.setText("From");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1260, 960));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -100, 1260, 960));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RoomNtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomNtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RoomNtxtActionPerformed
-
-    private void NoOfPassTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoOfPassTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoOfPassTxtActionPerformed
-
-    private void TimeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TimeTxtActionPerformed
-
-    private void ExtraReqTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExtraReqTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExtraReqTxtActionPerformed
-
     private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
-                int Room = Integer.parseInt(RoomNtxt.getText());
-                String Car = (String)jComboBox1.getSelectedItem();
-        int Passenger = Integer.parseInt(NoOfPassTxt.getText());
-        String ToLoc = ToLocTxt.getText();
-        String TimeWin = TimeTxt.getText();
-        String Date = DateTxt.getText();
-        String ExReq = ExtraReqTxt.getText();
-        
-  
-                
-                   
-        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||TimeTxt.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
+        int roomno = Integer.parseInt(RoomNtxt.getText());
+        String cartype = (String)jComboBox1.getSelectedItem();
+        int passenger = Integer.parseInt(NoOfPassTxt.getText());
+        String location = ToLocTxt.getText();
+        String time = (String)jComboBox2.getSelectedItem();
+        String date = DateTxt.getText();
+        String requirements = ExtraReqTxt.getText();
+     
+        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||time.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
             RoomNtxt.setText("");
             NoOfPassTxt.setText("");
             ToLocTxt.setText("");
-            TimeTxt.setText("");
+            jComboBox1.setSelectedItem("Select Car");
+            jComboBox2.setSelectedItem("Select Time");
             DateTxt.setText("");
             ExtraReqTxt.setText("");
            
@@ -231,19 +213,20 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
           try{
               String sql = "INSERT INTO Driver (RoomNo,CarType,NoofPassengers,ToLocation,TimeWindow,Date,ExtraRequirements) VALUES (?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
-              ps.setInt(1, Room);
-              ps.setString(2, Car);
-              ps.setInt(3,Passenger);
-              ps.setString(4,ToLoc);
-              ps.setString(5, TimeWin);
-              ps.setString(6, Date);
-              ps.setString(7, ExReq);
+              ps.setInt(1, roomno);
+              ps.setString(2, cartype);
+              ps.setInt(3,passenger);
+              ps.setString(4,location);
+              ps.setString(5, time);
+              ps.setString(6, date);
+              ps.setString(7, requirements);
               ps.execute();
               
               RoomNtxt.setText("");
               NoOfPassTxt.setText("");
               ToLocTxt.setText("");
-              TimeTxt.setText("");
+              jComboBox1.setSelectedItem("Select Car");
+              jComboBox2.setSelectedItem("Select Time");
               DateTxt.setText("");
               ExtraReqTxt.setText("");
               
@@ -330,9 +313,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField NoOfPassTxt;
     private javax.swing.JTextField RoomNtxt;
     private javax.swing.JButton Submitbtn;
-    private javax.swing.JTextField TimeTxt;
     private javax.swing.JTextField ToLocTxt;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

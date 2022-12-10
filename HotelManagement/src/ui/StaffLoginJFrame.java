@@ -50,6 +50,7 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -120,7 +121,7 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
             
             //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
             try{
-                String sql = "SELECT * FROM employee WHERE username=? AND password=?";
+                String sql = "SELECT * FROM employee WHERE username=? AND password=? AND job=?";
                 ps=con.prepareStatement(sql);
                 ps.setString(1, usernametxt.getText());
                 ps.setString(2,passwordtxt.getText());
@@ -154,6 +155,10 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
                     else if(job.equalsIgnoreCase("Coordinator")){
                         this.dispose();
                         new GymSupervisorLoginJFrame().setVisible(true);
+                    }
+                    else if(job.equalsIgnoreCase("Receptionist")){
+                        this.dispose();
+                        new ReceptionistJFrame().setVisible(true);
                     }
                 }
                 else{
