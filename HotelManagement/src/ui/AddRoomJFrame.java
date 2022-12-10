@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -305,24 +307,24 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int r=roomtable.getSelectedRow();
         String click = (roomtable.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM rooms WHERE r='"+click+"'";
+        String sql = "SELECT * FROM rooms WHERE roomno='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
             if(rs.next()){
-                String roomno = rs.getString(1);
-                String floor = rs.getString(2);
-                String roomtype = rs.getString(3);
-                String bedtype = rs.getString(4);
-                String price = rs.getString(5);
-                String status = rs.getString(6);
-                
-                RoomNotxt.setText(roomno);
-                Floortxt.setText(floor);
-                Pricetxt.setText(price);        
-            }   
-        }catch(Exception e)
-        {
+            String roomno = rs.getString(1);
+            String floor = rs.getString(2);
+            String roomtype = rs.getString(3);
+            String bedtype = rs.getString(4);
+            String price = rs.getString(5);
+            String status = rs.getString(6);
+            
+            RoomNotxt.setText(roomno);
+            Floortxt.setText(floor);
+            Pricetxt.setText(price);
+            
+            }  
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_roomtableMouseClicked
@@ -335,7 +337,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String bedtype = (String)bedtypecombobox.getSelectedItem();
         String price = Pricetxt.getText();
         
-        String sql="UPDATE room(roomno,floor,roomtype,bedtype,price) VALUES (?,?,?,?,?)";
+        String sql="UPDATE rooms SET floor=?,roomtype=?,bedtype=?,price=? WHERE roomno=?";
         try{
             if(roomno.equals("")|| floor.equals("")||price.equals(""))
             {
@@ -347,16 +349,18 @@ public class AddRoomJFrame extends javax.swing.JFrame {
             else
             {
               ps=con.prepareStatement(sql);
-              ps.setString(1, roomno);
-              ps.setString(2,floor);
-              ps.setString(3, roomtype);
-              ps.setString(4,bedtype);
-              ps.setString(5,price);
+              ps.setString(5, roomno);
+              ps.setString(1,floor);
+              ps.setString(2, roomtype);
+              ps.setString(3,bedtype);
+              ps.setString(4,price);
               ps.execute();
               
               RoomNotxt.setText("");
               Floortxt.setText("");
               Pricetxt.setText("");
+              setVisible(false);
+              new AddRoomJFrame().setVisible(true);
             } 
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

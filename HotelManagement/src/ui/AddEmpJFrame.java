@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import model.Employee;
+import model.EmployeeData;
 
 /**
  *
@@ -18,9 +20,12 @@ import javax.swing.JOptionPane;
  */
 public class AddEmpJFrame extends javax.swing.JFrame {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
+    Employee emp;
+    EmployeeData empdata;
     
     /**
      * Creates new form AddEmpJFrame
@@ -28,6 +33,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
     public AddEmpJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        //this.empdata = empdata;
     }
 
     /**
@@ -71,6 +77,10 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         Jlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(50, 118));
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 50));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -149,12 +159,12 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
         UserNameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         UserNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UserNameLbl.setText("User Name");
-        getContentPane().add(UserNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, 26));
+        UserNameLbl.setText("Emp ID/Username");
+        getContentPane().add(UserNameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 26));
 
         UserNametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         UserNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 174, 26));
+        getContentPane().add(UserNametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 174, 26));
 
         Passwordtxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Passwordtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -244,17 +254,14 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         if(name.equals("")|| password.equals("")||username.equals("")|| address.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
-            Nametxt.setText("");
-            Agetxt.setText("");
-            UserNametxt.setText("");
-            Passwordtxt.setText("");
-            Addresstxt.setText("");
-            Salarytxt.setText("");
-            buttonGroup1.clearSelection();
         }
         else
         {
+        Connection con = ConnectionProvider.getCon();
+        
           try{
+              //Employee e = empdata.addEmp();
+              //empdata.createEmpTable();
               String sql = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setString(1, name);
@@ -277,7 +284,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
               
           }catch(Exception e)
           {
-              JOptionPane.showMessageDialog(null,e);
+              JOptionPane.showMessageDialog(null,"Username already exists. Please try with new one.");
           }
         }
     }//GEN-LAST:event_SubmitBtnActionPerformed

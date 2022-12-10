@@ -261,6 +261,8 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
                 String salary = rs.getString(6);
                 String username = rs.getString(7);
                 String password = rs.getString(8);
+                txtName.setEditable(false);
+                txtUsername.setEditable(false);
 
         if ("Male".equals(gender)) {
 
@@ -316,32 +318,33 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String job = (String)jComboBox1.getSelectedItem();
         
-        String sql="UPDATE employee SET (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";
+        String sql="UPDATE employee SET age=?,job=?,address=?,salary=?,password=? WHERE name=?";
         try{
             //ps=con.prepareStatement(sql);
+            
             if(name.equals("")|| age.equals("") || gender.equals("")|| salary.equals("")||username.equals("")|| address.equals("")||password.equals(""))
             {
                 JOptionPane.showMessageDialog(null,"Please fill all the details");
-                txtName.setText("");
+                //txtName.setText("");
                 txtAge.setText("");
                 txtAddress.setText("");
                 txtSalary.setText("");
-                txtUsername.setText("");
+                //txtUsername.setText("");
                 //String job = (String)jComboBox1.getSelectedItem();
                 txtPassword.setText("");
-                buttonGroup1.clearSelection();
+                //buttonGroup1.clearSelection();
             }
             else
             {
               ps=con.prepareStatement(sql);
-              ps.setString(1, name);
-              ps.setString(2,age);
-              ps.setString(3, gender);
-              ps.setString(4,job);
-              ps.setString(5, address);
-              ps.setString(6,salary);
-              ps.setString(7,username);
-              ps.setString(8, password);
+              ps.setString(6, name);
+              ps.setString(1,age);
+              //ps.setString(3, gender);
+              ps.setString(2,job);
+              ps.setString(3, address);
+              ps.setString(4,salary);
+              //ps.setString(5,username);
+              ps.setString(5, password);
               ps.execute();
         
               txtName.setText("");
@@ -352,6 +355,8 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         //String job = (String)jComboBox1.getSelectedItem();
               txtPassword.setText("");
               buttonGroup1.clearSelection();
+              setVisible(false);
+              new ViewEmployeeJFrame().setVisible(true);
               
             } 
         }catch(Exception e){
