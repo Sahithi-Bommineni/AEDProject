@@ -6,14 +6,10 @@ package ui;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.log.Logger;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import database.ConnectionProvider;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.lang.System.Logger.Level;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -280,7 +276,19 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         Document doc = new Document();
         //com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
         try{
-            String id = rs.getString(1);
+            int r=jTable1.getSelectedRow();
+            String click = (jTable1.getModel().getValueAt(r, 0).toString());
+            String sql = "SELECT * FROM checkin WHERE id='"+click+"'";
+            try{
+                ps=con.prepareCall(sql);
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    String id = rs.getString(1);
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
             PdfWriter.getInstance(doc, new FileOutputStream(path+""+id+".pdf"));
             doc.open();
             Paragraph paragraph1 =  new Paragraph("                                             Palm Tree Resorts                                   ");
@@ -296,7 +304,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             tbl.addCell("Check In Date: "+jTextField3.getText());
             tbl.addCell("Check Out Date: "+checkout);
             tbl.addCell("No of days Stayed: "+noofdaysstayed);
-            tbl.addCell("Total Amount Paid: "+totalAmount);
+            tbl.addCell("Total Amount Paid: "+jTextField8.getText());
             doc.add(tbl);
             doc.add(paragraph2);
             Paragraph paragraph5 =  new Paragraph("                                       Thank You, Please Visit Again.                               ");
@@ -349,7 +357,6 @@ public class CheckOutJFrame extends javax.swing.JFrame {
                 java.util.Date dateAfter = myFormat.parse(dateAfterString);
                 long difference = dateAfter.getTime() - dateBefore.getTime();
                 int noofdaysstayed = (int)(difference/(1000*60*60*24));
-                //int totalamt;
                 String totalamt = String.valueOf(Integer.parseInt(price) * noofdaysstayed);
                 //totalamt = noofdaysstayed*(price);
                 if(noofdaysstayed==0){
