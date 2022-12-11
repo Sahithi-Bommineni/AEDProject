@@ -4,17 +4,44 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class ViewRoomsJFrame extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form ViewRoomsJFrame
      */
     public ViewRoomsJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM rooms";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            ViewRoomtbl.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -31,32 +58,43 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
         ViewRoomtbl = new javax.swing.JTable();
         Searchtxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(1000, 500));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel1.setText("Rooms List ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         ViewRoomtbl.setBackground(new java.awt.Color(204, 204, 204));
         ViewRoomtbl.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         ViewRoomtbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Room No", "Floor", "Room Type :", "Price", "No of Beds", "Availability", "Status Clean/Not"
+                "Room No", "Floor", "Room Type :", "Bed Type", "Price", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ViewRoomtbl.setOpaque(false);
         jScrollPane1.setViewportView(ViewRoomtbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 800, 490));
-        getContentPane().add(Searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 100, 160, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 800, 280));
+        getContentPane().add(Searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 160, -1));
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButton1.setText("Search");
@@ -65,17 +103,33 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, -1, -1));
+
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rooms.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -30, -1, 890));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, -1, 890));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        ManagerLoginJFrame managerpanel = new ManagerLoginJFrame();
+        managerpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,6 +167,7 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JTextField Searchtxt;
     private javax.swing.JTable ViewRoomtbl;
     private javax.swing.JButton jButton1;

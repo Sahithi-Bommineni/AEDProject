@@ -177,17 +177,15 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
             rs=ps.executeQuery();
             if(rs.next()){
                 String roomno = rs.getString(1);
-                String roomcleaning = rs.getString(2);
-                String restroom = rs.getString(3);
-                String splins = rs.getString(4);
-                String date = rs.getString(5);
-                String time = rs.getString(6);
+                String mealtype = rs.getString(2);
+                String location = rs.getString(3);
+                String special_instructions = rs.getString(4);
                 
                 //searchtxt.isEditable(false);
                 SearchTxt.setText(roomno);
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "e");
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_ChefTblMouseClicked
 
