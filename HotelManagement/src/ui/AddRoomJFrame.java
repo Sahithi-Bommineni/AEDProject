@@ -186,7 +186,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 131, 175, 28));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rooms.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -40, -1, 890));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, -50, -1, 890));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
