@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import model.Games;
 
 /**
  *
@@ -87,6 +88,8 @@ public class IndoorGames extends javax.swing.JFrame {
         getContentPane().add(NoOfPeopleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 205, 142, -1));
 
         GymLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        buttonGroup1.add(GymLbl);
+        GymLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         GymLbl.setText("GYM");
         getContentPane().add(GymLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 248, 71, -1));
 
@@ -142,7 +145,7 @@ public class IndoorGames extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String roomno = (String)RoomNoCombo.getSelectedItem();
-        String game;
+        String game = null;
         String option = " ";
         if(IndoorGames.isSelected()){
             option = "Game";
@@ -165,6 +168,12 @@ public class IndoorGames extends javax.swing.JFrame {
         }
         else{
             Connection con = ConnectionProvider.getCon();
+            Games g = new Games();
+            g.setRoomno(roomno);
+            g.setGame(game);
+            g.setOption(option);
+            g.setPeople(people);
+            g.setTime(time);
             
             try{
                 String sql = "INSERT INTO games(roomno,time,people,option,game) VALUES (?,?,?,?,?)";
