@@ -344,7 +344,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
     private void UserNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserNametxtKeyReleased
         // TODO add your handling code here:
-                String PATTERN="^[0-9]{5,7}$";
+                String PATTERN="^[0-9]{4,7}$";
         Pattern patt=Pattern.compile(PATTERN);
         Matcher match=patt.matcher(UserNametxt.getText());
         if(!match.matches()){
