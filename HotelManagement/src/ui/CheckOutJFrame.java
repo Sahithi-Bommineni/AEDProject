@@ -320,7 +320,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
             }
-            PdfWriter.getInstance(doc, new FileOutputStream(path+""+id+".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("path"+id+".pdf"));
             doc.open();
             Paragraph paragraph1 =  new Paragraph("                                             Palm Tree Resorts                                   ");
             doc.add(paragraph1);

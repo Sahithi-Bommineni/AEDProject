@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import model.CheckIn;
 
 /**
  *
@@ -376,6 +377,23 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         }
         else
         {
+           Connection con = ConnectionProvider.getCon();
+           CheckIn r = new CheckIn();
+           r.setId(id);
+           r.setName(name);
+           r.setMobileno(mobileno);
+           r.setGender(gender);
+           r.setEmail(email);
+           r.setIdproof(idproof);
+           r.setAddress(address);
+           r.setCheckin(checkIn);
+           r.setRoomno(roomno);
+           r.setBedType(bedType);
+           r.setRoomType(roomType);
+           r.setPrice(price);
+           //r.setDaysstayed(daysstayed);
+           //r.setTotalamt(totalamt);
+           //r.setCheckout(checkout);
           try{
               String query = "Select max(id) from checkin";
               ps=con.prepareStatement(query);
@@ -404,6 +422,9 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                   ps.setString(11, bedType);
                   ps.setString(12, roomType);
                   ps.setString(13, price);
+                  //ps.setString(14,daysstayed);
+                  //ps.setString(15,totalamt);
+                  //ps.setString(16,checkout);
                   ps.execute();
                   
                   CustomerNametxt.setText("");
