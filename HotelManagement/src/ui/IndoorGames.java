@@ -145,7 +145,7 @@ public class IndoorGames extends javax.swing.JFrame {
     private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
         String roomno = (String)RoomNoCombo.getSelectedItem();
-        String game = null;
+        String game = (String)GameCombo.getSelectedItem();;
         String option = " ";
         if(IndoorGames.isSelected()){
             option = "Game";
@@ -170,10 +170,14 @@ public class IndoorGames extends javax.swing.JFrame {
             Connection con = ConnectionProvider.getCon();
             Games g = new Games();
             g.setRoomno(roomno);
-            g.setGame(game);
-            g.setOption(option);
-            g.setPeople(people);
             g.setTime(time);
+            g.setPeople(people);
+            g.setOption(option);
+            g.setGame(game);
+            
+            
+            
+            
             
             try{
                 String sql = "INSERT INTO games(roomno,time,people,option,game) VALUES (?,?,?,?,?)";
