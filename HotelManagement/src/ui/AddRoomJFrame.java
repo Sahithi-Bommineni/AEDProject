@@ -79,6 +79,9 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         DeleteBtn = new javax.swing.JButton();
         lblFloor = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,14 +108,14 @@ public class AddRoomJFrame extends javax.swing.JFrame {
                 RoomNotxtKeyReleased(evt);
             }
         });
-        getContentPane().add(RoomNotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 74, 99, -1));
+        getContentPane().add(RoomNotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 67, 99, 30));
 
         Floortxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 FloortxtKeyReleased(evt);
             }
         });
-        getContentPane().add(Floortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 134, 99, -1));
+        getContentPane().add(Floortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 127, 99, 30));
 
         RoomtypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         RoomtypeLbl.setText("Room Type:");
@@ -136,19 +139,27 @@ public class AddRoomJFrame extends javax.swing.JFrame {
                 PricetxtKeyReleased(evt);
             }
         });
-        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 134, 101, -1));
+        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 127, 101, 30));
 
         roomtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ROOM NO", "FLOOR", "ROOM TYPE", "BED TYPE", "PRICE", "STATUS"
+                "ROOM NO", "FLOOR", "ROOM TYPE", "BED TYPE", "PRICE", "OCCUPANCY", "STATUS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         roomtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 roomtableMouseClicked(evt);
@@ -182,8 +193,22 @@ public class AddRoomJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 328, 99, -1));
-        getContentPane().add(lblFloor, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 171, 93, 24));
-        getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 131, 175, 28));
+        getContentPane().add(lblFloor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 190, 20));
+        getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 175, 20));
+
+        jLabel4.setText("Max Ocuupancy");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, -1, 20));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 90, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, 170, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rooms.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, -50, -1, 890));
@@ -204,14 +229,12 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
         int price = Integer.parseInt(Pricetxt.getText());
+        int occupancy = Integer.parseInt(jTextField1.getText());
         //String status = statustxt.getText();
         
-        if(RoomNotxt.equals("")|| Floortxt.equals("")||Pricetxt.equals(""))
+        if(RoomNotxt.equals("")|| Floortxt.equals("")||Pricetxt.equals("")||jTextField1.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
-            RoomNotxt.setText("");
-            Floortxt.setText("");
-            Pricetxt.setText("");
         }
         else
         {
@@ -222,20 +245,24 @@ public class AddRoomJFrame extends javax.swing.JFrame {
             r.setRoomtype(roomtype);
             r.setBedtype(bedtype);
             r.setPrice(price);
+            r.setOccupancy(occupancy);
+            
           try{
-              String sql = "INSERT INTO rooms (roomno,floor,roomtype,bedtype,price,status) VALUES (?,?,?,?,?,'Not Booked')";
+              String sql = "INSERT INTO rooms (roomno,floor,roomtype,bedtype,price,occupancy,status) VALUES (?,?,?,?,?,?,'Not Booked')";
               ps=con.prepareStatement(sql);
               ps.setInt(1, roomno);
               ps.setInt(2,floor);
               ps.setString(3, roomtype);
               ps.setString(4,bedtype);
               ps.setInt(5, price);
+              ps.setInt(6,occupancy);
               //ps.setString(6,status);
               ps.execute();
               
               RoomNotxt.setText("");
               Floortxt.setText("");
               Pricetxt.setText("");
+              jTextField1.setText("");
               setVisible(false);
               new AddRoomJFrame().setVisible(true);
               
@@ -260,11 +287,13 @@ public class AddRoomJFrame extends javax.swing.JFrame {
             String roomtype = rs.getString(3);
             String bedtype = rs.getString(4);
             String price = rs.getString(5);
-            String status = rs.getString(6);
+            String occupancy = rs.getString(6);
+            String status = rs.getString(7);
             
             RoomNotxt.setText(roomno);
             Floortxt.setText(floor);
             Pricetxt.setText(price);
+            jTextField1.setText(occupancy);
             
             }  
         }catch(Exception e){
@@ -279,29 +308,29 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         String roomtype = (String)roomtypecombobox.getSelectedItem();
         String bedtype = (String)bedtypecombobox.getSelectedItem();
         String price = Pricetxt.getText();
+        String occupancy = jTextField1.getText();
         
-        String sql="UPDATE rooms SET floor=?,roomtype=?,bedtype=?,price=? WHERE roomno=?";
+        String sql="UPDATE rooms SET floor=?,roomtype=?,bedtype=?,price=?,ocupancy=? WHERE roomno=?";
         try{
-            if(roomno.equals("")|| floor.equals("")||price.equals(""))
+            if(roomno.equals("")|| floor.equals("")||price.equals("")||occupancy.equals(""))
             {
                 JOptionPane.showMessageDialog(null,"Please fill all the details");
-                RoomNotxt.setText("");
-                Floortxt.setText("");
-                Pricetxt.setText("");
             }
             else
             {
               ps=con.prepareStatement(sql);
-              ps.setString(5, roomno);
+              ps.setString(6, roomno);
               ps.setString(1,floor);
               ps.setString(2, roomtype);
               ps.setString(3,bedtype);
               ps.setString(4,price);
+              ps.setString(5, occupancy);
               ps.execute();
               
               RoomNotxt.setText("");
               Floortxt.setText("");
               Pricetxt.setText("");
+              jTextField1.setText("");
               setVisible(false);
               new AddRoomJFrame().setVisible(true);
             } 
@@ -323,6 +352,7 @@ public class AddRoomJFrame extends javax.swing.JFrame {
                 RoomNotxt.setText("");
                 Floortxt.setText("");
                 Pricetxt.setText("");
+                jTextField1.setText("");
                 setVisible(false);
                 new AddRoomJFrame().setVisible(true);
                 
@@ -370,7 +400,34 @@ public class AddRoomJFrame extends javax.swing.JFrame {
         else{
             lblPrice.setText("");
         }
+
     }//GEN-LAST:event_PricetxtKeyReleased
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+              String PATTERN="^[0-5]{1,1}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(jTextField1.getText());
+        if(!match.matches()){
+            jLabel5.setText("Occupancy is incorrect");
+        }
+        else{
+            jLabel5.setText("");
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        String PATTERN="^[0-5]{1,1}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(jTextField1.getText());
+        if(!match.matches()){
+            jLabel5.setText("");
+        }
+        else{
+            jLabel5.setText("");
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -423,7 +480,10 @@ public class AddRoomJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblFloor;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblRoomNo;
