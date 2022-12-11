@@ -31,8 +31,8 @@ public class ChefData {
                 Chef c = new Chef();
                 c.setRoomno(rs.getInt("roomno"));
                 c.setMealtype(rs.getString("mealtype"));
-                c.setLocation(rs.getString("location"));
-                c.setSpecial_instructions(rs.getString("special_instructions"));
+                c.setNoOfPeople(rs.getString("NoOfPeople"));
+                
                 c.setStatus(rs.getString("status"));
                 ChefData1.add(c);
                 }
@@ -77,7 +77,7 @@ public class ChefData {
             Statement st = con.createStatement();
             String query = "USE aed_hotel";
             st.executeUpdate(query);
-            query = "INSERT INTO chef (roomno,mealtype,location,special_instructions,status) VALUES (?,?,?,?,?))";
+            query = "INSERT INTO chef (roomno,mealtype,noofpeople,status) VALUES (?,?,?,?))";
             st.executeUpdate(query);
         }catch(Exception e){
             System.out.print(e.getMessage());
