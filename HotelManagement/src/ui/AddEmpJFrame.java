@@ -277,8 +277,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         r.setAddress(address);
         r.setUsername(username);
         r.setPassword(password);
-        
-          try{
+        try{
               //Employee e = empdata.addEmp();
               //empdata.createEmpTable();
               String sql = "INSERT INTO employee (name,age,gender,job,address,salary,username,password) VALUES (?,?,?,?,?,?,?,?)";

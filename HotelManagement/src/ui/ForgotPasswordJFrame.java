@@ -7,6 +7,7 @@ package ui;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import database.ConnectionProvider;
+import model.CustomerLogin;
 
 /**
  *
@@ -179,20 +180,23 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                     String lastname = rs.getString(2);
                     String email = rs.getString(3);
                     String password = rs.getString(4);
-                    String cpassword = rs.getString(5);
-                    String answer = rs.getString(6);
-                    String securityques = rs.getString(7);
+                    String answer = rs.getString(5);
+                    String securityques = rs.getString(6);
                     
                     jTextField2.setText(securityques);
+                    check=2;
                 }
+                else{
+                    JOptionPane.showMessageDialog(null,"Email doesnot exists");
+                }       
             }
             catch(Exception e)
             {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
-        if(check==0)
-            JOptionPane.showMessageDialog(null,"Email doesnot exists");
+        
+        
     }//GEN-LAST:event_searchbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
@@ -207,20 +211,24 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"All Field are Required");
         }
         else{
-            try
-            {
-                String sql = "SELECT * FROM customerlogin WHERE email='"+email+"AND securityques='"+securityques+"'AND answer='"+answer+"'";
-                ps=con.prepareStatement(sql);
-                rs=ps.executeQuery();
-                if(rs.next())
-                {
+             Connection con = ConnectionProvider.getCon();
+             CustomerLogin r = new CustomerLogin();
+             r.setEmail(email);
+             r.setSecurityques(securityques);
+             r.setAnswer(answer);
+             r.setPassword(password);
+             try{
+                  String sql = "SELECT * FROM customerlogin WHERE email='"+email;
+                  ps=con.prepareStatement(sql);
+                  rs=ps.executeQuery();
+                  if(answer.equals(answer))
+                  {
                     check=1;
-                    String query="UPDATE customerlogin SET password=? AND cpassword =? where email =?";
+                    String query="UPDATE customerlogin SET password=? WHERE email =?";
                     try{
                         ps=con.prepareStatement(sql);
                         ps.setString(1, password);
-                        ps.setString(2,password);
-                        ps.setString(3, email);
+                        ps.setString(2, email);
                         ps.execute();
                         
                         Emailtxt.setText("");
@@ -229,17 +237,18 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                         
                         setVisible(false);
                         new ForgotPasswordJFrame().setVisible(true);
-                    }catch(Exception e){
+                        }
+                    catch(Exception e){
                         JOptionPane.showMessageDialog(null, e);
                     }
-                }
+                  }
             }catch(Exception e)
                 {
-                JOptionPane.showMessageDialog(null,e);
+                JOptionPane.showMessageDialog(null,"Incorrect Answer");
                 }
         }
-        if(check==0)
-            JOptionPane.showMessageDialog(null,"Incorrect Answer");
+        /*if(check==0)
+            JOptionPane.showMessageDialog(null,"Incorrect Answer");*/
     }//GEN-LAST:event_savebtnActionPerformed
 
     /**

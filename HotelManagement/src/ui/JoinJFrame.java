@@ -213,15 +213,15 @@ public class JoinJFrame extends javax.swing.JFrame {
         else
         {
           try{
-              String sql = "INSERT INTO customerlogin (firstname,lastname,email,password,cpassword,securityques,answer) VALUES (?,?,?,?,?,?,?)";
+              String sql = "INSERT INTO customerlogin (firstname,lastname,email,password,securityques,answer) VALUES (?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setString(1, firstname);
               ps.setString(2,lastname);
               ps.setString(3, email);
               ps.setString(4,password);
-              ps.setString(5, cpassword);
-              ps.setString(6,securityques);
-              ps.setString(7,answer);
+              //ps.setString(5, cpassword);
+              ps.setString(5,securityques);
+              ps.setString(6,answer);
               ps.execute();
               //Statement st=con.createStatement();
               //st.executeUpdate(sql);
@@ -231,6 +231,8 @@ public class JoinJFrame extends javax.swing.JFrame {
               Passwordtxt.setText("");
               CPasswordtxt.setText("");
               Answertxt.setText("");
+              
+              JOptionPane.showMessageDialog(null, "Thanks for joining.");
               
           }catch(Exception e)
           {
