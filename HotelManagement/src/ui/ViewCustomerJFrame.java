@@ -111,6 +111,11 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
                 SearchbtnFocusLost(evt);
             }
         });
+        Searchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchbtnActionPerformed(evt);
+            }
+        });
         Searchbtn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SearchbtnKeyPressed(evt);
@@ -140,7 +145,7 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 90, -1));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,6 +235,10 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchbtnActionPerformed
   
     
     /**

@@ -21,11 +21,12 @@ public class CheckIn {
     String roomno;
     String bedType;
     String roomType;
-    int price;
+    String price;
     String daysstayed;
-    int totalamt;
+    String totalamt;
+    String checkout;
     
-    public CheckIn(int id,String name,String mobileno,String nationality,String gender,String email,String idproof,String address,String checkin,String roomno,String bedType,String roomType,int price,String daysstayed,int totalamt)
+    public CheckIn(int id,String name,String mobileno,String nationality,String gender,String email,String idproof,String address,String checkin,String roomno,String bedType,String roomType,String price,String daysstayed,String totalamt)
     {
         this.id=id;
         this.name=name;
@@ -142,11 +143,11 @@ public class CheckIn {
         this.roomType = roomType;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -158,11 +159,19 @@ public class CheckIn {
         this.daysstayed = daysstayed;
     }
 
-    public int getTotalamt() {
+    public String getTotalamt() {
         return totalamt;
     }
 
-    public void setTotalamt(int totalamt) {
+    public void setTotalamt(String totalamt) {
         this.totalamt = totalamt;
+    }
+
+    public String getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(String checkout) {
+        this.checkout = checkout;
     }
 }

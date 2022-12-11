@@ -86,7 +86,9 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(845, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
@@ -132,6 +134,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 839, 273));
 
+        UpdateButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         UpdateButton.setText("Update");
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,27 +143,35 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 85, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 375, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("Age");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 404, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Gender");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 375, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("Job");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 404, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("Salary");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 433, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setText("Address");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 433, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setText("Username");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 465, -1, -1));
 
+        Password.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Password.setText("Password");
         jPanel1.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 465, -1, -1));
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 372, 181, -1));
@@ -202,6 +213,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         jRadioButton3.setText("Other");
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 373, -1, -1));
 
+        DeleteButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         DeleteButton.setText("Delete");
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +230,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Receptionist", "HouseKeeping", "Driver", "Chef" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 401, -1, -1));
 
+        BackButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         BackButton.setText("Back");
         BackButton.setBorder(null);
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -227,19 +240,7 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 860, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
