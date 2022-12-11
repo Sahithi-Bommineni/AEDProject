@@ -160,7 +160,7 @@ public class DriverJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
             String roomno = searchtxt.getText();
             String status = (String)jComboBox1.getSelectedItem();
-            String sql = "UPDATE housekeeping SET status = ? WHERE roomno = ?";
+            String sql = "UPDATE Driver SET status = ? WHERE roomno = ?";
             try{
                 if(status.equalsIgnoreCase("Select Status")){
                 JOptionPane.showMessageDialog(null, "Please select status");
@@ -172,7 +172,7 @@ public class DriverJFrame extends javax.swing.JFrame {
                 ps.execute();
                 
                 jComboBox1.setSelectedItem("Select Status");
-                new HouseKeepingJFrame().setVisible(true);
+                new DriverServiceJFrame().setVisible(true);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
