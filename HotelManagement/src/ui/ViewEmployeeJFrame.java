@@ -21,9 +21,9 @@ import net.proteanit.sql.DbUtils;
  */
 public class ViewEmployeeJFrame extends javax.swing.JFrame {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     /**
      * Creates new form ViewEmployeeJFrame
      */

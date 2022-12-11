@@ -27,16 +27,17 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
     /**
      * Creates new form ViewCustomerJFrame
      */
-        Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     public ViewCustomerJFrame() {
         initComponents();
-            initComponents();
         con = ConnectionProvider.getCon();
         populateTable();
     }
-     public void populateTable()
+    
+    public void populateTable()
     {
         try{
             String sql = "SELECT * FROM customerlogin";
@@ -65,20 +66,24 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         SearchTxt = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CustomersTable.setBackground(new java.awt.Color(204, 204, 204));
+        CustomersTable.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         CustomersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "First Name", "Last Name", "Email"
+                "First Name", "Last Name", "Email", "Security Question", "Answer"
             }
         ));
         CustomersTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,14 +93,15 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(CustomersTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 550, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 780, 340));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        jLabel1.setText("Members");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 80, 120, -1));
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Member  Details");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 270, 50));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 320, 30));
 
-        Searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Searchbtn.setText("Search");
         Searchbtn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -113,51 +119,59 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
                 SearchbtnKeyReleased(evt);
             }
         });
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
-        Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        Backbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Backbtn.setText("Back");
         Backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jButton1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 90, -1));
+
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CustomersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomersTableMouseClicked
         // TODO add your handling code here:
-                int r=CustomersTable.getSelectedRow();
+        int r=CustomersTable.getSelectedRow();
         String click = (CustomersTable.getModel().getValueAt(r, 0).toString());
         String sql = "SELECT * FROM customerlogin WHERE firstname='"+click+"'";
-       try{
+        try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
             if(rs.next()){
                 String firstname = rs.getString(1);
                 String lastname = rs.getString(2);
                 String email = rs.getString(3);
-              
-                     
-            }
-            
+                String securityques = rs.getString(4);
+                String answer = rs.getString(5);
+            }  
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
-        }
-             
+        }     
     }//GEN-LAST:event_CustomersTableMouseClicked
 
     private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
         // TODO add your handling code here:
-            setVisible(false);
-        new HomePage().setVisible(true);
+        new AdminJframe().setVisible(true);
+        AdminJframe adminpanel = new AdminJframe();
+        adminpanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BackbtnActionPerformed
 
     private void SearchbtnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchbtnFocusGained
@@ -193,6 +207,29 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         CustomersTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(SearchTxt.getText().trim()));
     }//GEN-LAST:event_SearchbtnKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int r=CustomersTable.getSelectedRow();
+        String click = (CustomersTable.getModel().getValueAt(r, 0).toString());
+        String sql = "DELETE FROM customerlogin WHERE firstname='"+click+"'";
+        try{
+            if(CustomersTable.getSelectedRowCount()==1){
+                ps=con.prepareCall(sql);
+                int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if(i==JOptionPane.YES_OPTION){
+                ps.execute();
+                JOptionPane.showMessageDialog(null,"Deleted Successfully.");
+                new ViewCustomerJFrame().setVisible(true);
+                }   
+            }
+            else if(CustomersTable.getSelectedRowCount()==0){
+                    JOptionPane.showMessageDialog(null, "Please select a row to delete");
+                }
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
   
     
     /**
@@ -235,8 +272,9 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
     private javax.swing.JTable CustomersTable;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JButton Searchbtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
