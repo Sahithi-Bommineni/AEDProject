@@ -22,9 +22,9 @@ import model.Room;
  */
 public class AddRoomJFrame extends javax.swing.JFrame {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs =null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     
     /**
      */
