@@ -12,19 +12,18 @@ public class Chef {
     
     int roomno;
     String mealtype;
-    String location;
-    String special_instructions;
+    String NoOfPeople;
+    
     String status;
     
     public Chef(){
         
     }
     
-    public Chef(int roomno,String mealtype, String location, String special_instructions, String status){
+    public Chef(int roomno,String mealtype, String NoOfPeople, String status){
         this.roomno=roomno;
         this.mealtype=mealtype;
-        this.location=location;
-        this.special_instructions=special_instructions;
+        this.NoOfPeople = NoOfPeople;
         this.status=status;
     }
 
@@ -44,21 +43,15 @@ public class Chef {
         this.mealtype = mealtype;
     }
 
-    public String getLocation() {
-        return location;
+    public String getNoOfPeople() {
+        return NoOfPeople;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setNoOfPeople(String NoOfPeople) {
+        this.NoOfPeople = NoOfPeople;
     }
 
-    public String getSpecial_instructions() {
-        return special_instructions;
-    }
-
-    public void setSpecial_instructions(String special_instructions) {
-        this.special_instructions = special_instructions;
-    }
+   
 
     public String getStatus() {
         return status;

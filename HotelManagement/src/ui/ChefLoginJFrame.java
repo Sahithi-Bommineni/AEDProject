@@ -64,10 +64,8 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
@@ -76,13 +74,13 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
 
         ChefTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Room No", "Type", "Where ?", "Dishes ", "Status"
+                "Room No", "Type", "NoOfPeople", "Status"
             }
         ));
         ChefTbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,8 +176,8 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
             if(rs.next()){
                 String roomno = rs.getString(1);
                 String mealtype = rs.getString(2);
-                String location = rs.getString(3);
-                String special_instructions = rs.getString(4);
+                String NoOfPeople = rs.getString(3);
+               
                 
                 //searchtxt.isEditable(false);
                 SearchTxt.setText(roomno);

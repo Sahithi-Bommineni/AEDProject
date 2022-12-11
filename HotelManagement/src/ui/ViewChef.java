@@ -63,13 +63,13 @@ public class ViewChef extends javax.swing.JFrame {
 
         OrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Room No", "Type", "Where", "Dishes", "Status"
+                "Room No", "Type", "NoOfPeople", "Status"
             }
         ));
         jScrollPane1.setViewportView(OrdersTbl);
