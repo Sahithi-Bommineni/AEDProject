@@ -9,5 +9,6 @@ package model;
  * @author koushalamshala
  */
 public class CheckIn {
-    
+    String people
+    int id
 }
