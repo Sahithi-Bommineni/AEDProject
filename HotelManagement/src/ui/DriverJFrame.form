@@ -74,7 +74,7 @@
                 <Column editable="true" title="Room No" type="java.lang.Object"/>
                 <Column editable="true" title="Car Type" type="java.lang.Object"/>
                 <Column editable="true" title="No of Passengers" type="java.lang.Object"/>
-                <Column editable="true" title="To" type="java.lang.Object"/>
+                <Column editable="true" title="Location" type="java.lang.Object"/>
                 <Column editable="true" title="Time Window" type="java.lang.Object"/>
                 <Column editable="true" title="Date" type="java.lang.Object"/>
                 <Column editable="true" title="Extra Requirements" type="java.lang.Object"/>
