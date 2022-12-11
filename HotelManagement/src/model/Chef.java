@@ -20,7 +20,7 @@ public class Chef {
         
     }
     
-    public Chef(int roomno,String mealtype, String location, String special_instructions, String status){
+    public Chef(int roomno,String mealtype, String NoOfPeople, String status){
         this.roomno=roomno;
         this.mealtype=mealtype;
         this.NoOfPeople = NoOfPeople;
