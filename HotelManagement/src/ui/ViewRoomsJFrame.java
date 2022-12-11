@@ -44,13 +44,13 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
         ViewRoomtbl.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         ViewRoomtbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Floor", "Room Type :", "Price", "No of Beds", "Availability", "Status Clean/Not"
+                "Room No", "Floor", "Room Type :", "Price", "No of Beds", "Availability"
             }
         ));
         jScrollPane1.setViewportView(ViewRoomtbl);
