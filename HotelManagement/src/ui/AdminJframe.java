@@ -162,8 +162,8 @@ public class AdminJframe extends javax.swing.JFrame {
 
     private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
         // TODO add your handling code here:
-        HomePage homepanel = new HomePage();
-        homepanel.setVisible(true);
+        StaffLoginJFrame Staffpanel = new StaffLoginJFrame();
+        Staffpanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogoutButtonActionPerformed
 

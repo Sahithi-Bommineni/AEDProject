@@ -30,6 +30,7 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
         Checkinbtn = new javax.swing.JButton();
         checkoutbtn = new javax.swing.JButton();
         Invoicebtn = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +69,17 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(Invoicebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 50));
 
+        LogoutButton.setBackground(new java.awt.Color(0, 0, 0));
+        LogoutButton.setFont(new java.awt.Font("Helvetica", 3, 14)); // NOI18N
+        LogoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/young-businesswoman-standing-show-card-receptionist-female-stands-reception-desk-cartoon-character_1150-43045.jpg.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -91,6 +103,13 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
         setVisible(false);
         new CustomerDetailsBill().setVisible(true);
     }//GEN-LAST:event_InvoicebtnActionPerformed
+
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
+        // TODO add your handling code here:
+        StaffLoginJFrame Staffpanel = new StaffLoginJFrame();
+        Staffpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_LogoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,6 +150,7 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Checkinbtn;
     private javax.swing.JButton Invoicebtn;
+    private javax.swing.JButton LogoutButton;
     private javax.swing.JButton checkoutbtn;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
