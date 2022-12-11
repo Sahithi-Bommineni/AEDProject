@@ -71,6 +71,11 @@ public class HomePage extends javax.swing.JFrame {
         });
 
         bookButton.setText("Book Stay");
+        bookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookButtonActionPerformed(evt);
+            }
+        });
 
         manageButton.setText("Manage Booking");
 
@@ -164,6 +169,13 @@ public class HomePage extends javax.swing.JFrame {
         joinpanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_joinButtonActionPerformed
+
+    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+        // TODO add your handling code here:
+            CustomerRoomBookingJFrame Customerpanel = new CustomerRoomBookingJFrame();
+        Customerpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bookButtonActionPerformed
 
     /**
      * @param args the command line arguments
