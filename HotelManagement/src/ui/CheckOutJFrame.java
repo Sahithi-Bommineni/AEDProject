@@ -278,12 +278,12 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         c.setDaysstayed(daysstayed);
         c.setTotalamt(totalamt);
         c.setCheckout(checkout);
-        Query = "UPDATE checkin SET daysstayed=? AND totalamt=? AND checkout =? WHERE id='"+id+"'";
+        Query = "UPDATE checkin SET daysstayed='"+daysstayed+"',totalamt='"+totalamt+"',checkout='"+checkout+"' WHERE id='"+id+"'";
         try {
             ps=con.prepareStatement(Query);
-            ps.setString(1, daysstayed);
-            ps.setString(2,totalamt);
-            ps.setString(3,checkout);
+            //ps.setString(1, daysstayed);
+            //ps.setString(2,totalamt);
+            //ps.setString(3,checkout);
             //ps.setString(4,id);
             ps.execute();
         } catch (Exception e) {
@@ -298,7 +298,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         }
         String path="";    
         JFileChooser j =new JFileChooser();
-        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        j.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         int x= j.showSaveDialog(this);
         if(x==JFileChooser.APPROVE_OPTION){
             path=j.getSelectedFile().getPath();
@@ -320,7 +320,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
             }
-            PdfWriter.getInstance(doc, new FileOutputStream("path"+id+".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream(path+""+id+".pdf"));
             doc.open();
             Paragraph paragraph1 =  new Paragraph("                                             Palm Tree Resorts                                   ");
             doc.add(paragraph1);
@@ -362,6 +362,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, e);
                         }
             }
+        new CheckOutJFrame().setVisible(true);
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

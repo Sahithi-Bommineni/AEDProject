@@ -58,16 +58,13 @@ public class DriverJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Updatebtn = new javax.swing.JButton();
         searchtxt = new javax.swing.JTextField();
-        searchbtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setMaximumSize(new java.awt.Dimension(1100, 500));
         setMinimumSize(new java.awt.Dimension(1100, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1100, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -115,10 +112,6 @@ public class DriverJFrame extends javax.swing.JFrame {
 
         searchtxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         getContentPane().add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, 100, -1));
-
-        searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        searchbtn.setText("Search");
-        getContentPane().add(searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Picked", "Dropped" }));
@@ -222,7 +215,6 @@ public class DriverJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton searchbtn;
     private javax.swing.JTextField searchtxt;
     // End of variables declaration//GEN-END:variables
 

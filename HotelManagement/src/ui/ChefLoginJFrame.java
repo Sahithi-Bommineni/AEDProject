@@ -28,6 +28,8 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         initComponents();
         con = ConnectionProvider.getCon();
         populateTable();
+        
+        SearchTxt.setEditable(false);
     }
     
     public void populateTable()
@@ -54,18 +56,20 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ChefTbl = new javax.swing.JTable();
-        Searchbtn = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Updatebtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         BackButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
@@ -92,12 +96,8 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 560, 310));
 
-        Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        Searchbtn.setText("Search");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
-
         SearchTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 100, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel2.setText("Status :");
@@ -127,6 +127,10 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 120, 30));
+
+        jLabel4.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jLabel4.setText("Room No : ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
@@ -177,8 +181,7 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
                 String roomno = rs.getString(1);
                 String mealtype = rs.getString(2);
                 String NoOfPeople = rs.getString(3);
-               
-                
+
                 //searchtxt.isEditable(false);
                 SearchTxt.setText(roomno);
             }
@@ -226,12 +229,12 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JTable ChefTbl;
     private javax.swing.JTextField SearchTxt;
-    private javax.swing.JButton Searchbtn;
     private javax.swing.JButton Updatebtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
