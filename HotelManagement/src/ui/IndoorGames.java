@@ -145,7 +145,7 @@ public class IndoorGames extends javax.swing.JFrame {
     private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
         String roomno = (String)RoomNoCombo.getSelectedItem();
-        String game = (String)GameCombo.getSelectedItem();;
+        String game = (String)GameCombo.getSelectedItem();
         String option = " ";
         if(IndoorGames.isSelected()){
             option = "Game";

@@ -41,12 +41,9 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        DineInRbtn = new javax.swing.JRadioButton();
-        RSBtn = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        OrderTxt = new javax.swing.JTextField();
+        PeopleTxt = new javax.swing.JTextField();
         Oderbtn = new javax.swing.JButton();
         RoomNoTxt = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -57,10 +54,8 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -74,37 +69,20 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         jLabel2.setText("Room No:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
-        buttonGroup2.add(DineInRbtn);
-        DineInRbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        DineInRbtn.setForeground(new java.awt.Color(0, 51, 51));
-        DineInRbtn.setText("Dine-in");
-        getContentPane().add(DineInRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
-
-        buttonGroup2.add(RSBtn);
-        RSBtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        RSBtn.setForeground(new java.awt.Color(0, 51, 51));
-        RSBtn.setText("Room Service");
-        getContentPane().add(RSBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Type :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Where would you like your food served?");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Order :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
+        jLabel5.setText("No of People");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
 
-        OrderTxt.setBackground(new java.awt.Color(0, 51, 51));
-        OrderTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
-        OrderTxt.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(OrderTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 240, 30));
+        PeopleTxt.setBackground(new java.awt.Color(0, 51, 51));
+        PeopleTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        PeopleTxt.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(PeopleTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 240, 30));
 
         Oderbtn.setBackground(new java.awt.Color(0, 51, 51));
         Oderbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -190,17 +168,8 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select atleast one mealtype");
             
         }
-        String location = " ";
-        if(DineInRbtn.isSelected()){
-            location = "Dine In";
-        }
-        else if(RSBtn.isSelected()){
-            location = "Room Service";
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Please select either YES or NO");
-        }
-        String order = OrderTxt.getText();
+        
+        String NoOfPeople = PeopleTxt.getText();
         
         if(RoomNoTxt.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter room number");
@@ -210,24 +179,24 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         Chef c = new Chef();
         c.setRoomno(roomno);
         c.setMealtype(mealtype);
-        c.setLocation(location);
-        c.setSpecial_instructions(order);
+        c.setNoOfPeople(NoOfPeople);
+        
         //c.setStatus(status);
         try{
                 String sql = "INSERT INTO chef(roomno,mealtype,location,special_instructions) VALUES (?,?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setInt(1,roomno);
                 ps.setString(2, mealtype);
-                ps.setString(3, location);
-                ps.setString(4, order);
+                ps.setString(3, NoOfPeople);
+                
                 ps.execute();
                 
                 RoomNoTxt.setText("");
                 jCheckBox1.setSelected(false);
                 jCheckBox2.setSelected(false);
                 jCheckBox3.setSelected(false);
-                buttonGroup2.clearSelection();
-                OrderTxt.setText("");
+                
+                PeopleTxt.setText("");
                 
                 con.close();
                 
@@ -280,10 +249,8 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JRadioButton DineInRbtn;
     private javax.swing.JButton Oderbtn;
-    private javax.swing.JTextField OrderTxt;
-    private javax.swing.JRadioButton RSBtn;
+    private javax.swing.JTextField PeopleTxt;
     private javax.swing.JTextField RoomNoTxt;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox jCheckBox1;
@@ -292,7 +259,6 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
