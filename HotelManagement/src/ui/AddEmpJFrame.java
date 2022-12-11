@@ -383,6 +383,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         } else 
         {
             UserNametxt.setEditable(true);
+            lblUser.setText("");
         }
     }//GEN-LAST:event_UserNametxtKeyPressed
 
