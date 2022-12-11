@@ -332,10 +332,10 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null, "Do you want to print the bill?","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             try{
-                if(new File("E:\\"+id+".pdf").exists()){
+                if(new File(path+""+id+".pdf").exists()){
                     Process p = Runtime
                             .getRuntime()
-                            .exec("rundll32 url.dll,FileProtocolHandler E:\\"+id+".pdf");
+                            .exec("rundll32 url.dll,FileProtocolHandler "+path+""+id+".pdf");
                 }else{
                         System.out.println("File doesnt exist");
                         }
@@ -349,7 +349,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int r=jTable1.getSelectedRow();
-        String click = (jTable1.getModel().getValueAt(r, 0).toString());
+        String click = (jTable1.getModel().getValueAt(r, 9                                                                  ).toString());
         String sql = "SELECT * FROM checkin WHERE roomno='"+roomno;
         try{
             ps=con.prepareCall(sql);
@@ -402,7 +402,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             
         }catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Room Already Checked Out");
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

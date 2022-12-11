@@ -14,9 +14,21 @@ public class CustomerLogin {
     String lastname;
     String email;
     String password;
-    String cpassword;
     String securityques;
     String answer;
+    
+    public CustomerLogin(){
+        
+    }
+    
+    public CustomerLogin(String firstname, String lastname, String email, String password, String securityques, String answer){
+        this.firstname=firstname;
+        this.lastname=lastname;
+        this.email=email;
+        this.password=password;
+        this.securityques=securityques;
+        this.answer=answer;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -48,14 +60,6 @@ public class CustomerLogin {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getCpassword() {
-        return cpassword;
-    }
-
-    public void setCpassword(String cpassword) {
-        this.cpassword = cpassword;
     }
 
     public String getSecurityques() {
