@@ -84,7 +84,7 @@ public class DriverJFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Car Type", "No of Passengers", "To", "Time Window", "Date", "Extra Requirements", "Status"
+                "Room No", "Car Type", "No of Passengers", "Location", "Time Window", "Date", "Extra Requirements", "Status"
             }
         ));
         Drivertbl.addMouseListener(new java.awt.event.MouseAdapter() {

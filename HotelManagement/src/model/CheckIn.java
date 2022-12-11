@@ -9,6 +9,7 @@ package model;
  * @author koushalamshala
  */
 public class CheckIn {
+<<<<<<< HEAD
     int id;
     String name;
     String mobileno;
@@ -167,4 +168,8 @@ public class CheckIn {
     }
     
     
+=======
+    String people;
+    int id;
+>>>>>>> origin/main
 }

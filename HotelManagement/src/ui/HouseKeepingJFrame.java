@@ -63,19 +63,18 @@ public class HouseKeepingJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setMaximumSize(new java.awt.Dimension(1050, 680));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Housekeepingtbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Room Cleaning", "Restroom Cleaning", "Everything", "Time slot", "Status"
+                "Room No", "Room Cleaning", "Restroom Cleaning", "Time slot", "Status"
             }
         ));
         Housekeepingtbl.addMouseListener(new java.awt.event.MouseAdapter() {
