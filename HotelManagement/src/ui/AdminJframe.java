@@ -36,6 +36,7 @@ public class AdminJframe extends javax.swing.JFrame {
         LogoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
         setResizable(false);
 
         AdminSplitPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -60,6 +61,11 @@ public class AdminJframe extends javax.swing.JFrame {
 
         CustomerListButton.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         CustomerListButton.setText("Customer List");
+        CustomerListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CustomerListButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
         LeftPanel.setLayout(LeftPanelLayout);
@@ -160,6 +166,13 @@ public class AdminJframe extends javax.swing.JFrame {
         homepanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void CustomerListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerListButtonActionPerformed
+        // TODO add your handling code here:
+       ViewCustomerJFrame customerpanel = new ViewCustomerJFrame();
+       customerpanel.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_CustomerListButtonActionPerformed
 
     /**
      * @param args the command line arguments
