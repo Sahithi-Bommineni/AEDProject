@@ -4,6 +4,20 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author nikhithajarabana
@@ -13,8 +27,27 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
     /**
      * Creates new form ViewCustomerJFrame
      */
+        Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs=null;
     public ViewCustomerJFrame() {
         initComponents();
+            initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+     public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM customerlogin";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            CustomersTable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -31,6 +64,7 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         SearchTxt = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
+        Backbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +81,11 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
                 "First Name", "Last Name", "Email"
             }
         ));
+        CustomersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CustomersTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(CustomersTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 550, 250));
@@ -56,9 +95,34 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
         getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 80, 120, -1));
 
-        Searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        Searchbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Searchbtn.setText("Search");
+        Searchbtn.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SearchbtnFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SearchbtnFocusLost(evt);
+            }
+        });
+        Searchbtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SearchbtnKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SearchbtnKeyReleased(evt);
+            }
+        });
         getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+
+        Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        Backbtn.setText("Back");
+        Backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whitebg.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -67,6 +131,70 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CustomersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomersTableMouseClicked
+        // TODO add your handling code here:
+                int r=CustomersTable.getSelectedRow();
+        String click = (CustomersTable.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM customerlogin WHERE firstname='"+click+"'";
+       try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String firstname = rs.getString(1);
+                String lastname = rs.getString(2);
+                String email = rs.getString(3);
+              
+                     
+            }
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+             
+    }//GEN-LAST:event_CustomersTableMouseClicked
+
+    private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
+        // TODO add your handling code here:
+            setVisible(false);
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_BackbtnActionPerformed
+
+    private void SearchbtnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchbtnFocusGained
+        // TODO add your handling code here:
+                if(SearchTxt.getText().equals("Search...."))
+        {
+            SearchTxt.setText("");
+            SearchTxt.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_SearchbtnFocusGained
+
+    private void SearchbtnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchbtnFocusLost
+        // TODO add your handling code here:
+               if(SearchTxt.getText().equals(""))
+        {
+            SearchTxt.setText("Search....");
+            SearchTxt.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_SearchbtnFocusLost
+
+    private void SearchbtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchbtnKeyPressed
+        // TODO add your handling code here:
+                DefaultTableModel model = (DefaultTableModel) CustomersTable.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        CustomersTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(SearchTxt.getText().trim()));
+    }//GEN-LAST:event_SearchbtnKeyPressed
+
+    private void SearchbtnKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchbtnKeyReleased
+        // TODO add your handling code here:
+                DefaultTableModel model = (DefaultTableModel) CustomersTable.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        CustomersTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(SearchTxt.getText().trim()));
+    }//GEN-LAST:event_SearchbtnKeyReleased
+  
+    
     /**
      * @param args the command line arguments
      */
@@ -103,6 +231,7 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Backbtn;
     private javax.swing.JTable CustomersTable;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JButton Searchbtn;

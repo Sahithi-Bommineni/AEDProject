@@ -85,6 +85,9 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         Nametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         Nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NametxtKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 NametxtKeyReleased(evt);
             }
@@ -164,6 +167,9 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         UserNametxt.setFont(new java.awt.Font("AppleGothic", 1, 14)); // NOI18N
         UserNametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         UserNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UserNametxtKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 UserNametxtKeyReleased(evt);
             }
@@ -351,16 +357,35 @@ public class AddEmpJFrame extends javax.swing.JFrame {
 
     private void UserNametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserNametxtKeyReleased
         // TODO add your handling code here:
-                String PATTERN="^[0-9]{4,7}$";
-        Pattern patt=Pattern.compile(PATTERN);
-        Matcher match=patt.matcher(UserNametxt.getText());
-        if(!match.matches()){
-            lblUser.setText("User Name should only have digits");
-        }
-        else{
-            lblUser.setText("");
-        }
+             // String PATTERN="^[0-9]{4,7}$";
+      // Pattern patt=Pattern.compile(PATTERN);
+      // Matcher match=patt.matcher(UserNametxt.getText());
+      // if(!match.matches()){
+        // lblUser.setText("User Name should only have digits");
+        //}
+        //else{
+        //    lblUser.setText("");
+        //}
+        
     }//GEN-LAST:event_UserNametxtKeyReleased
+
+    private void NametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NametxtKeyPressed
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_NametxtKeyPressed
+
+    private void UserNametxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserNametxtKeyPressed
+        // TODO add your handling code here:
+            char c = evt.getKeyChar();
+        if(Character.isLetter(c)) {
+            UserNametxt.setEditable(false);
+            lblUser.setText("Please Enter Valid UserName");
+            
+        } else 
+        {
+            UserNametxt.setEditable(true);
+        }
+    }//GEN-LAST:event_UserNametxtKeyPressed
 
     /**
      * @param args the command line arguments
