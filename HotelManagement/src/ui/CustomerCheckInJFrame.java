@@ -57,9 +57,24 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
             st=con.createStatement();
             rs=st.executeQuery("SELECT * FROM rooms WHERE bedtype='"+bedtype+"' AND roomtype='"+roomtype+"' AND status='Not Booked'");
             while(rs.next())
-            {
+            { 
                 jComboBox2.addItem(rs.getString(1));
-                //jComboBox2.addItem(rs.getString(2));
+                //jComboBox2.addItem(rs.getString(2));  
+            }
+            if(bedtype.equalsIgnoreCase("twin")){
+                jComboBox3.addItem("1");
+                jComboBox3.addItem("2");
+            }
+            else if(bedtype.equalsIgnoreCase("queen")){
+                jComboBox3.addItem("1");
+                jComboBox3.addItem("2");
+                jComboBox3.addItem("3");
+            }
+            else if(bedtype.equalsIgnoreCase("king")){
+                jComboBox3.addItem("1");
+                jComboBox3.addItem("2");
+                jComboBox3.addItem("3");
+                jComboBox3.addItem("4");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
@@ -107,19 +122,19 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         lblMN = new javax.swing.JLabel();
         lblE = new javax.swing.JLabel();
         lblNation = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        PriceLbl1 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(1080, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomerCheckInLbl.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         CustomerCheckInLbl.setText("Customer CheckIn");
-        getContentPane().add(CustomerCheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 310, 30));
+        getContentPane().add(CustomerCheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 310, 30));
 
         CustomerNameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         CustomerNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -221,7 +236,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
 
         CheckIntxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         CheckIntxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(CheckIntxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 140, -1));
+        getContentPane().add(CheckIntxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 140, -1));
 
         BedLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         BedLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -249,7 +264,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 TypeBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(TypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 118, -1));
+        getContentPane().add(TypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 118, -1));
 
         RoomNoLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         RoomNoLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -259,10 +274,10 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         PriceLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PriceLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PriceLbl.setText("Price");
-        getContentPane().add(PriceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 92, -1));
+        getContentPane().add(PriceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, 92, -1));
 
         Pricetxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
-        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 118, -1));
+        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 118, -1));
 
         AlloteRoomBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AlloteRoomBtn.setText("Allote Rooms");
@@ -304,11 +319,12 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         getContentPane().add(lblE, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, 20));
         getContentPane().add(lblNation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 140, 20));
 
-        jButton1.setBackground(new java.awt.Color(200, 199, 175));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setOpaque(true);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 330, 50));
+        PriceLbl1.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        PriceLbl1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PriceLbl1.setText("Occupancy");
+        getContentPane().add(PriceLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 92, -1));
+
+        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CheckIn.jpg"))); // NOI18N
@@ -363,6 +379,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         String roomNo = (String)jComboBox2.getSelectedItem();
         String gender = (String)GenderBox.getSelectedItem();
         String price = Pricetxt.getText();
+        String occupancy = (String)jComboBox3.getSelectedItem();
         String checkIn = CheckIntxt.getText();
                 
         if(name.equals("")|| nationality.equals("")|| email.equals("")||address.equals("")||idproof.equals(""))
@@ -391,6 +408,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
            r.setBedType(bedType);
            r.setRoomType(roomType);
            r.setPrice(price);
+           r.setOccupancy(occupancy);
            //r.setDaysstayed(daysstayed);
            //r.setTotalamt(totalamt);
            //r.setCheckout(checkout);
@@ -407,7 +425,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                   query = "UPDATE rooms set status='Booked' WHERE roomno='"+roomNo+"'";
                   ps=con.prepareStatement(query);
                   ps.executeUpdate();
-                  String sql = "INSERT INTO checkin (id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                  String sql = "INSERT INTO checkin (id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price,occupancy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                   ps=con.prepareStatement(sql);
                   ps.setInt(1,id);
                   ps.setString(2, name);
@@ -422,6 +440,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                   ps.setString(11, bedType);
                   ps.setString(12, roomType);
                   ps.setString(13, price);
+                  ps.setString(14, occupancy);
                   //ps.setString(14,daysstayed);
                   //ps.setString(15,totalamt);
                   //ps.setString(16,checkout);
@@ -569,12 +588,13 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel PhLbl;
     private javax.swing.JTextField Phtxt;
     private javax.swing.JLabel PriceLbl;
+    private javax.swing.JLabel PriceLbl1;
     private javax.swing.JTextField Pricetxt;
     private javax.swing.JLabel RoomNoLbl;
     private javax.swing.JLabel RoomTypeLbl;
     private javax.swing.JComboBox<String> TypeBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblE;

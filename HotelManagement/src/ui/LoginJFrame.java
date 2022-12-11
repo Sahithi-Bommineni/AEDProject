@@ -6,6 +6,8 @@ package ui;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import database.ConnectionProvider;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,9 +15,9 @@ import database.ConnectionProvider;
  */
 public class LoginJFrame extends javax.swing.JFrame {
     
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs=null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form LoginJFrame1
@@ -175,6 +177,16 @@ public class LoginJFrame extends javax.swing.JFrame {
                 rs=ps.executeQuery();
                 if(rs.next())
                 {
+                    String username=rs.getString(3);
+                    String fname=rs.getString(1);
+                    String lname=rs.getString(2);
+                    String name = fname+" "+lname;
+                    
+                    this.dispose();
+                    CustomerRoomBookingJFrame crbpanel = new CustomerRoomBookingJFrame();
+                    crbpanel.setVisible(true);
+                    
+                    crbpanel.getInfo(username,name);
                     /*check=1;
                     if(rs.getString(8).equals(true))
                     {
@@ -182,8 +194,6 @@ public class LoginJFrame extends javax.swing.JFrame {
                     new ManagerLoginJFrame().setVisible(true);
                     }*/
                     //JOptionPane.showMessageDialog(null, "Login Successful");
-                    this.dispose();
-                    new CustomerServiceJFrame().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Incorrect Credentials");
