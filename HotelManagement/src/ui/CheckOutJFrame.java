@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import model.CheckIn;
 import net.proteanit.sql.DbUtils;
 //import net.proteanit.sql.DbUtils;
 
@@ -28,9 +28,9 @@ import net.proteanit.sql.DbUtils;
  */
 public class CheckOutJFrame extends javax.swing.JFrame {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs =null;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     
     
     
@@ -43,30 +43,30 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         con = ConnectionProvider.getCon();
         populateTable();
         
-        /*jTextField2.setEditable(false);
+        jTextField2.setEditable(false);
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
-        jTextField5.setEditable(false);*/
+        jTextField5.setEditable(false);
         jTextField6.setEditable(false);
         jTextField7.setEditable(false);
         jTextField8.setEditable(false);
-        //jTextField9.setEditable(false);
+        jTextField9.setEditable(false);
         
-        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+        /*SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
-        jTextField4.setText(myFormat.format(cal.getTime()));
+        jTextField4.setText(myFormat.format(cal.getTime()));*/
     }
     
     int id=0;
     String Query;
-    String roomtype;
-    String bedtype;
+    String roomType;
+    String bedType;
     String roomno;
     
     public void populateTable()
     {
         try{
-            String sql = "SELECT id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price FROM checkin";
+            String sql = "SELECT id,name,mobileno,nationality,gender,email,idproof,address,checkin,roomno,bedType,roomType,price FROM checkin WHERE checkout is NULL";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -89,7 +89,6 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -128,10 +127,6 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         jLabel2.setText("Room No :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 59, -1, -1));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 52, 134, 30));
-
-        jButton1.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
-        jButton1.setText("Search");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 120, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -262,19 +257,42 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         String mobileno = jTextField5.getText();
         String email  = jTextField9.getText();
         String checkout = jTextField4.getText();
-        String noofdaysstayed = jTextField7.getText();
+        String daysstayed = jTextField7.getText();
         String totalamt = jTextField8.getText();
         roomno = jTextField1.getText();
         
-        Query = "UPDATE checkin SET daysstayed='"+noofdaysstayed+"',totalamt='"+totalamt+"',checkout ='"+checkout+"' WHERE id='"+id+"'";
+        Connection con = ConnectionProvider.getCon();
+        CheckIn c = new CheckIn();
+        c.setId(id);
+        c.setName(name);
+        c.setMobileno(mobileno);
+        //c.setGender(gender);
+        c.setEmail(email);
+        //c.setIdproof(idproof);
+        //c.setAddress(address);
+        //c.setCheckin(checkIn);
+        c.setRoomno(roomno);
+        c.setBedType(bedType);
+        c.setRoomType(roomType);
+        //c.setPrice(price);
+        c.setDaysstayed(daysstayed);
+        c.setTotalamt(totalamt);
+        c.setCheckout(checkout);
+        Query = "UPDATE checkin SET daysstayed=? AND totalamt=? AND checkout =? WHERE id='"+id+"'";
         try {
             ps=con.prepareStatement(Query);
+            ps.setString(1, daysstayed);
+            ps.setString(2,totalamt);
+            ps.setString(3,checkout);
+            //ps.setString(4,id);
+            ps.execute();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
         Query = "UPDATE rooms SET status='Not Booked' WHERE roomno='"+roomno+"'";
         try{
             ps=con.prepareStatement(Query);
+            ps.execute();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -310,13 +328,13 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             doc.add(paragraph2);
             Paragraph paragraph3 =  new Paragraph("\tBill ID : "+id+"\nCustomer Details:\nCustomer Name: "+name+"\nMobile Number: "+mobileno+"\nEmail: "+email+"\n");
             doc.add(paragraph3);
-            Paragraph paragraph4 =  new Paragraph("\tRoom Details: \nRoom No: "+jTextField1.getText()+"\nRoom Type: "+roomtype+"\nBed Type: "+bedtype+"\n Price per day: "+jTextField6.getText()+"\n");
+            Paragraph paragraph4 =  new Paragraph("\tRoom Details: \nRoom No: "+jTextField1.getText()+"\nRoom Type: "+roomType+"\nBed Type: "+bedType+"\n Price per day: "+jTextField6.getText()+"\n");
             doc.add(paragraph4);
             doc.add(paragraph2);
             PdfPTable tbl = new PdfPTable(4);
             tbl.addCell("Check In Date: "+jTextField3.getText());
             tbl.addCell("Check Out Date: "+checkout);
-            tbl.addCell("No of days Stayed: "+noofdaysstayed);
+            tbl.addCell("No of days Stayed: "+daysstayed);
             tbl.addCell("Total Amount Paid: "+jTextField8.getText());
             doc.add(tbl);
             doc.add(paragraph2);
@@ -349,55 +367,48 @@ public class CheckOutJFrame extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int r=jTable1.getSelectedRow();
-        String click = (jTable1.getModel().getValueAt(r, 9                                                                  ).toString());
-        String sql = "SELECT * FROM checkin WHERE roomno='"+roomno;
+        String click = (jTable1.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM checkin WHERE id='"+click+"'";
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
             if(rs.next()){
                 id = rs.getInt(1);
-                String name = rs.getString(2);
-                String mobileno = rs.getString(3);
-                String gender = rs.getString(5);
-                String nationality = rs.getString(4);
-                String email = rs.getString(6);
-                String idproof = rs.getString(7);
-                String address = rs.getString(8);
-                String checkin = rs.getString(9);
-                String roomno =rs.getString(10);
-                String bedType = rs.getString(11);
-                String roomType = rs.getString(12);
-                float price = rs.getFloat(13);
                 
-                jTextField1.setText(roomno);
-                jTextField2.setText(name);
-                jTextField5.setText(mobileno);
-                jTextField9.setText(email);
-                jTextField3.setText(checkin);
+                jTextField1.setText(rs.getString(10));
+                jTextField2.setText(rs.getString(2));
+                jTextField5.setText(rs.getString(3));
+                jTextField9.setText(rs.getString(6));
+                jTextField3.setText(rs.getString(9));
+                jTextField6.setText(rs.getString(13));
                 //jTextField4.setText(checkout);
-                //String job = (String)jComboBox1.getSelectedItem();
                 
                 SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar cal = Calendar.getInstance();
                 jTextField4.setText(myFormat.format(cal.getTime()));
+                
                 String dateBeforeString = rs.getString(9);
                 java.util.Date dateBefore = myFormat.parse(dateBeforeString);
                 String dateAfterString = myFormat.format(cal.getTime());
                 java.util.Date dateAfter = myFormat.parse(dateAfterString);
                 long difference = dateAfter.getTime() - dateBefore.getTime();
-                int noofdaysstayed = (int)(difference/(1000*60*60*24));
-                if(noofdaysstayed==0){
-                    noofdaysstayed = 1;
-                    jTextField7.setText(String.valueOf(noofdaysstayed));
-                    //jTextField6.setText(price);
-                    price = Float.parseFloat(jTextField6.getText());
-                    jTextField8.setText(String.valueOf(noofdaysstayed*price));
-                    //jTextField9.setText(rs.getString(6));
-                    //roomType = rs.getString(12);
-                    //bedType = rs.getString(11);
+                int daysstayed = (int)(difference/(1000*60*60*24));
+                if(daysstayed==0){
+                    daysstayed = 1;
+                    jTextField7.setText(String.valueOf(daysstayed));
+                    float price = Float.parseFloat(jTextField6.getText());
+                    jTextField8.setText(String.valueOf(daysstayed*price));
+                    jTextField9.setText(rs.getString(6));
+                    roomType = rs.getString(12);
+                    bedType = rs.getString(11);
                 }else{
-                    JOptionPane.showMessageDialog(null, "Room Number is not booked or Room Number Doesn't Exist");
-                }     
+                    jTextField7.setText(String.valueOf(daysstayed));
+                    float price = Float.parseFloat(jTextField6.getText());
+                    jTextField8.setText(String.valueOf(daysstayed*price));
+                    jTextField9.setText(rs.getString(6));
+                    roomType = rs.getString(12);
+                    bedType = rs.getString(11);  
+                }    
             }
             
         }catch(Exception e)
@@ -451,7 +462,6 @@ public class CheckOutJFrame extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JButton ClearButton;
     private javax.swing.JButton checkoutButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
