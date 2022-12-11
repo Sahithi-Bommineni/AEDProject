@@ -106,15 +106,19 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         lblMN = new javax.swing.JLabel();
         lblE = new javax.swing.JLabel();
         lblNation = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(1080, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CustomerCheckInLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
+        CustomerCheckInLbl.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         CustomerCheckInLbl.setText("Customer CheckIn");
-        getContentPane().add(CustomerCheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 180, 30));
+        getContentPane().add(CustomerCheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 310, 30));
 
         CustomerNameLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         CustomerNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -138,7 +142,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         PhLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PhLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PhLbl.setText("Mobile Number");
-        getContentPane().add(PhLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 124, 25));
+        getContentPane().add(PhLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 124, 25));
 
         Phtxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Phtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -147,12 +151,12 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 PhtxtKeyReleased(evt);
             }
         });
-        getContentPane().add(Phtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 121, -1));
+        getContentPane().add(Phtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 230, -1));
 
         NationalityLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         NationalityLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         NationalityLbl.setText("Nationality");
-        getContentPane().add(NationalityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 124, 23));
+        getContentPane().add(NationalityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 124, 23));
 
         Nationalitytxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         Nationalitytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -161,16 +165,16 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 NationalitytxtKeyReleased(evt);
             }
         });
-        getContentPane().add(Nationalitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 121, -1));
+        getContentPane().add(Nationalitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 170, -1));
 
         GenderLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         GenderLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         GenderLbl.setText("Gender");
-        getContentPane().add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 124, 25));
+        getContentPane().add(GenderLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 124, 25));
 
         GenderBox.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         GenderBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
-        getContentPane().add(GenderBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 121, -1));
+        getContentPane().add(GenderBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 121, -1));
 
         EmailLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         EmailLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -189,11 +193,11 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         IDproofLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         IDproofLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         IDproofLbl.setText("ID Proof");
-        getContentPane().add(IDproofLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 124, 23));
+        getContentPane().add(IDproofLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 124, 23));
 
         IDProoftxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         IDProoftxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(IDProoftxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 121, -1));
+        getContentPane().add(IDProoftxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -207,16 +211,16 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         CheckInLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         CheckInLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         CheckInLbl.setText("Check In Date(Today)");
-        getContentPane().add(CheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, 25));
+        getContentPane().add(CheckInLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, 25));
 
         CheckIntxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         CheckIntxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(CheckIntxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 140, -1));
+        getContentPane().add(CheckIntxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 140, -1));
 
         BedLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         BedLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BedLbl.setText("Bed Type");
-        getContentPane().add(BedLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 92, 23));
+        getContentPane().add(BedLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 92, 23));
 
         BedBox.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         BedBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Twin", "Queen", "King" }));
@@ -225,12 +229,12 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 BedBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(BedBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 118, -1));
+        getContentPane().add(BedBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 118, -1));
 
         RoomTypeLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         RoomTypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         RoomTypeLbl.setText("Room Type");
-        getContentPane().add(RoomTypeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 110, 25));
+        getContentPane().add(RoomTypeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 110, 25));
 
         TypeBox.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
         TypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "Non-AC", " " }));
@@ -239,20 +243,20 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 TypeBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(TypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 118, -1));
+        getContentPane().add(TypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 118, -1));
 
         RoomNoLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         RoomNoLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         RoomNoLbl.setText("Room No");
-        getContentPane().add(RoomNoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 92, 20));
+        getContentPane().add(RoomNoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 92, 20));
 
         PriceLbl.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PriceLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PriceLbl.setText("Price");
-        getContentPane().add(PriceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 92, -1));
+        getContentPane().add(PriceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 92, -1));
 
         Pricetxt.setFont(new java.awt.Font("AppleGothic", 0, 14)); // NOI18N
-        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 118, -1));
+        getContentPane().add(Pricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 118, -1));
 
         AlloteRoomBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         AlloteRoomBtn.setText("Allote Rooms");
@@ -277,9 +281,9 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 287, 120, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 120, -1));
 
-        BackButton.setBackground(new java.awt.Color(204, 204, 204));
+        BackButton.setBackground(new java.awt.Color(200, 199, 175));
         BackButton.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         BackButton.setText("Log Out");
         BackButton.setBorder(null);
@@ -294,9 +298,15 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         getContentPane().add(lblE, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, 20));
         getContentPane().add(lblNation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 140, 20));
 
+        jButton1.setBackground(new java.awt.Color(200, 199, 175));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setOpaque(true);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 330, 50));
+
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CheckIn.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -30, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -140, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -533,6 +543,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel RoomNoLbl;
     private javax.swing.JLabel RoomTypeLbl;
     private javax.swing.JComboBox<String> TypeBox;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
