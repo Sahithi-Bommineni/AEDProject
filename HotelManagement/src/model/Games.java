@@ -10,7 +10,7 @@ package model;
  */
 public class Games {
     
-    int roomno;
+    String roomno;
     String people;
     String option;
     String time;
@@ -20,7 +20,7 @@ public class Games {
         
     }
     
-    public Games(int roomno,String people,String option,String time,String game){
+    public Games(String roomno,String people,String option,String time,String game){
         this.roomno=roomno;
         this.option=option;
         this.people=people;
@@ -28,11 +28,11 @@ public class Games {
         this.game=game;
     }
 
-    public int getRoomno() {
+    public String getRoomno() {
         return roomno;
     }
 
-    public void setRoomno(int roomno) {
+    public void setRoomno(String roomno) {
         this.roomno = roomno;
     }
 
