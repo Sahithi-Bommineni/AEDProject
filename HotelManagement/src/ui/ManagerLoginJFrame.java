@@ -32,60 +32,145 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
         Bookingsbtn = new javax.swing.JButton();
         Clockinbtn = new javax.swing.JButton();
         ClockOutBtn = new javax.swing.JButton();
+        Roomsbtn1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        homeButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        EmpDirbtn1 = new javax.swing.JButton();
+        Roomsbtn2 = new javax.swing.JButton();
+        Bookingsbtn1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setText("Hello Manager !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 250, 40));
 
         EmpDirbtn.setBackground(new java.awt.Color(255, 255, 204));
-        EmpDirbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        EmpDirbtn.setText("Employee Directory ");
+        EmpDirbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        EmpDirbtn.setText("Housekeeping");
         EmpDirbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpDirbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(EmpDirbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
+        getContentPane().add(EmpDirbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 270, 50));
 
         Roomsbtn.setBackground(new java.awt.Color(255, 255, 204));
-        Roomsbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        Roomsbtn.setText("List of Rooms");
+        Roomsbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Roomsbtn.setText("Cab ");
         Roomsbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RoomsbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Roomsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 290, 150, -1));
+        getContentPane().add(Roomsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 270, 50));
 
         Bookingsbtn.setBackground(new java.awt.Color(255, 255, 204));
-        Bookingsbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        Bookingsbtn.setText("Bookings ");
+        Bookingsbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Bookingsbtn.setText("Restaurant");
         Bookingsbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookingsbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Bookingsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 350, 140, -1));
+        getContentPane().add(Bookingsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 270, 50));
 
         Clockinbtn.setBackground(new java.awt.Color(255, 255, 204));
-        Clockinbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Clockinbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Clockinbtn.setText("Clock in");
         Clockinbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClockinbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Clockinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 120, -1));
+        getContentPane().add(Clockinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 170, -1));
 
         ClockOutBtn.setBackground(new java.awt.Color(255, 255, 204));
-        ClockOutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        ClockOutBtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         ClockOutBtn.setText("Clock Out ");
-        getContentPane().add(ClockOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, -1));
+        getContentPane().add(ClockOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 170, -1));
+
+        Roomsbtn1.setBackground(new java.awt.Color(255, 255, 204));
+        Roomsbtn1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Roomsbtn1.setText("Games/Gym");
+        Roomsbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Roomsbtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Roomsbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 270, 50));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 0, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Palm Tree");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 0, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Resorts");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
+
+        homeButton.setBackground(new java.awt.Color(0, 0, 0));
+        homeButton.setForeground(new java.awt.Color(255, 255, 255));
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2022-11-30 at 8.57.36 PM.jpeg"))); // NOI18N
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 80));
+
+        BackButton.setBackground(new java.awt.Color(255, 255, 204));
+        BackButton.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 80, 20));
+
+        EmpDirbtn1.setBackground(new java.awt.Color(255, 255, 204));
+        EmpDirbtn1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        EmpDirbtn1.setText("Employee Directory ");
+        EmpDirbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpDirbtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmpDirbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, 50));
+
+        Roomsbtn2.setBackground(new java.awt.Color(255, 255, 204));
+        Roomsbtn2.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Roomsbtn2.setText("List of Rooms");
+        Roomsbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Roomsbtn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Roomsbtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 270, 50));
+
+        Bookingsbtn1.setBackground(new java.awt.Color(255, 255, 204));
+        Bookingsbtn1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Bookingsbtn1.setText("Bookings ");
+        Bookingsbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bookingsbtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Bookingsbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 270, 50));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Hotel Manager.jpg"))); // NOI18N
@@ -100,21 +185,54 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
     private void EmpDirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpDirbtnActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ViewEmployeeJFrame().setVisible(true);
+        ViewEmployeeJFrame viewemppanel = new ViewEmployeeJFrame();
+        viewemppanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_EmpDirbtnActionPerformed
 
     private void RoomsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomsbtnActionPerformed
         // TODO add your handling code here:
-            setVisible(false);
-        new ViewRoomsJFrame().setVisible(true);
+        ViewRoomsJFrame viewroompanel = new ViewRoomsJFrame();
+        viewroompanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_RoomsbtnActionPerformed
 
     private void BookingsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingsbtnActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new CustomerDetailsBill().setVisible(true);
+        CustomerDetailsBill bookingspanel = new CustomerDetailsBill();
+        bookingspanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BookingsbtnActionPerformed
+
+    private void Roomsbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Roomsbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Roomsbtn1ActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+        HomePage homepanel = new HomePage();
+        homepanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        setVisible(false);
+        new StaffLoginJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void EmpDirbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpDirbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmpDirbtn1ActionPerformed
+
+    private void Roomsbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Roomsbtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Roomsbtn2ActionPerformed
+
+    private void Bookingsbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bookingsbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Bookingsbtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,12 +270,20 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton Bookingsbtn;
+    private javax.swing.JButton Bookingsbtn1;
     private javax.swing.JButton ClockOutBtn;
     private javax.swing.JButton Clockinbtn;
     private javax.swing.JButton EmpDirbtn;
+    private javax.swing.JButton EmpDirbtn1;
     private javax.swing.JButton Roomsbtn;
+    private javax.swing.JButton Roomsbtn1;
+    private javax.swing.JButton Roomsbtn2;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
