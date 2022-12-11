@@ -403,10 +403,11 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
         String name=txtName.getText();
         String sql = "DELETE FROM employee WHERE name='"+name+"'";
         try{
-            int r=emptable.getSelectedRow();
-            ps=con.prepareCall(sql);
-            int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-            if(i==JOptionPane.YES_OPTION){
+            if(emptable.getSelectedRowCount()==1){
+                int r=emptable.getSelectedRow();
+                ps=con.prepareCall(sql);
+                int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if(i==JOptionPane.YES_OPTION){
                 ps.execute();
                 JOptionPane.showMessageDialog(null,"Deleted Successfully.");
                 txtName.setText("");
@@ -419,10 +420,12 @@ public class ViewEmployeeJFrame extends javax.swing.JFrame {
                 buttonGroup1.clearSelection();
                 setVisible(false);
                 new ViewEmployeeJFrame().setVisible(true);
-                
+                }   
             }
-            
-        }catch(Exception e){
+            else if(emptable.getSelectedRowCount()==0){
+                    JOptionPane.showMessageDialog(null, "Please select a row to delete");
+                }
+            }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_DeleteButtonActionPerformed

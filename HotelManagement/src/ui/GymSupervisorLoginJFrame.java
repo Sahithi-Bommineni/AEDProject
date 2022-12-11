@@ -4,17 +4,41 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form GymSupervisorLoginJFrame
      */
     public GymSupervisorLoginJFrame() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM games";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -26,29 +50,41 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        jLabel1.setText("Games and Gym Bookings ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        BackButton.setBackground(new java.awt.Color(255, 204, 153));
+        BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 100, 40));
 
         SearchTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 150, 30));
 
+        Searchbtn.setBackground(new java.awt.Color(255, 204, 153));
+        Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Searchbtn.setText("Search ");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, -1, -1));
+        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -60,9 +96,17 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
                 "Room No", "No of people", "Gym/Indoor", "Time Slot", "Game "
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 500, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 670, 350));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Gym-Games-e1618991083898.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-280, -30, 1290, 810));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,6 +114,36 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
     private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        setVisible(false);
+        new StaffLoginJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int r = jTable1.getSelectedRow();
+        String click = (jTable1.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM games WHERE roomno ='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String roomno = rs.getString(1);
+                String people = rs.getString(2);
+                String option = rs.getString(3);
+                String time = rs.getString(4);
+                String game = rs.getString(5);
+                
+                //searchtxt.isEditable(false);
+                //searchtxt.setText(roomno);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "e");
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -107,9 +181,10 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JButton Searchbtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

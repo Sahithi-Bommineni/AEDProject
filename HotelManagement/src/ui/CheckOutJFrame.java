@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -9,6 +9,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import database.ConnectionProvider;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,9 +59,9 @@ public class CheckOutJFrame extends javax.swing.JFrame {
     
     int id=0;
     String Query;
-    String roomType;
-    String bedType;
-    String roomNo;
+    String roomtype;
+    String bedtype;
+    String roomno;
     
     public void populateTable()
     {
@@ -110,6 +111,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         checkoutButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -234,6 +236,17 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         getContentPane().add(ClearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 120, 40));
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -80, -1, -1));
 
+        BackButton.setBackground(new java.awt.Color(204, 204, 204));
+        BackButton.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        BackButton.setText("Log Out");
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 10, 120, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,16 +263,16 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         String email  = jTextField9.getText();
         String checkout = jTextField4.getText();
         String noofdaysstayed = jTextField7.getText();
-        String totalAmount = jTextField8.getText();
-        roomNo = jTextField1.getText();
+        String totalamt = jTextField8.getText();
+        roomno = jTextField1.getText();
         
-        Query = "UPDATE checkin SET daysstayed='"+noofdaysstayed+"',totalamt='"+totalAmount+"',checkout ='"+checkout+"' WHERE id='"+id+"'";
+        Query = "UPDATE checkin SET daysstayed='"+noofdaysstayed+"',totalamt='"+totalamt+"',checkout ='"+checkout+"' WHERE id='"+id+"'";
         try {
             ps=con.prepareStatement(Query);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        Query = "UPDATE rooms SET status='Not Booked' WHERE roomno='"+roomNo+"'";
+        Query = "UPDATE rooms SET status='Not Booked' WHERE roomno='"+roomno+"'";
         try{
             ps=con.prepareStatement(Query);
         }catch(Exception e){
@@ -295,9 +308,9 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             doc.add(paragraph1);
             Paragraph paragraph2 =  new Paragraph("*************************************************************************************************");
             doc.add(paragraph2);
-            Paragraph paragraph3 =  new Paragraph("\tBill ID : "+id+"\nCustomer Details:\nName: "+name+"\nMobile Number: "+mobileno+"\nEmail: "+email+"\n");
+            Paragraph paragraph3 =  new Paragraph("\tBill ID : "+id+"\nCustomer Details:\nCustomer Name: "+name+"\nMobile Number: "+mobileno+"\nEmail: "+email+"\n");
             doc.add(paragraph3);
-            Paragraph paragraph4 =  new Paragraph("\tRoom Details: \nRoom No: "+jTextField1.getText()+"\nRoom Type: "+roomType+"\nBed Type: "+bedType+"\n Price per day: "+jTextField6.getText()+"\n");
+            Paragraph paragraph4 =  new Paragraph("\tRoom Details: \nRoom No: "+jTextField1.getText()+"\nRoom Type: "+roomtype+"\nBed Type: "+bedtype+"\n Price per day: "+jTextField6.getText()+"\n");
             doc.add(paragraph4);
             doc.add(paragraph2);
             PdfPTable tbl = new PdfPTable(4);
@@ -316,18 +329,33 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         doc.close();
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to print the bill?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            try{
+                if(new File("E:\\"+id+".pdf").exists()){
+                    Process p = Runtime
+                            .getRuntime()
+                            .exec("rundll32 url.dll,FileProtocolHandler E:\\"+id+".pdf");
+                }else{
+                        System.out.println("File doesnt exist");
+                        }
+            }
+                catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                        }
+            }
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int r=jTable1.getSelectedRow();
         String click = (jTable1.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM checkin WHERE id='"+click+"'";
+        String sql = "SELECT * FROM checkin WHERE roomno='"+roomno;
         try{
             ps=con.prepareCall(sql);
             rs=ps.executeQuery();
             if(rs.next()){
-                String id = rs.getString(1);
+                id = rs.getInt(1);
                 String name = rs.getString(2);
                 String mobileno = rs.getString(3);
                 String gender = rs.getString(5);
@@ -339,8 +367,9 @@ public class CheckOutJFrame extends javax.swing.JFrame {
                 String roomno =rs.getString(10);
                 String bedType = rs.getString(11);
                 String roomType = rs.getString(12);
-                String price = rs.getString(13);
-
+                float price = rs.getFloat(13);
+                
+                jTextField1.setText(roomno);
                 jTextField2.setText(name);
                 jTextField5.setText(mobileno);
                 jTextField9.setText(email);
@@ -350,20 +379,19 @@ public class CheckOutJFrame extends javax.swing.JFrame {
                 
                 SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar cal = Calendar.getInstance();
-                //jTextField4.setText(myFormat.format(cal.getTime()));
+                jTextField4.setText(myFormat.format(cal.getTime()));
                 String dateBeforeString = rs.getString(9);
                 java.util.Date dateBefore = myFormat.parse(dateBeforeString);
                 String dateAfterString = myFormat.format(cal.getTime());
                 java.util.Date dateAfter = myFormat.parse(dateAfterString);
                 long difference = dateAfter.getTime() - dateBefore.getTime();
                 int noofdaysstayed = (int)(difference/(1000*60*60*24));
-                String totalamt = String.valueOf(Integer.parseInt(price) * noofdaysstayed);
-                //totalamt = noofdaysstayed*(price);
                 if(noofdaysstayed==0){
                     noofdaysstayed = 1;
                     jTextField7.setText(String.valueOf(noofdaysstayed));
-                    jTextField6.setText(price);
-                    jTextField8.setText(String.valueOf(totalamt));
+                    //jTextField6.setText(price);
+                    price = Float.parseFloat(jTextField6.getText());
+                    jTextField8.setText(String.valueOf(noofdaysstayed*price));
                     //jTextField9.setText(rs.getString(6));
                     //roomType = rs.getString(12);
                     //bedType = rs.getString(11);
@@ -374,9 +402,15 @@ public class CheckOutJFrame extends javax.swing.JFrame {
             
         }catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Room Already Checked Out");
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ReceptionistJFrame().setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,6 +448,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton ClearButton;
     private javax.swing.JButton checkoutButton;
     private javax.swing.JButton jButton1;

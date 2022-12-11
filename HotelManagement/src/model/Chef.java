@@ -15,6 +15,18 @@ public class Chef {
     String location;
     String special_instructions;
     String status;
+    
+    public Chef(){
+        
+    }
+    
+    public Chef(int roomno,String mealtype, String location, String special_instructions, String status){
+        this.roomno=roomno;
+        this.mealtype=mealtype;
+        this.location=location;
+        this.special_instructions=special_instructions;
+        this.status=status;
+    }
 
     public int getRoomno() {
         return roomno;
