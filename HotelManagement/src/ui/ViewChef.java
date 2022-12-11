@@ -4,6 +4,13 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author koushalamshala
@@ -13,8 +20,26 @@ public class ViewChef extends javax.swing.JFrame {
     /**
      * Creates new form ViewChef
      */
+        Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     public ViewChef() {
         initComponents();
+           con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM chef";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            OrdersTbl.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -27,12 +52,16 @@ public class ViewChef extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        OrdersTbl = new javax.swing.JTable();
         DeleteBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Backbtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        OrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -43,33 +72,72 @@ public class ViewChef extends javax.swing.JFrame {
                 "Room No", "Type", "Where", "Dishes", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(OrdersTbl);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 68, 571, 280));
+
+        DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 366, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DeleteBtn)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(DeleteBtn)
-                .addGap(64, 64, 64))
-        );
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+        jLabel1.setText("Restaurant Orders");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 190, 30));
+
+        Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Backbtn.setText("Back");
+        Backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chef.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1120, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
+        // TODO add your handling code here:
+            ManagerLoginJFrame manpanel = new ManagerLoginJFrame();
+        manpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BackbtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+           int r=OrdersTbl.getSelectedRow();
+        String click = (OrdersTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM chef WHERE roomno='"+click+"'";     
+        
+        try{
+            if(OrdersTbl.getSelectedRowCount()==1){
+                
+                ps=con.prepareCall(sql);
+                int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if(i==JOptionPane.YES_OPTION){
+                ps.execute();
+                JOptionPane.showMessageDialog(null,"Deleted Successfully.");
+                
+               
+                setVisible(false);
+                new ViewChef().setVisible(true);
+                }   
+            }
+            else if(OrdersTbl.getSelectedRowCount()==0){
+                    JOptionPane.showMessageDialog(null, "Please select a row to delete");
+                }
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,8 +175,11 @@ public class ViewChef extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Backbtn;
     private javax.swing.JButton DeleteBtn;
+    private javax.swing.JTable OrdersTbl;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
