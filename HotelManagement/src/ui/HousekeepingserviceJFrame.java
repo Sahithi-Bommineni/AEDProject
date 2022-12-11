@@ -11,6 +11,7 @@ import database.ConnectionProvider;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import model.HouseKeeping;
 
 /**
  *
@@ -201,6 +202,13 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         }
         else{
         Connection con = ConnectionProvider.getCon();
+        HouseKeeping h = new HouseKeeping();
+        h.setRoomno(roomno);
+        h.setRoomcleaning(roomcleaning);
+        h.setRestroom(restroom);
+        h.setSplins(splins);
+        h.setTime(time);
+        h.setDate(date);
             try{
                 String sql = "INSERT INTO housekeeping(roomno,roomcleaning,restroom,splins,date,time) VALUES (?,?,?,?,?,?)";
                 ps=con.prepareStatement(sql);
