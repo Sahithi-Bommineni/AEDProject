@@ -51,7 +51,7 @@ public class IndoorGames extends javax.swing.JFrame {
         GameLbl = new javax.swing.JLabel();
         GameCombo = new javax.swing.JComboBox<>();
         BackButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Submitbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,15 +84,15 @@ public class IndoorGames extends javax.swing.JFrame {
         getContentPane().add(TimeSlotCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 160, -1, -1));
 
         NoOfPeopleCombo.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        NoOfPeopleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NoOfPeopleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         getContentPane().add(NoOfPeopleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 205, 142, -1));
 
-        GymLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         buttonGroup1.add(GymLbl);
-        GymLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        GymLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GymLbl.setText("GYM");
         getContentPane().add(GymLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 248, 71, -1));
 
+        buttonGroup1.add(IndoorGames);
         IndoorGames.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         IndoorGames.setText("Indoor Games");
         getContentPane().add(IndoorGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 248, 142, -1));
@@ -100,7 +100,7 @@ public class IndoorGames extends javax.swing.JFrame {
         GameLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         GameLbl.setText("Game");
-        getContentPane().add(GameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 287, 142, 25));
+        getContentPane().add(GameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 142, 25));
 
         GameCombo.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Billiards", "Table Tennis", "PlayStation", "Carrom", "Chess" }));
@@ -118,16 +118,16 @@ public class IndoorGames extends javax.swing.JFrame {
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 100, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Submitbtn.setBackground(new java.awt.Color(0, 204, 204));
+        Submitbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        Submitbtn.setForeground(new java.awt.Color(255, 255, 255));
+        Submitbtn.setText("Book");
+        Submitbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SubmitbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Indoor games.jpeg"))); // NOI18N
         jLabel2.setText("S");
@@ -142,7 +142,7 @@ public class IndoorGames extends javax.swing.JFrame {
         new CustomerServiceJFrame().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
         String roomno = (String)RoomNoCombo.getSelectedItem();
         String game = null;
@@ -194,7 +194,7 @@ public class IndoorGames extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SubmitbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,10 +241,10 @@ public class IndoorGames extends javax.swing.JFrame {
     private javax.swing.JLabel NoOfPeopleLbl;
     private javax.swing.JComboBox<String> RoomNoCombo;
     private javax.swing.JLabel RoomNoLbl;
+    private javax.swing.JButton Submitbtn;
     private javax.swing.JComboBox<String> TimeSlotCombo;
     private javax.swing.JLabel TimeSlotLbl;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
