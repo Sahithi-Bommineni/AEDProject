@@ -160,6 +160,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         {
             StaffLoginJFrame staffpanel = new StaffLoginJFrame();
             staffpanel.setVisible(true);
+            dispose();
         }
         else
         {
