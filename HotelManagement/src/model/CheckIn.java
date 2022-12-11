@@ -9,7 +9,6 @@ package model;
  * @author koushalamshala
  */
 public class CheckIn {
-<<<<<<< HEAD
     int id;
     String name;
     String mobileno;
@@ -166,10 +165,4 @@ public class CheckIn {
     public void setTotalamt(int totalamt) {
         this.totalamt = totalamt;
     }
-    
-    
-=======
-    String people;
-    int id;
->>>>>>> origin/main
 }
