@@ -55,6 +55,7 @@ public class IndoorGames extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
@@ -180,11 +181,11 @@ public class IndoorGames extends javax.swing.JFrame {
             
             
             try{
-                String sql = "INSERT INTO games(roomno,time,people,option,game) VALUES (?,?,?,?,?)";
+                String sql = "INSERT INTO games(roomno,people,time,option,game) VALUES (?,?,?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setString(1,roomno);
-                ps.setString(2, time);
-                ps.setString(3, people);
+                ps.setString(3, time);
+                ps.setString(2, people);
                 ps.setString(4, option);
                 ps.setString(5, game);
                 ps.execute();

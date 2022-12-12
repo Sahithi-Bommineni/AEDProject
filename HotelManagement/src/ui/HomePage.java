@@ -32,14 +32,13 @@ public class HomePage extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         joinButton = new javax.swing.JButton();
         bookButton = new javax.swing.JButton();
-        manageButton = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(70, 118, 0, 0));
-        setLocation(new java.awt.Point(50, 118));
+        setLocation(new java.awt.Point(150, 118));
         setResizable(false);
 
         jSplitPane1.setDividerLocation(150);
@@ -77,8 +76,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        manageButton.setText("Manage Booking");
-
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -88,14 +85,13 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(manageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                             .addComponent(bookButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(joinButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(homeButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 32, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
@@ -109,9 +105,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(joinButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bookButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manageButton)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(leftPanel);
@@ -172,8 +166,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
-            CustomerRoomBookingJFrame Customerpanel = new CustomerRoomBookingJFrame();
-        Customerpanel.setVisible(true);
+        LoginJFrame lpanel = new LoginJFrame();
+        lpanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_bookButtonActionPerformed
 
@@ -222,7 +216,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton joinButton;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginButton;
-    private javax.swing.JButton manageButton;
     private javax.swing.JPanel rightPanel;
     // End of variables declaration//GEN-END:variables
 }
