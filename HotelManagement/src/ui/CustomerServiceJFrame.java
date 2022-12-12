@@ -4,17 +4,29 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nikhithajarabana
  */
 public class CustomerServiceJFrame extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form CustomerServiceJFrame
      */
     public CustomerServiceJFrame() {
         initComponents();
+        
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -131,6 +143,23 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
 
     private void DriverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DriverbtnActionPerformed
         // TODO add your handling code here:
+        String sql = "SELECT * FROM checkin WHERE roomno=?";
+        try{
+           ps=con.prepareStatement(sql);
+           rs=ps.executeQuery();
+                if(rs.next())
+                {
+                    String roomno=rs.getString(10);
+                    String occupancy=rs.getString(14);
+                    
+        DriverServiceJFrame driver = new DriverServiceJFrame();
+        driver.setVisible(true);
+        this.dispose();
+        driver.getInfo(roomno,occupancy);
+        }
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
         DriverServiceJFrame driver = new DriverServiceJFrame();
         driver.setVisible(true);
         this.dispose();
@@ -138,9 +167,26 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
 
     private void FoodbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodbtnActionPerformed
         // TODO add your handling code here:
+        String sql = "SELECT * FROM checkin WHERE roomno=?";
+        try{
+           ps=con.prepareStatement(sql);
+           rs=ps.executeQuery();
+                if(rs.next())
+                {
+                    String roomno=rs.getString(10);
+                    String occupancy=rs.getString(14);
+                    
+                    this.dispose();
         FoodServiceJFrame food = new FoodServiceJFrame();
         food.setVisible(true);
-        this.dispose();
+        food.getInfo(roomno,occupancy);
+        }
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
+        
+        
+        
     }//GEN-LAST:event_FoodbtnActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed

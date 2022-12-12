@@ -36,6 +36,11 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         DateTxt.setText(myFormat.format(cal.getTime()));
     }
+    
+    void getInfo(String roomno,String occupancy){
+     RoomNtxt.setText(roomno);
+     NoOfPassTxt.setText(occupancy);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,10 +132,10 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Extra Requirements :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         ExtraReqTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 280, 30));
+        getContentPane().add(ExtraReqTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 280, 30));
 
         Submitbtn.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         Submitbtn.setText("Submit");
