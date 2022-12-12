@@ -161,11 +161,11 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         // TODO add your handling code here:
-        int check=0;
+        //int check=0;
         email=Emailtxt.getText();
         if(email.equals(""))
         {
-            check=1;
+            //check=1;
             JOptionPane.showMessageDialog(null, "Please enter email");
         }
         else{
@@ -185,7 +185,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                     String securityques = rs.getString(5);
                     
                     jTextField2.setText(securityques);
-                    check=2;
+                    //check=2;
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Email doesnot exists");
@@ -222,21 +222,17 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
              try{
                   String sql = "SELECT * FROM customerlogin WHERE email='"+email;
                   ps=con.prepareStatement(sql);
-                  rs=ps.executeQuery();
+                  ps.executeQuery();
                   if(answer.equals(jTextField1.getText()))
                   {
                     //check=1;
-                    String query="UPDATE customerlogin SET password='"+password+"' WHERE email ='"+email;
+                    String query="UPDATE customerlogin SET 'password='"+password+"' WHERE 'email='"+email;
                     try{
                         jPasswordField1.setEditable(true);
-                        ps=con.prepareStatement(sql);
+                        ps=con.prepareStatement(query);
                         //ps.setString(1, password);
                         //ps.setString(2, email);
-                        ps.execute();
-                        
-                        Emailtxt.setText("");
-                        jTextField1.setText("");
-                        jPasswordField1.setText("");
+                        ps.executeQuery();
                         
                         setVisible(false);
                         new ForgotPasswordJFrame().setVisible(true);
@@ -244,10 +240,6 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                     catch(Exception e){
                         JOptionPane.showMessageDialog(null, e);
                     }
-                  }
-                    else{
-                            
-                        JOptionPane.showMessageDialog(null, "Incorrect Answer");
                   }
             }catch(Exception e)
                 {
