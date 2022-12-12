@@ -73,10 +73,10 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1300, 577));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerDetailsBillLbl.setText("CUSTOMER DETAILS BILL");
-        getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 180, 31));
+        getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 440, 31));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,11 +95,12 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 138, 1018, 315));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 318, 27));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 360, 27));
 
+        BackBtn.setBackground(new java.awt.Color(153, 204, 255));
         BackBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         BackBtn.setText("Back");
         getContentPane().add(BackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
