@@ -95,10 +95,10 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 138, 1018, 315));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 318, 27));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 360, 27));
 
         BackBtn.setBackground(new java.awt.Color(153, 204, 255));
         BackBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
