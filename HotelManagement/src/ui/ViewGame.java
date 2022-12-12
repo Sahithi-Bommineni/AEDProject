@@ -71,11 +71,11 @@ public class ViewGame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Room No", "No of people", "Date", "Time Slot", "Gym/Indoor", "Game "
+                "Room No", "No of people", "Time Slot", "Gym/Indoor", "Game "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -119,6 +119,23 @@ public class ViewGame extends javax.swing.JFrame {
 
     private void GameTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GameTblMouseClicked
         // TODO add your handling code here:
+                       int r=GameTbl.getSelectedRow();
+        String click = (GameTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM games WHERE roomno='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String roomno = rs.getString(1);
+                String noofpeople = rs.getString(2);
+                String timeslot = rs.getString(3);
+                String option = rs.getString(4);
+                String game = rs.getString(5);
+            }  
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }     
        
     }//GEN-LAST:event_GameTblMouseClicked
 

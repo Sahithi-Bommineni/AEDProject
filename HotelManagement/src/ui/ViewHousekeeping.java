@@ -64,13 +64,13 @@ public class ViewHousekeeping extends javax.swing.JFrame {
 
         HouseKeepingTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "RoomNo", "RoomCleaning", "RestRoom Cleaning", "TimeSlot", "Status"
+                "RoomNo", "RoomCleaning", "RestRoom Cleaning", "Special Instructions", "TimeSlot", "Status"
             }
         ));
         HouseKeepingTbl.addMouseListener(new java.awt.event.MouseAdapter() {

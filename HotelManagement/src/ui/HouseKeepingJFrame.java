@@ -68,13 +68,13 @@ public class HouseKeepingJFrame extends javax.swing.JFrame {
 
         Housekeepingtbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Room Cleaning", "Restroom Cleaning", "Time slot", "Status"
+                "Room No", "Room Cleaning", "Restroom Cleaning", "special instructions", "Time slot", "Status"
             }
         ));
         Housekeepingtbl.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -73,7 +73,6 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         setLocation(new java.awt.Point(300, 118));
         setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
