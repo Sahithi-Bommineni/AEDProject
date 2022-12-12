@@ -46,30 +46,34 @@ public class CustomerLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(150, 118));
+        setPreferredSize(new java.awt.Dimension(970, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 202, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel1.setText("Username");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 120, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel2.setText("Password");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 164, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 117, 153, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 161, 153, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 190, 40));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 190, 40));
 
-        CustomerLoginLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        CustomerLoginLbl.setFont(new java.awt.Font("Big Caslon", 1, 48)); // NOI18N
         CustomerLoginLbl.setText("Guest Login");
-        getContentPane().add(CustomerLoginLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 33, 132, -1));
+        getContentPane().add(CustomerLoginLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 270, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Guest BAckground.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -350, -1, -1));
 
         pack();
@@ -94,7 +98,7 @@ public class CustomerLogin extends javax.swing.JFrame {
             
             //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
             try{
-                String sql = "SELECT * FROM customerlogin WHERE email=? AND password=?";
+                String sql = "SELECT * FROM checkin WHERE roomno=? AND name=?";
                 ps=con.prepareStatement(sql);
                 ps.setString(1, jTextField1.getText());
                 ps.setString(2,jPasswordField1.getText());

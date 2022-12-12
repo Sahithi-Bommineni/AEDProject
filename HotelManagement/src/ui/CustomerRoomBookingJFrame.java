@@ -436,8 +436,9 @@ public class CustomerRoomBookingJFrame extends javax.swing.JFrame {
                   Emailtxt.setText("");
                   Addresstxt.setText("");
                   IDProoftxt.setText("");
-                  setVisible(false);
-                  new CustomerCheckInJFrame().setVisible(true);
+                  JOptionPane.showMessageDialog(null, "Thanks for booking with us...Have a happy stay!");
+                  this.dispose();
+                  new HomePage().setVisible(true);
               }
              
               
