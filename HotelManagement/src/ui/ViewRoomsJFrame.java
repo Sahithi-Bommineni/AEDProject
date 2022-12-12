@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -128,6 +131,14 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void SearchtxtKeyPressed(java.awt.event.KeyEvent evt) {                                           
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) ViewRoomtbl.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        ViewRoomtbl.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(Searchtxt.getText().trim()));
+    }   
+    
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         ManagerLoginJFrame managerpanel = new ManagerLoginJFrame();
