@@ -161,7 +161,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 90, 30));
 
         jComboBox2.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "1 hour", "2 hours", "4 hours", "12 hours", "24 hours", " " }));
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 220, 30));
 
         lblPassengers.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +209,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
           d.setPassengers(passenger);
           d.setRequirements(requirements);
           try{
-              String sql = "INSERT INTO Driver (roomno,cartype,passenger,location,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
+              String sql = "INSERT INTO Driver (roomno,cartype,passenger,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setInt(1, roomno);
               ps.setString(2, cartype);

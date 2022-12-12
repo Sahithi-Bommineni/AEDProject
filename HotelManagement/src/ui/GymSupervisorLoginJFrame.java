@@ -53,7 +53,9 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
 
         BackButton = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
-        Searchbtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Updatebtn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -78,12 +80,25 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
                 SearchTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 150, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 150, 30));
 
-        Searchbtn.setBackground(new java.awt.Color(255, 204, 153));
-        Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        Searchbtn.setText("Search ");
-        getContentPane().add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setText("Room No");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 168, -1, 20));
+
+        Updatebtn.setBackground(new java.awt.Color(204, 204, 204));
+        Updatebtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Updatebtn.setText("Update");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 330, 100, 30));
+
+        jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Alloted", "Not Vacant" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 280, 150, 30));
 
         jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -94,7 +109,7 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Room No", "No of people", "Gym/Indoor", "Time Slot", "Game "
+                "Room No", "Time", "Date", "Game ", "status"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,11 +148,11 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
             rs=ps.executeQuery();
             if(rs.next()){
                 String roomno = rs.getString(1);
-                String people = rs.getString(2);
-                String option = rs.getString(3);
-                String time = rs.getString(4);
-                String game = rs.getString(5);
+                String timeslot = rs.getString(2);
+                String date = rs.getString(3);
                 
+                String game = rs.getString(4);
+                SearchTxt.setText(roomno);
                 //searchtxt.isEditable(false);
                 //searchtxt.setText(roomno);
             }
@@ -145,6 +160,29 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "e");
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+        // TODO add your handling code here:
+        String roomno = SearchTxt.getText();
+        String status = (String)jComboBox1.getSelectedItem();
+        String sql = "UPDATE games SET status = ? WHERE roomno = ?";
+        try{
+            if(status.equalsIgnoreCase("Select Status")){
+                JOptionPane.showMessageDialog(null, "Please select status");
+            }
+            else{
+                ps=con.prepareStatement(sql);
+                ps.setString(1,status);
+                ps.setString(2,roomno);
+                ps.execute();
+
+                jComboBox1.setSelectedItem("Select Status");
+                new GymSupervisorLoginJFrame().setVisible(true);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_UpdatebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +222,9 @@ public class GymSupervisorLoginJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField SearchTxt;
-    private javax.swing.JButton Searchbtn;
+    private javax.swing.JButton Updatebtn;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

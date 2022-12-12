@@ -11,8 +11,7 @@ package model;
 public class Games {
     
     String roomno;
-    String people;
-    String option;
+   String date;
     String time;
     String game;
     
@@ -20,12 +19,19 @@ public class Games {
         
     }
     
-    public Games(String roomno,String people,String option,String time,String game){
+    public Games(String roomno,String date,String time,String game){
         this.roomno=roomno;
-        this.option=option;
-        this.people=people;
+       this.date = date;
         this.time=time;
         this.game=game;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getRoomno() {
@@ -36,21 +42,7 @@ public class Games {
         this.roomno = roomno;
     }
 
-    public String getPeople() {
-        return people;
-    }
-
-    public void setPeople(String people) {
-        this.people = people;
-    }
-
-    public String getOption() {
-        return option;
-    }
-
-    public void setOption(String option) {
-        this.option = option;
-    }
+    
 
     public String getTime() {
         return time;
