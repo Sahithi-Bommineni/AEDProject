@@ -91,7 +91,7 @@ public class CustomerLogin extends javax.swing.JFrame {
         {
             StaffLoginJFrame staffpanel = new StaffLoginJFrame();
             staffpanel.setVisible(true);
-            dispose();
+            this.dispose();
         }
         else
         {

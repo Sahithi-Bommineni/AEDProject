@@ -166,6 +166,7 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         new StaffLoginJFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void ChefTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChefTblMouseClicked

@@ -370,6 +370,7 @@ public class CustomerRoomBookingJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
             setVisible(false);
         new HomePage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BackbtnActionPerformed
 
     private void BookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookbtnActionPerformed

@@ -428,6 +428,7 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         new ReceptionistJFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**

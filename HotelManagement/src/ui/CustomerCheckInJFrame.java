@@ -468,6 +468,7 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         new ReceptionistJFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void CustomerNameLblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CustomerNameLblKeyReleased
