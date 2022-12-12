@@ -125,6 +125,24 @@ public class ViewRoomsJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try {
+            ResultSet rs = Db.getData("SELECT * FROM Student WHERE Sid='"sid.getText() + "'");
+            
+            if (rs.first()) {
+                fname.setText(rs.getString("fname"));
+                mname.setText(rs.getstring("mname"));
+                
+                String Gender = rs.getString("gender");
+                if(gender.equals("Male")){
+                    male.getSelected(true);
+                }else{
+                    female setSelected(true);
+                }
+            }
+        } catch(Exception e){
+            e.printStackrace();
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
