@@ -55,9 +55,11 @@ public class ViewHousekeeping extends javax.swing.JFrame {
         HouseKeepingTbl = new javax.swing.JTable();
         DeleteBtn = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
+        searchtxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HouseKeepingTbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,20 +73,26 @@ public class ViewHousekeeping extends javax.swing.JFrame {
                 "RoomNo", "RoomCleaning", "RestRoom Cleaning", "TimeSlot", "Status"
             }
         ));
+        HouseKeepingTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HouseKeepingTblMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(HouseKeepingTbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 592, 312));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 670, 312));
 
         DeleteBtn.setBackground(new java.awt.Color(102, 204, 255));
-        DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         DeleteBtn.setText("Delete");
+        DeleteBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, -1));
+        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 110, -1));
 
         Backbtn.setBackground(new java.awt.Color(102, 204, 255));
         Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -95,10 +103,11 @@ public class ViewHousekeeping extends javax.swing.JFrame {
                 BackbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 133, 140, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housekeeping-1-scaled (1).jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -160, 1360, 920));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, -150, 1360, 920));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,22 +121,21 @@ public class ViewHousekeeping extends javax.swing.JFrame {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-                  int r=HouseKeepingTbl.getSelectedRow();
-        String click = (HouseKeepingTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM game WHERE roomno='"+click+"'";     
+        String roomno = searchtxt.getText();
+        //String click = (HouseKeepingTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM housekeeping WHERE roomno='"+roomno+"'";     
         
         try{
             if(HouseKeepingTbl.getSelectedRowCount()==1){
-                
-                ps=con.prepareCall(sql);
+                int r=HouseKeepingTbl.getSelectedRow();
+                ps=con.prepareStatement(sql);
                 int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if(i==JOptionPane.YES_OPTION){
                 ps.execute();
                 JOptionPane.showMessageDialog(null,"Deleted Successfully.");
-                
-               
+
                 setVisible(false);
-                new ViewChef().setVisible(true);
+                new ViewHousekeeping().setVisible(true);
                 }   
             }
             else if(HouseKeepingTbl.getSelectedRowCount()==0){
@@ -137,6 +145,30 @@ public class ViewHousekeeping extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void HouseKeepingTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HouseKeepingTblMouseClicked
+        // TODO add your handling code here:
+        int r = HouseKeepingTbl.getSelectedRow();
+        String click = (HouseKeepingTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM housekeeping WHERE roomno ='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String roomno = rs.getString(1);
+                String roomcleaning = rs.getString(2);
+                String restroom = rs.getString(3);
+                String splins = rs.getString(4);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                
+                //searchtxt.isEditable(false);
+                searchtxt.setText(roomno);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "e");
+        }
+    }//GEN-LAST:event_HouseKeepingTblMouseClicked
 
     /**
      * @param args the command line arguments
@@ -179,5 +211,6 @@ public class ViewHousekeeping extends javax.swing.JFrame {
     private javax.swing.JTable HouseKeepingTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField searchtxt;
     // End of variables declaration//GEN-END:variables
 }

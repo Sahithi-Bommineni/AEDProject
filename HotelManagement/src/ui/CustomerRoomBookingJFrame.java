@@ -24,7 +24,7 @@ public class CustomerRoomBookingJFrame extends javax.swing.JFrame {
     /**
      * Creates new form CustomerRoomBookingJFrame
      */
-        Connection con;
+    Connection con;
     ResultSet rs;
     Statement st;
     PreparedStatement ps;
@@ -119,6 +119,9 @@ public class CustomerRoomBookingJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(200, 118));
+        setMinimumSize(new java.awt.Dimension(1020, 600));
+        setPreferredSize(new java.awt.Dimension(1020, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N

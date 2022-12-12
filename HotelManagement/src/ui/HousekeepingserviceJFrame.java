@@ -30,9 +30,15 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         initComponents();
         con = ConnectionProvider.getCon();
         
+        RoomNoTxt.setEditable(false);
+        
         SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
         dateTxt.setText(myFormat.format(cal.getTime()));
+    }
+    
+    void getInfo(int roomno){
+     //RoomNotxt.setText(roomno);
     }
 
     /**

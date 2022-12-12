@@ -59,17 +59,19 @@ public class ViewDriver extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(200, 118));
+        setPreferredSize(new java.awt.Dimension(1100, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         DriverTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Car Type", "No. Of Passengers", "Location", "Time window", "Date", "Extra Required", "Status"
+                "Room No", "Car Type", "No. Of Passengers", "Time window", "Date", "Extra Required", "Status"
             }
         ));
         jScrollPane1.setViewportView(DriverTbl);
@@ -95,11 +97,11 @@ public class ViewDriver extends javax.swing.JFrame {
         getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
         getContentPane().add(deltxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 70, -1));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Driver Bookings ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 160, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 280, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cars.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -40, 1240, 860));
@@ -125,7 +127,7 @@ public class ViewDriver extends javax.swing.JFrame {
                 
                
                 setVisible(false);
-                new ViewChef().setVisible(true);
+                new ViewDriver().setVisible(true);
                 }   
             }
             else if(DriverTbl.getSelectedRowCount()==0){

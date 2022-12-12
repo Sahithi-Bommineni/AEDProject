@@ -62,18 +62,19 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         CustomersTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         SearchTxt = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
         setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomersTable.setBackground(new java.awt.Color(204, 204, 204));
@@ -93,12 +94,7 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(CustomersTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 780, 340));
-
-        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Member  Details");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 270, 50));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 970, 340));
         getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 320, 30));
 
         Searchbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
@@ -145,7 +141,14 @@ public class ViewCustomerJFrame extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 90, -1));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 510));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
+
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Member  Details");
+        jPanel1.add(jLabel1);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

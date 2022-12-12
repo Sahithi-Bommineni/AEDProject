@@ -59,47 +59,59 @@ public class ViewChef extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         OrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Type", "NoOfPeople", "Status"
+                "Room No", "Meal Type", "Veg/Non Veg", "NoOfPeople", "Date", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(OrdersTbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 68, 571, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 820, 340));
 
-        DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        DeleteBtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         DeleteBtn.setText("Delete");
+        DeleteBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 366, -1, -1));
+        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 110, 40));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
         jLabel1.setText("Restaurant Orders");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 190, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 300, 50));
 
-        Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        Backbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         Backbtn.setText("Back");
+        Backbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chef.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1120, 730));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -100, 1120, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,9 +125,9 @@ public class ViewChef extends javax.swing.JFrame {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-           int r=OrdersTbl.getSelectedRow();
+        int r=OrdersTbl.getSelectedRow();
         String click = (OrdersTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM chef WHERE roomno='"+click+"'";     
+        String sql = "DELETE * FROM chef WHERE roomno='"+click+"'";     
         
         try{
             if(OrdersTbl.getSelectedRowCount()==1){

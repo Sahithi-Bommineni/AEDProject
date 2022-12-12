@@ -31,7 +31,7 @@ public class ViewGame extends javax.swing.JFrame {
         public void populateTable()
     {
         try{
-            String sql = "SELECT * FROM game";
+            String sql = "SELECT * FROM games";
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             GameTbl.setModel(DbUtils.resultSetToTableModel(rs));
@@ -58,20 +58,30 @@ public class ViewGame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(300, 80));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         GameTbl.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         GameTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Room No", "No of people", "Gym/Indoor", "Time Slot", "Game "
+                "Room No", "No of people", "Date", "Time Slot", "Gym/Indoor", "Game "
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         GameTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 GameTblMouseClicked(evt);
@@ -79,26 +89,30 @@ public class ViewGame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(GameTbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 670, 350));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 670, 350));
 
+        Deletebtn.setBackground(new java.awt.Color(255, 220, 171));
+        Deletebtn.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         Deletebtn.setText("Delete");
         Deletebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeletebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Deletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, -1, -1));
+        getContentPane().add(Deletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
 
+        Backbtn.setBackground(new java.awt.Color(255, 220, 171));
+        Backbtn.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
         Backbtn.setText("Back");
         Backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Gym-Games-e1618991083898.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-160, -80, 1490, 870));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -90, 1490, 870));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,7 +133,7 @@ public class ViewGame extends javax.swing.JFrame {
         // TODO add your handling code here:
               int r=GameTbl.getSelectedRow();
         String click = (GameTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM game WHERE roomno='"+click+"'";     
+        String sql = "SELECT * FROM games WHERE roomno='"+click+"'";     
         
         try{
             if(GameTbl.getSelectedRowCount()==1){

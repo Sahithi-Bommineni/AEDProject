@@ -55,6 +55,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 118));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -180,8 +181,8 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                     String lastname = rs.getString(2);
                     String email = rs.getString(3);
                     String password = rs.getString(4);
-                    String answer = rs.getString(5);
-                    String securityques = rs.getString(6);
+                    String answer = rs.getString(6);
+                    String securityques = rs.getString(5);
                     
                     jTextField2.setText(securityques);
                     check=2;
@@ -201,13 +202,12 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
         // TODO add your handling code here:
-        int check=0;
         String securityques=jTextField2.getText();
         String answer=jTextField1.getText();
         String password=jPasswordField1.getText();
         if(answer.equals("") || password.equals(""))
         {
-            check=1;
+            //check=1;
             JOptionPane.showMessageDialog(null,"All Field are Required");
         }
         else{
@@ -217,18 +217,21 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
              r.setSecurityques(securityques);
              r.setAnswer(answer);
              r.setPassword(password);
+             jPasswordField1.setEditable(false);
+             
              try{
                   String sql = "SELECT * FROM customerlogin WHERE email='"+email;
                   ps=con.prepareStatement(sql);
                   rs=ps.executeQuery();
-                  if(answer.equals(answer))
+                  if(answer.equals(jTextField1.getText()))
                   {
-                    check=1;
-                    String query="UPDATE customerlogin SET password=? WHERE email =?";
+                    //check=1;
+                    String query="UPDATE customerlogin SET password='"+password+"' WHERE email ='"+email;
                     try{
+                        jPasswordField1.setEditable(true);
                         ps=con.prepareStatement(sql);
-                        ps.setString(1, password);
-                        ps.setString(2, email);
+                        //ps.setString(1, password);
+                        //ps.setString(2, email);
                         ps.execute();
                         
                         Emailtxt.setText("");
@@ -242,9 +245,13 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, e);
                     }
                   }
+                    else{
+                            
+                        JOptionPane.showMessageDialog(null, "Incorrect Answer");
+                  }
             }catch(Exception e)
                 {
-                JOptionPane.showMessageDialog(null,"Incorrect Answer");
+                JOptionPane.showMessageDialog(null,e);
                 }
         }
         /*if(check==0)
