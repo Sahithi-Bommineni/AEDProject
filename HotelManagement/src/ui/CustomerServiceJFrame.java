@@ -119,34 +119,35 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         HousekeepingserviceJFrame housekeeping = new HousekeepingserviceJFrame();
         housekeeping.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_HouseKeepingbtnActionPerformed
 
     private void GamesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GamesButtonActionPerformed
         // TODO add your handling code here:
         IndoorGames games = new IndoorGames();
         games.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_GamesButtonActionPerformed
 
     private void DriverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DriverbtnActionPerformed
         // TODO add your handling code here:
         DriverServiceJFrame driver = new DriverServiceJFrame();
         driver.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_DriverbtnActionPerformed
 
     private void FoodbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodbtnActionPerformed
         // TODO add your handling code here:
         FoodServiceJFrame food = new FoodServiceJFrame();
         food.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_FoodbtnActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
         new HomePage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
