@@ -140,14 +140,14 @@ public class LoginJFrame extends javax.swing.JFrame {
        ForgotPasswordJFrame fppanel = new ForgotPasswordJFrame();
        fppanel.setVisible(true);
        
-       dispose();
+       this.dispose();
     }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
         HomePage homepanel = new HomePage();
         homepanel.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
@@ -162,7 +162,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         {
             StaffLoginJFrame staffpanel = new StaffLoginJFrame();
             staffpanel.setVisible(true);
-            dispose();
+            this.dispose();
         }
         else
         {
