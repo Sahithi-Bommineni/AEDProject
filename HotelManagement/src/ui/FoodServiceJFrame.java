@@ -27,6 +27,14 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     public FoodServiceJFrame() {
         initComponents();
         con = ConnectionProvider.getCon();
+        
+        RoomNoTxt.setEditable(false);
+        PeopleTxt.setEditable(false);
+    }
+    
+    void getInfo(String roomno,String occupancy){
+     RoomNoTxt.setText(roomno);
+     PeopleTxt.setText(occupancy);
     }
 
     /**
@@ -50,6 +58,8 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         BackButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,18 +81,18 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Type :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        jLabel3.setText("Food Type :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("No of People");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        jLabel5.setText("Guest Count :");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
         PeopleTxt.setBackground(new java.awt.Color(0, 51, 51));
         PeopleTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PeopleTxt.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PeopleTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 240, 30));
+        getContentPane().add(PeopleTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 190, 30));
 
         Oderbtn.setBackground(new java.awt.Color(0, 51, 51));
         Oderbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -93,7 +103,7 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
                 OderbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Oderbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+        getContentPane().add(Oderbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
 
         RoomNoTxt.setBackground(new java.awt.Color(0, 51, 51));
         RoomNoTxt.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
@@ -103,17 +113,17 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(0, 51, 51));
         jCheckBox1.setText("Breakfast");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, 30));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, 30));
 
         jCheckBox2.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(0, 51, 51));
         jCheckBox2.setText("Lunch");
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, -1, -1));
 
         jCheckBox3.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(0, 51, 51));
         jCheckBox3.setText("Dinner");
-        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
 
         BackButton.setBackground(new java.awt.Color(0, 51, 51));
         BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -127,8 +137,19 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
+        jLabel4.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Meal Type :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
+
+        jComboBox1.setBackground(new java.awt.Color(0, 51, 51));
+        jComboBox1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Veg", "Non Veg" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
+
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FoodServide.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 0, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,9 +277,11 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
