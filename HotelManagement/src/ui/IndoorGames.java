@@ -51,6 +51,8 @@ public class IndoorGames extends javax.swing.JFrame {
         GameLbl = new javax.swing.JLabel();
         GameCombo = new javax.swing.JComboBox<>();
         BackButton = new javax.swing.JButton();
+        DateTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         Submitbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -91,21 +93,21 @@ public class IndoorGames extends javax.swing.JFrame {
         buttonGroup1.add(GymLbl);
         GymLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GymLbl.setText("GYM");
-        getContentPane().add(GymLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 248, 71, -1));
+        getContentPane().add(GymLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 71, -1));
 
         buttonGroup1.add(IndoorGames);
         IndoorGames.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         IndoorGames.setText("Indoor Games");
-        getContentPane().add(IndoorGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 248, 142, -1));
+        getContentPane().add(IndoorGames, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 142, -1));
 
         GameLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         GameLbl.setText("Game");
-        getContentPane().add(GameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 142, 25));
+        getContentPane().add(GameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 142, 25));
 
         GameCombo.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
         GameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Billiards", "Table Tennis", "PlayStation", "Carrom", "Chess" }));
-        getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 108, -1));
+        getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 108, -1));
 
         BackButton.setBackground(new java.awt.Color(0, 204, 204));
         BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -118,6 +120,11 @@ public class IndoorGames extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 100, 30));
+        getContentPane().add(DateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
+
+        jLabel3.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jLabel3.setText("Date ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 60, 20));
 
         Submitbtn.setBackground(new java.awt.Color(0, 204, 204));
         Submitbtn.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -128,7 +135,7 @@ public class IndoorGames extends javax.swing.JFrame {
                 SubmitbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Indoor games.jpeg"))); // NOI18N
         jLabel2.setText("S");
@@ -238,6 +245,7 @@ public class IndoorGames extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JTextField DateTxt;
     private javax.swing.JComboBox<String> GameCombo;
     private javax.swing.JLabel GameLbl;
     private javax.swing.JRadioButton GymLbl;
@@ -252,5 +260,6 @@ public class IndoorGames extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -150,7 +150,7 @@ public class ViewGame extends javax.swing.JFrame {
         // TODO add your handling code here:
               int r=GameTbl.getSelectedRow();
         String click = (GameTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM games WHERE roomno='"+click+"'";     
+        String sql = "Delete * FROM games WHERE roomno='"+click+"'";     
         
         try{
             if(GameTbl.getSelectedRowCount()==1){
