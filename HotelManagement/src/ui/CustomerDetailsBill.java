@@ -103,6 +103,11 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         BackBtn.setBackground(new java.awt.Color(153, 204, 255));
         BackBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         BackBtn.setText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(BackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customerbilling Background.jpg"))); // NOI18N
@@ -171,6 +176,13 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        // TODO add your handling code here:
+            setVisible(false);
+        new StaffLoginJFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     /**
      * @param args the command line arguments
