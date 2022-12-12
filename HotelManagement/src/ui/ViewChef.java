@@ -20,12 +20,13 @@ public class ViewChef extends javax.swing.JFrame {
     /**
      * Creates new form ViewChef
      */
-        Connection con;
+    Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    
     public ViewChef() {
         initComponents();
-           con = ConnectionProvider.getCon();
+        con = ConnectionProvider.getCon();
         populateTable();
     }
     public void populateTable()
@@ -122,7 +123,7 @@ public class ViewChef extends javax.swing.JFrame {
 
     private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
         // TODO add your handling code here:
-            ManagerLoginJFrame manpanel = new ManagerLoginJFrame();
+        ManagerLoginJFrame manpanel = new ManagerLoginJFrame();
         manpanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackbtnActionPerformed
@@ -167,7 +168,7 @@ public class ViewChef extends javax.swing.JFrame {
                 String roomno = rs.getString(1);
                 String mealtype = rs.getString(2);
                 String foodtype = rs.getString(3);
-                String noofpeople = rs.getString(4);
+                String guestcount = rs.getString(4);
                 String date = rs.getString(5);
                 String status = rs.getString(6);
             }  

@@ -20,12 +20,13 @@ public class ViewDriver extends javax.swing.JFrame {
     /**
      * Creates new form ViewDriver
      */
-        Connection con;
+    Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    
     public ViewDriver() {
         initComponents();
-           con = ConnectionProvider.getCon();
+        con = ConnectionProvider.getCon();
         populateTable();
     }
     public void populateTable()
@@ -114,7 +115,7 @@ public class ViewDriver extends javax.swing.JFrame {
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
         
-         int r=DriverTbl.getSelectedRow();
+        int r=DriverTbl.getSelectedRow();
         String click = (DriverTbl.getModel().getValueAt(r, 0).toString());
         String sql = "DELETE FROM driver WHERE roomno='"+click+"'";
         try{
