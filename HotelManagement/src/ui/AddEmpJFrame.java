@@ -233,6 +233,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         new AdminJframe().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void SubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitBtnActionPerformed
