@@ -68,7 +68,6 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
         setLocation(new java.awt.Point(300, 118));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -78,13 +77,13 @@ public class ChefLoginJFrame extends javax.swing.JFrame {
 
         ChefTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Type", "NoOfPeople", "Status"
+                "Room No", "MealType", "FoodType", "NoOfPeople", "Status"
             }
         ));
         ChefTbl.addMouseListener(new java.awt.event.MouseAdapter() {

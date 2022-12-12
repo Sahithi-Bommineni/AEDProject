@@ -4,6 +4,7 @@
  */
 package ui;
 
+import com.itextpdf.text.pdf.security.CertificateInfo;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import database.ConnectionProvider;
@@ -207,7 +208,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
         String securityques=jTextField2.getText();
         String answer=jTextField1.getText();
         String password=jPasswordField1.getText();
-        if(answer.equals("") || password.equals(""))
+        if(answer.equals("")||password.equals(""))
         {
             //check=1;
             JOptionPane.showMessageDialog(null,"All Field are Required");
@@ -220,13 +221,15 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
              r.setAnswer(answer);
              r.setPassword(password);
              jPasswordField1.setEditable(false);
+             jTextField2.setEditable(false);
              
              try{
-                  String sql = "SELECT * FROM customerlogin WHERE email='"+email;
+                  String sql = "SELECT * FROM customerlogin WHERE email='"+email+"'";
                   ps=con.prepareStatement(sql);
                   ps.executeQuery();
                   if(answer.equals(jTextField1.getText()))
                   {
+                    //jPasswordField1.setText(password);
                     //check=1;
                     String query="UPDATE customerlogin SET password=? WHERE email=?";
                     try{
@@ -234,7 +237,7 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                         ps=con.prepareStatement(query);
                         ps.setString(1, password);
                         ps.setString(2, email);
-                        ps.executeQuery();
+                        ps.execute();
                         
                         setVisible(false);
                         new ForgotPasswordJFrame().setVisible(true);
