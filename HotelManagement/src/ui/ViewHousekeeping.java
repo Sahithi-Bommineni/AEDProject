@@ -64,13 +64,13 @@ public class ViewHousekeeping extends javax.swing.JFrame {
 
         HouseKeepingTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "RoomNo", "RoomCleaning", "RestRoom Cleaning", "TimeSlot", "Status"
+                "RoomNo", "RoomCleaning", "RestRoom Cleaning", "Special Instructions", "date", "TimeSlot", "Status"
             }
         ));
         HouseKeepingTbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +123,7 @@ public class ViewHousekeeping extends javax.swing.JFrame {
         // TODO add your handling code here:
         String roomno = searchtxt.getText();
         //String click = (HouseKeepingTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM housekeeping WHERE roomno='"+roomno+"'";     
+        String sql = "Delete * FROM housekeeping WHERE roomno='"+roomno+"'";     
         
         try{
             if(HouseKeepingTbl.getSelectedRowCount()==1){
