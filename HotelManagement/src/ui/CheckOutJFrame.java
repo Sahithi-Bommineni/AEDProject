@@ -9,6 +9,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import database.ConnectionProvider;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
@@ -350,13 +351,18 @@ public class CheckOutJFrame extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null, "Do you want to print the bill?","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             try{
-                if(new File(path+""+id+".pdf").exists()){
-                    Process p = Runtime
-                            .getRuntime()
-                            .exec("rundll32 url.dll,FileProtocolHandler "+path+""+id+".pdf");
-                }else{
-                        System.out.println("File doesnt exist");
-                        }
+                File pdfFile = new File("/Users/sahithi/Desktop/aed project"+id+".pdf");
+		if (pdfFile.exists()) {
+
+			if (Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(pdfFile);
+			} else {
+				System.out.println("Awt Desktop is not supported!");
+			}
+
+		} else {
+			System.out.println("File is not exists!");
+		}
             }
                 catch(Exception e){
                         JOptionPane.showMessageDialog(null, e);
