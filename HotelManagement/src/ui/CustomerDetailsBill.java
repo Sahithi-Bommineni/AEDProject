@@ -62,13 +62,10 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     private void initComponents() {
 
         CustomerDetailsBillLbl = new javax.swing.JLabel();
-        SearchCheckOutLbl = new javax.swing.JLabel();
-        SearchCheckOuttxt = new javax.swing.JTextField();
-        SearchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        ExitBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,19 +73,10 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1300, 577));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerDetailsBillLbl.setText("CUSTOMER DETAILS BILL");
-        getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 180, 31));
-
-        SearchCheckOutLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        SearchCheckOutLbl.setText("Search By Check Out Date");
-        getContentPane().add(SearchCheckOutLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 112, 166, -1));
-        getContentPane().add(SearchCheckOuttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 109, 179, -1));
-
-        SearchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        SearchBtn.setText("Search");
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(794, 109, -1, -1));
+        getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 440, 31));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,14 +95,15 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 138, 1018, 315));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 318, 27));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 360, 27));
 
-        ExitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        ExitBtn.setText("Exit");
-        getContentPane().add(ExitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
+        BackBtn.setBackground(new java.awt.Color(153, 204, 255));
+        BackBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        BackBtn.setText("Back");
+        getContentPane().add(BackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customerbilling Background.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -219,11 +208,8 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JLabel CustomerDetailsBillLbl;
-    private javax.swing.JButton ExitBtn;
-    private javax.swing.JButton SearchBtn;
-    private javax.swing.JLabel SearchCheckOutLbl;
-    private javax.swing.JTextField SearchCheckOuttxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
