@@ -4,17 +4,28 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sahithi
  */
 public class CustomerLogin extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form CustomerLogin
      */
     public CustomerLogin() {
         initComponents();
+        con = ConnectionProvider.getCon();
     }
 
     /**
@@ -27,30 +38,90 @@ public class CustomerLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        CustomerLoginLbl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 202, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jButton1)
-                .addContainerGap(580, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jButton1)
-                .addContainerGap(366, Short.MAX_VALUE))
-        );
+        jLabel1.setText("Username");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 120, -1, -1));
+
+        jLabel2.setText("Password");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 164, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 117, 153, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 161, 153, -1));
+
+        CustomerLoginLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        CustomerLoginLbl.setText("Guest Login");
+        getContentPane().add(CustomerLoginLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 33, 132, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Guest BAckground.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -350, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String email = jTextField1.getText();
+        String password = jPasswordField1.getText();
+        if(email.equals("")|| password.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        }
+        else if(email.equals("staff")&& password.equals("staff") )
+        {
+            StaffLoginJFrame staffpanel = new StaffLoginJFrame();
+            staffpanel.setVisible(true);
+            dispose();
+        }
+        else
+        {
+            
+            //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
+            try{
+                String sql = "SELECT * FROM customerlogin WHERE email=? AND password=?";
+                ps=con.prepareStatement(sql);
+                ps.setString(1, jTextField1.getText());
+                ps.setString(2,jPasswordField1.getText());
+                //ps.setString(WIDTH, sql);
+                rs=ps.executeQuery();
+                if(rs.next())
+                {
+                    /*check=1;
+                    if(rs.getString(8).equals(true))
+                    {
+                    setVisible(false);
+                    new ManagerLoginJFrame().setVisible(true);
+                    }*/
+                    //JOptionPane.showMessageDialog(null, "Login Successful");
+                    this.dispose();
+                    new CustomerServiceJFrame().setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Credentials");
+                    jTextField1.setText("");
+                    jPasswordField1.setText("");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +159,12 @@ public class CustomerLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CustomerLoginLbl;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

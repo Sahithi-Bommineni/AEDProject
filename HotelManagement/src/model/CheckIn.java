@@ -22,11 +22,12 @@ public class CheckIn {
     String bedType;
     String roomType;
     String price;
+    String occupancy;
     String daysstayed;
     String totalamt;
     String checkout;
     
-    public CheckIn(int id,String name,String mobileno,String nationality,String gender,String email,String idproof,String address,String checkin,String roomno,String bedType,String roomType,String price,String daysstayed,String totalamt)
+    public CheckIn(int id,String name,String mobileno,String nationality,String gender,String email,String idproof,String address,String checkin,String roomno,String bedType,String roomType,String price,String occupancy,String daysstayed,String totalamt)
     {
         this.id=id;
         this.name=name;
@@ -41,6 +42,7 @@ public class CheckIn {
         this.roomType=roomType;
         this.roomno=roomno;
         this.price=price;
+        this.occupancy=occupancy;
         this.daysstayed=daysstayed;
         this.totalamt=totalamt;
     }
@@ -49,6 +51,14 @@ public class CheckIn {
 
     public int getId() {
         return id;
+    }
+
+    public String getOccupancy() {
+        return occupancy;
+    }
+
+    public void setOccupancy(String occupancy) {
+        this.occupancy = occupancy;
     }
 
     public void setId(int id) {

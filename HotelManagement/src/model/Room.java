@@ -15,6 +15,7 @@ public class Room {
     String roomtype;
     String bedtype;
     int price;
+    int occupancy;
     String status;
     
     public Room(){
@@ -27,6 +28,14 @@ public class Room {
         this.bedtype=bedtype;
         this.price=price;
         this.status=status;
+    }
+
+    public int getOccupancy() {
+        return occupancy;
+    }
+
+    public void setOccupancy(int occupancy) {
+        this.occupancy = occupancy;
     }
 
     public int getRoomno() {
