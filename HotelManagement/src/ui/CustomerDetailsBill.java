@@ -5,14 +5,13 @@
 package ui;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.sql.ResultSet;
 import database.*;
+import java.awt.Desktop;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import net.proteanit.sql.DbUtils;
 
@@ -71,6 +70,8 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(50, 100));
+        setPreferredSize(new java.awt.Dimension(1300, 577));
 
         CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,29 +106,27 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 721, Short.MAX_VALUE))
+                        .addGap(30, 844, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 29, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(SearchCheckOutLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SearchCheckOuttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SearchBtn)
-                                .addGap(164, 164, 164))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
+                        .addGap(0, 407, Short.MAX_VALUE)
+                        .addComponent(SearchCheckOutLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SearchCheckOuttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SearchBtn)
+                        .addGap(164, 164, 164))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,26 +177,36 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
 
             try
             {
-                if((new File("Users/sahithi/Desktop/aedproject0.pdf")).exists())
-                {
-                    Process p = Runtime
-                            .getRuntime()
-                            .exec("rundll32 url.dll,FileProtocolHeader "+"/Users/sahithi/Desktop/aedproject0.pdf");
-                
+                File pdfFile = new File("/Users/sahithi/Desktop/aed project"+id+".pdf");
+		if (pdfFile.exists()) {
+
+			if (Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(pdfFile);
+			} else {
+				System.out.println("Awt Desktop is not supported!");
+			}
+
+		} else {
+			System.out.println("File is not exists!");
+		}
+
+              /*//Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler" +"/Users/sahithi/Desktop/aedproject"+id+".pdf");
+                Desktop desktop=Desktop.getDesktop();
+                if(desktop.isSupported(Desktop.Action.OPEN)){
+                    desktop.open(new File("aed project"+id+".pdf"));
                 }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,"File is not exist");
-                }
+                else{
+                    System.out.println("Open is not supported");
+                }*/
             }
-            catch(Exception e)
+            catch(IOException e)
             {
                 JOptionPane.showMessageDialog(null,e);
             }
             }
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, e);
-            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
