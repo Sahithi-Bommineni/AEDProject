@@ -75,13 +75,13 @@ public class DriverJFrame extends javax.swing.JFrame {
 
         Drivertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Room No", "Car Type", "No of Passengers", "Location", "Time Window", "Date", "Extra Requirements", "Status"
+                "Room No", "Car Type", "No of Passengers", "Time Window", "Date", "Extra Requirements", "Status"
             }
         ));
         Drivertbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,11 +135,11 @@ public class DriverJFrame extends javax.swing.JFrame {
                 String roomno = rs.getString(1);
                 String car = rs.getString(2);
                 String passengers = rs.getString(3);
-                String location = rs.getString(4);
-                String time = rs.getString(5);
-                String date = rs.getString(6);
-                String requirements = rs.getString(7);
-                String status =rs.getString(8);
+                
+                String time = rs.getString(4);
+                String date = rs.getString(5);
+                String requirements = rs.getString(6);
+                String status =rs.getString(7);
                 
                 searchtxt.setText(roomno);      
             }   
