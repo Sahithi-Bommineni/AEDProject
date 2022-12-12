@@ -69,20 +69,26 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         ExitBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(50, 100));
         setPreferredSize(new java.awt.Dimension(1300, 577));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomerDetailsBillLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerDetailsBillLbl.setText("CUSTOMER DETAILS BILL");
+        getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 180, 31));
 
         SearchCheckOutLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SearchCheckOutLbl.setText("Search By Check Out Date");
+        getContentPane().add(SearchCheckOutLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 112, 166, -1));
+        getContentPane().add(SearchCheckOuttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 109, 179, -1));
 
         SearchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SearchBtn.setText("Search");
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(794, 109, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,59 +105,19 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 138, 1018, 315));
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 318, 27));
 
         ExitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         ExitBtn.setText("Exit");
+        getContentPane().add(ExitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 407, Short.MAX_VALUE)
-                        .addComponent(SearchCheckOutLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SearchCheckOuttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SearchBtn)
-                        .addGap(164, 164, 164))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ExitBtn)
-                        .addGap(48, 48, 48))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ExitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CustomerDetailsBillLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchBtn)
-                    .addComponent(SearchCheckOuttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchCheckOutLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customerbilling Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +225,7 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     private javax.swing.JLabel SearchCheckOutLbl;
     private javax.swing.JTextField SearchCheckOuttxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
