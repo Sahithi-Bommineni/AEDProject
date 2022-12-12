@@ -206,7 +206,7 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
     private void EmpDirbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpDirbtn1ActionPerformed
         // TODO add your handling code here:
-        EmployeeDirectory emppanel = new EmployeeDirectory();
+       ViewEmployeeJFrame emppanel = new ViewEmployeeJFrame();
         emppanel.setVisible(true);
         dispose();
         

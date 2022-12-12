@@ -272,6 +272,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         new CustomerServiceJFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
