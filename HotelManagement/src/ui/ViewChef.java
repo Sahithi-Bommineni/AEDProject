@@ -60,7 +60,6 @@ public class ViewChef extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         OrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,6 +79,11 @@ public class ViewChef extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        OrdersTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrdersTblMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(OrdersTbl);
@@ -139,7 +143,7 @@ public class ViewChef extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Deleted Successfully.");
                 
                
-                setVisible(false);
+                
                 new ViewChef().setVisible(true);
                 }   
             }
@@ -150,6 +154,28 @@ public class ViewChef extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void OrdersTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdersTblMouseClicked
+        // TODO add your handling code here:
+                       int r=OrdersTbl.getSelectedRow();
+        String click = (OrdersTbl.getModel().getValueAt(r, 0).toString());
+        String sql = "SELECT * FROM chef WHERE roomno='"+click+"'";
+        try{
+            ps=con.prepareCall(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                String roomno = rs.getString(1);
+                String mealtype = rs.getString(2);
+                String foodtype = rs.getString(3);
+                String noofpeople = rs.getString(4);
+                String date = rs.getString(5);
+                String status = rs.getString(6);
+            }  
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }     
+    }//GEN-LAST:event_OrdersTblMouseClicked
 
     /**
      * @param args the command line arguments
