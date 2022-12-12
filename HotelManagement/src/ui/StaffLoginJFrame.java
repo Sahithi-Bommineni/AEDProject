@@ -115,6 +115,7 @@ public class StaffLoginJFrame extends javax.swing.JFrame {
         {
             setVisible(false);
             new AdminJframe().setVisible(true);
+            this.dispose();
         }
         else
         {
