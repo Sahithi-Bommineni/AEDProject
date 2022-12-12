@@ -57,8 +57,6 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         ExtraReqTxt = new javax.swing.JTextField();
         Submitbtn = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        ToLocTxt = new javax.swing.JTextField();
         lblRoom = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         DateTxt = new javax.swing.JTextField();
@@ -69,10 +67,8 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 118));
-        setMaximumSize(new java.awt.Dimension(1100, 500));
         setMinimumSize(new java.awt.Dimension(1100, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1100, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(1100, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,14 +140,6 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 120, 30));
-
-        jLabel8.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("To Location:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
-
-        ToLocTxt.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        getContentPane().add(ToLocTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 280, 30));
         getContentPane().add(lblRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 110, 20));
 
         jLabel9.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
@@ -173,7 +161,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 90, 30));
 
         jComboBox2.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "8:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM", "9:30 PM - 12:00 AM" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "1 hour", "2 hours", "4 hours", "12 hours", "24 hours", " " }));
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 220, 30));
 
         lblPassengers.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,17 +180,17 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         int roomno = Integer.parseInt(RoomNtxt.getText());
         String cartype = (String)jComboBox1.getSelectedItem();
         int passenger = Integer.parseInt(NoOfPassTxt.getText());
-        String location = ToLocTxt.getText();
+        
         String time = (String)jComboBox2.getSelectedItem();
         String date = DateTxt.getText();
         String requirements = ExtraReqTxt.getText();
      
-        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| ToLocTxt.equals("")||time.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
+        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| time.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
             RoomNtxt.setText("");
             NoOfPassTxt.setText("");
-            ToLocTxt.setText("");
+            
             jComboBox1.setSelectedItem("Select Car");
             jComboBox2.setSelectedItem("Select Time");
             DateTxt.setText("");
@@ -217,16 +205,16 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
           d.setCartype(cartype);
           d.setDate(date);
           d.setTime(time);
-          d.setLocation(location);
+          
           d.setPassengers(passenger);
           d.setRequirements(requirements);
           try{
-              String sql = "INSERT INTO Driver (roomno,cartype,passenger,location,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
+              String sql = "INSERT INTO Driver (roomno,cartype,passenger,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setInt(1, roomno);
               ps.setString(2, cartype);
               ps.setInt(3,passenger);
-              ps.setString(4,location);
+              
               ps.setString(5, time);
               ps.setString(6, date);
               ps.setString(7, requirements);
@@ -234,7 +222,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
               
               RoomNtxt.setText("");
               NoOfPassTxt.setText("");
-              ToLocTxt.setText("");
+              
               jComboBox1.setSelectedItem("Select Car");
               jComboBox2.setSelectedItem("Select Time");
               DateTxt.setText("");
@@ -323,7 +311,6 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField NoOfPassTxt;
     private javax.swing.JTextField RoomNtxt;
     private javax.swing.JButton Submitbtn;
-    private javax.swing.JTextField ToLocTxt;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -333,7 +320,6 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblPassengers;
     private javax.swing.JLabel lblRoom;

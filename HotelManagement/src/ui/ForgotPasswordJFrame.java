@@ -183,8 +183,9 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                     String lastname = rs.getString(2);
                     String email = rs.getString(3);
                     String password = rs.getString(4);
-                    String answer = rs.getString(6);
                     String securityques = rs.getString(5);
+                    String answer = rs.getString(6);
+                    
                     
                     jTextField2.setText(securityques);
                     //check=2;
