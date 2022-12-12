@@ -65,7 +65,7 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        ExitBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,9 +100,9 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         jLabel1.setText("CLICK ON TABLE ROW TO OPEN BILL");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 318, 27));
 
-        ExitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        ExitBtn.setText("Exit");
-        getContentPane().add(ExitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
+        BackBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        BackBtn.setText("Back");
+        getContentPane().add(BackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 19, -1, 31));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customerbilling Background.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -207,8 +207,8 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JLabel CustomerDetailsBillLbl;
-    private javax.swing.JButton ExitBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
