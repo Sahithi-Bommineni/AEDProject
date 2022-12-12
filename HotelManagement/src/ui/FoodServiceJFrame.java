@@ -157,30 +157,31 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     private void OderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OderbtnActionPerformed
         // TODO add your handling code here:
         int roomno = Integer.parseInt(RoomNoTxt.getText());
+        String foodtype = (String)jComboBox1.getSelectedItem();
         String mealtype = " ";
         if(jCheckBox1.isSelected()|| jCheckBox2.isSelected()||jCheckBox3.isSelected()){
             try{
                 if(jCheckBox1.isSelected())
                 {
-                    mealtype = "Breakfast";
+                    mealtype = mealtype + "Breakfast";
                 }
                 else if(jCheckBox2.isSelected()){
-                    mealtype = "Lunch";
+                    mealtype = mealtype + "Lunch";
                 }
                 else if(jCheckBox3.isSelected()){
-                    mealtype = "Dinner";
+                    mealtype = mealtype + "Dinner";
                 }
                 else if(jCheckBox1.isSelected() && jCheckBox2.isSelected()){
-                    mealtype ="Breakfast,Lunch";
+                    mealtype =mealtype + "Breakfast,Lunch";
                 }
                 else if(jCheckBox1.isSelected() && jCheckBox3.isSelected()){
-                mealtype ="Breakfast,Dinner";
+                mealtype =mealtype + "Breakfast,Dinner";
                 }
                 else if(jCheckBox2.isSelected() && jCheckBox3.isSelected()){
-                    mealtype ="Lunch,Dinner";
+                    mealtype = mealtype + "Lunch,Dinner";
                 }
                 else{
-                    mealtype ="Breakfast,Lunch,Dinner";
+                    mealtype = mealtype + "Breakfast,Lunch,Dinner";
                 } 
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
@@ -190,7 +191,7 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
             
         }
         
-        String NoOfPeople = PeopleTxt.getText();
+        String guestcount = PeopleTxt.getText();
         
         if(RoomNoTxt.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter room number");
@@ -200,17 +201,20 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
         Chef c = new Chef();
         c.setRoomno(roomno);
         c.setMealtype(mealtype);
-        c.setNoOfPeople(NoOfPeople);
+        c.setGuestcount(guestcount);
+        c.setFoodtype(foodtype);
         
         //c.setStatus(status);
         try{
-                String sql = "INSERT INTO chef(roomno,mealtype,location,special_instructions) VALUES (?,?,?,?)";
+                String sql = "INSERT INTO chef(roomno,mealtype,foodtype,guestcount) VALUES (?,?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setInt(1,roomno);
                 ps.setString(2, mealtype);
-                ps.setString(3, NoOfPeople);
-                
+                ps.setString(3, foodtype);
+                ps.setString(4, guestcount);
                 ps.execute();
+                
+                
                 
                 RoomNoTxt.setText("");
                 jCheckBox1.setSelected(false);
@@ -219,10 +223,8 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
                 
                 PeopleTxt.setText("");
                 
-                con.close();
-                
             }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, e);
             }
         }
     }//GEN-LAST:event_OderbtnActionPerformed
@@ -230,7 +232,7 @@ public class FoodServiceJFrame extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new CustomerServiceJFrame().setVisible(true);
+        new CustomerLogin().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**

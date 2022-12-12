@@ -89,18 +89,21 @@ public class ReceptionistJFrame extends javax.swing.JFrame {
 
     private void CheckinbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckinbtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         setVisible(false);
         new CustomerCheckInJFrame().setVisible(true);
     }//GEN-LAST:event_CheckinbtnActionPerformed
 
     private void checkoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutbtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         setVisible(false);
         new CheckOutJFrame().setVisible(true);
     }//GEN-LAST:event_checkoutbtnActionPerformed
 
     private void InvoicebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoicebtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         setVisible(false);
         new CustomerDetailsBill().setVisible(true);
     }//GEN-LAST:event_InvoicebtnActionPerformed

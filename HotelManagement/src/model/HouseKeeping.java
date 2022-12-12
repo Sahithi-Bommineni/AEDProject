@@ -10,7 +10,7 @@ package model;
  */
 public class HouseKeeping {
     
-    int roomno;
+    String roomno;
     String roomcleaning;
     String restroom;
     String splins;
@@ -35,11 +35,11 @@ public class HouseKeeping {
         this.status = status;
     }
 
-    public int getRoomno() {
+    public String getRoomno() {
         return roomno;
     }
 
-    public void setRoomno(int roomno) {
+    public void setRoomno(String roomno) {
         this.roomno = roomno;
     }
 

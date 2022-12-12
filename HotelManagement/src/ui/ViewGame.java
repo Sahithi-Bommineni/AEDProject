@@ -20,15 +20,17 @@ public class ViewGame extends javax.swing.JFrame {
     /**
      * Creates new form ViewGame
      */
-        Connection con;
+    Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    
     public ViewGame() {
         initComponents();
                con = ConnectionProvider.getCon();
         populateTable();
     }
-        public void populateTable()
+    
+    public void populateTable()
     {
         try{
             String sql = "SELECT * FROM games";
@@ -119,7 +121,7 @@ public class ViewGame extends javax.swing.JFrame {
 
     private void GameTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GameTblMouseClicked
         // TODO add your handling code here:
-                       int r=GameTbl.getSelectedRow();
+        int r=GameTbl.getSelectedRow();
         String click = (GameTbl.getModel().getValueAt(r, 0).toString());
         String sql = "SELECT * FROM games WHERE roomno='"+click+"'";
         try{
@@ -127,10 +129,11 @@ public class ViewGame extends javax.swing.JFrame {
             rs=ps.executeQuery();
             if(rs.next()){
                 String roomno = rs.getString(1);
-                
-                String timeslot = rs.getString(2);
+                String gametype = rs.getString(2);
                 String date = rs.getString(3);
-                String game = rs.getString(4);
+                String time = rs.getString(4);
+                
+                
             }  
         }catch(Exception e)
         {
@@ -148,22 +151,19 @@ public class ViewGame extends javax.swing.JFrame {
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         // TODO add your handling code here:
-              int r=GameTbl.getSelectedRow();
+        int r=GameTbl.getSelectedRow(); 
         String click = (GameTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "Delete * FROM games WHERE roomno='"+click+"'";     
+        //int click = 102;
+        String sql = "DELETE FROM games WHERE roomno='"+click+"'";     
         
         try{
             if(GameTbl.getSelectedRowCount()==1){
-                
                 ps=con.prepareCall(sql);
                 int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if(i==JOptionPane.YES_OPTION){
                 ps.execute();
                 JOptionPane.showMessageDialog(null,"Deleted Successfully.");
-                
-               
-                setVisible(false);
-                new ViewChef().setVisible(true);
+                new ViewGame().setVisible(true);
                 }   
             }
             else if(GameTbl.getSelectedRowCount()==0){

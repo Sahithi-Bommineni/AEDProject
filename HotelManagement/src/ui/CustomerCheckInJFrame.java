@@ -315,9 +315,9 @@ public class CustomerCheckInJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 120, 30));
         getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 160, 20));
-        getContentPane().add(lblMN, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 70, 170, 20));
+        getContentPane().add(lblMN, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 170, 20));
         getContentPane().add(lblE, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, 20));
-        getContentPane().add(lblNation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 140, 20));
+        getContentPane().add(lblNation, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 140, 20));
 
         PriceLbl1.setFont(new java.awt.Font("AppleGothic", 1, 18)); // NOI18N
         PriceLbl1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

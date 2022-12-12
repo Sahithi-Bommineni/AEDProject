@@ -158,9 +158,10 @@ public class HouseKeepingJFrame extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        
         setVisible(false);
         new StaffLoginJFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void HousekeepingtblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HousekeepingtblMouseClicked

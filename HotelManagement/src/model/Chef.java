@@ -12,7 +12,8 @@ public class Chef {
     
     int roomno;
     String mealtype;
-    String NoOfPeople;
+    String guestcount;
+    String foodtype;
     
     String status;
     
@@ -20,10 +21,10 @@ public class Chef {
         
     }
     
-    public Chef(int roomno,String mealtype, String NoOfPeople, String status){
+    public Chef(int roomno,String mealtype,String foodtype,String guestcount, String status){
         this.roomno=roomno;
         this.mealtype=mealtype;
-        this.NoOfPeople = NoOfPeople;
+        this.foodtype=foodtype;
         this.status=status;
     }
 
@@ -43,12 +44,12 @@ public class Chef {
         this.mealtype = mealtype;
     }
 
-    public String getNoOfPeople() {
-        return NoOfPeople;
+    public String getGuestcount() {
+        return guestcount;
     }
 
-    public void setNoOfPeople(String NoOfPeople) {
-        this.NoOfPeople = NoOfPeople;
+    public void setGuestcount(String NoOfPeople) {
+        this.guestcount = guestcount;
     }
 
    
@@ -59,6 +60,14 @@ public class Chef {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getFoodtype() {
+        return foodtype;
+    }
+
+    public void setFoodtype(String foodtype) {
+        this.foodtype = foodtype;
     }
     
 }

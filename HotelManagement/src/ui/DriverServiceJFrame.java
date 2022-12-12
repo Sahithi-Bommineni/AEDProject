@@ -35,6 +35,9 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
         DateTxt.setText(myFormat.format(cal.getTime()));
+        
+        RoomNtxt.setEditable(false);
+        NoOfPassTxt.setEditable(false);
     }
     
     void getInfo(String roomno,String occupancy){
@@ -105,7 +108,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUV", "Sedan", "Hatchback", "Mini Van", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Car Type", "SUV", "Sedan", "Hatchback", "Mini Van", " " }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 150, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 0));
@@ -184,18 +187,16 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int roomno = Integer.parseInt(RoomNtxt.getText());
         String cartype = (String)jComboBox1.getSelectedItem();
-        int passenger = Integer.parseInt(NoOfPassTxt.getText());
+        String passenger = NoOfPassTxt.getText();
         
-        String time = (String)jComboBox2.getSelectedItem();
+        String timeslot = (String)jComboBox2.getSelectedItem();
         String date = DateTxt.getText();
         String requirements = ExtraReqTxt.getText();
      
-        if(RoomNtxt.equals("")|| jComboBox1.equals("")||NoOfPassTxt.equals("")|| time.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
+        if(timeslot.equals("")||DateTxt.equals("")||ExtraReqTxt.equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill all the details");
-            RoomNtxt.setText("");
-            NoOfPassTxt.setText("");
-            
+
             jComboBox1.setSelectedItem("Select Car");
             jComboBox2.setSelectedItem("Select Time");
             DateTxt.setText("");
@@ -209,20 +210,19 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
           d.setRoomno(roomno);
           d.setCartype(cartype);
           d.setDate(date);
-          d.setTime(time);
+          d.setTimeslot(timeslot);
           
-          d.setPassengers(passenger);
+          d.setPassenger(passenger);
           d.setRequirements(requirements);
           try{
-              String sql = "INSERT INTO Driver (roomno,cartype,passenger,time,date,requirements) VALUES (?,?,?,?,?,?,?)";
+              String sql = "INSERT INTO driver (roomno,cartype,passenger,date,timeslot,requirements) VALUES (?,?,?,?,?,?)";
               ps=con.prepareStatement(sql);
               ps.setInt(1, roomno);
               ps.setString(2, cartype);
-              ps.setInt(3,passenger);
-              
-              ps.setString(5, time);
-              ps.setString(6, date);
-              ps.setString(7, requirements);
+              ps.setString(3,passenger);
+              ps.setString(4, date);
+              ps.setString(5, timeslot);
+              ps.setString(6, requirements);
               ps.execute();
               
               RoomNtxt.setText("");
@@ -239,7 +239,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,e);
           }
         
-    }                        
+        }                        
     }//GEN-LAST:event_SubmitbtnActionPerformed
 
     private void RoomNtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RoomNtxtKeyReleased
@@ -271,7 +271,7 @@ public class DriverServiceJFrame extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new CustomerServiceJFrame().setVisible(true);
+        new CustomerLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 

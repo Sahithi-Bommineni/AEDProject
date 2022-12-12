@@ -305,7 +305,7 @@ public class AddEmpJFrame extends javax.swing.JFrame {
               
           }catch(Exception e)
           {
-              JOptionPane.showMessageDialog(null,"Username already exists. Please try with new one.");
+              JOptionPane.showMessageDialog(null,e);
           }
         }
     }//GEN-LAST:event_SubmitBtnActionPerformed

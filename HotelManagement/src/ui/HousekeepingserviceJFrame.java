@@ -37,8 +37,8 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
         dateTxt.setText(myFormat.format(cal.getTime()));
     }
     
-    void getInfo(int roomno){
-     //RoomNotxt.setText(roomno);
+    void getInfo(String roomno){
+     RoomNoTxt.setText(roomno);
     }
 
     /**
@@ -172,13 +172,13 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new CustomerServiceJFrame().setVisible(true);
+        this.dispose();
+        new CustomerLogin().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int roomno = Integer.parseInt(RoomNoTxt.getText());
+        String roomno = RoomNoTxt.getText();
         String roomcleaning = " ";
         if(jRadioButton1.isSelected()){
             roomcleaning = "Yes";
@@ -218,7 +218,7 @@ public class HousekeepingserviceJFrame extends javax.swing.JFrame {
             try{
                 String sql = "INSERT INTO housekeeping(roomno,roomcleaning,restroom,splins,date,time) VALUES (?,?,?,?,?,?)";
                 ps=con.prepareStatement(sql);
-                ps.setInt(1,roomno);
+                ps.setString(1,roomno);
                 ps.setString(2, roomcleaning);
                 ps.setString(3, restroom);
                 ps.setString(4, splins);
