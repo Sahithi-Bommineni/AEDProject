@@ -151,8 +151,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-       LoginJFrame loginpanel = new LoginJFrame();
-       loginpanel.setVisible(true);
+       CustomerLogin clpanel = new CustomerLogin();
+       clpanel.setVisible(true);
        
        dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
