@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -10,11 +19,31 @@ package ui;
  */
 public class ViewRoom extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form ViewRoom
      */
     public ViewRoom() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM rooms";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            roomtable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -28,17 +57,17 @@ public class ViewRoom extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         roomtable = new javax.swing.JTable();
+        Backbtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(150, 118));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         roomtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ROOM NO", "FLOOR", "ROOM TYPE", "BED TYPE", "PRICE", "OCCUPANCY", "STATUS"
@@ -59,10 +88,24 @@ public class ViewRoom extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(roomtable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 643, 316));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 760, 316));
+
+        Backbtn.setBackground(new java.awt.Color(204, 204, 204));
+        Backbtn.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        Backbtn.setText("Back");
+        Backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Big Caslon", 1, 36)); // NOI18N
+        jLabel2.setText("Room Details");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rooms.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -120, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,17 +126,18 @@ public class ViewRoom extends javax.swing.JFrame {
                 String price = rs.getString(5);
                 String occupancy = rs.getString(6);
                 String status = rs.getString(7);
-
-                RoomNotxt.setText(roomno);
-                Floortxt.setText(floor);
-                Pricetxt.setText(price);
-                jTextField1.setText(occupancy);
-
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_roomtableMouseClicked
+
+    private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
+        // TODO add your handling code here:
+        ManagerLoginJFrame manpanel = new ManagerLoginJFrame();
+        manpanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BackbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +175,9 @@ public class ViewRoom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Backbtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable roomtable;
     // End of variables declaration//GEN-END:variables

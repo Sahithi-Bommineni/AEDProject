@@ -206,7 +206,7 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
     private void EmpDirbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpDirbtn1ActionPerformed
         // TODO add your handling code here:
-            ViewEmployeeJFrame emppanel = new ViewEmployeeJFrame();
+        EmployeeDirectory emppanel = new EmployeeDirectory();
         emppanel.setVisible(true);
         dispose();
         
@@ -214,7 +214,7 @@ public class ManagerLoginJFrame extends javax.swing.JFrame {
 
     private void Roomsbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Roomsbtn2ActionPerformed
         // TODO add your handling code here:
-           ViewRoomsJFrame viewroompanel = new ViewRoomsJFrame();
+        ViewRoom viewroompanel = new ViewRoom();
         viewroompanel.setVisible(true);
         dispose();
         

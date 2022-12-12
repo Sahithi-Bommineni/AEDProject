@@ -7,6 +7,7 @@ package ui;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import database.ConnectionProvider;
+import java.awt.HeadlessException;
 import model.CustomerLogin;
 
 /**
@@ -226,22 +227,22 @@ public class ForgotPasswordJFrame extends javax.swing.JFrame {
                   if(answer.equals(jTextField1.getText()))
                   {
                     //check=1;
-                    String query="UPDATE customerlogin SET 'password='"+password+"' WHERE 'email='"+email;
+                    String query="UPDATE customerlogin SET password=? WHERE email=?";
                     try{
                         jPasswordField1.setEditable(true);
                         ps=con.prepareStatement(query);
-                        //ps.setString(1, password);
-                        //ps.setString(2, email);
+                        ps.setString(1, password);
+                        ps.setString(2, email);
                         ps.executeQuery();
                         
                         setVisible(false);
                         new ForgotPasswordJFrame().setVisible(true);
                         }
-                    catch(Exception e){
+                    catch(SQLException e){
                         JOptionPane.showMessageDialog(null, e);
                     }
                   }
-            }catch(Exception e)
+            }catch(HeadlessException | SQLException e)
                 {
                 JOptionPane.showMessageDialog(null,e);
                 }
