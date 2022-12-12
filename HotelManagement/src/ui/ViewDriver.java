@@ -54,6 +54,7 @@ public class ViewDriver extends javax.swing.JFrame {
         DriverTbl = new javax.swing.JTable();
         DeleteBtn = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
+        deltxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -73,7 +74,7 @@ public class ViewDriver extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(DriverTbl);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 669, 340));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 669, 340));
 
         DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         DeleteBtn.setText("Delete");
@@ -82,7 +83,7 @@ public class ViewDriver extends javax.swing.JFrame {
                 DeleteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, -1, -1));
+        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, -1, -1));
 
         Backbtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         Backbtn.setText("Back");
@@ -92,6 +93,7 @@ public class ViewDriver extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(deltxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 70, -1));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,13 +109,14 @@ public class ViewDriver extends javax.swing.JFrame {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-           int r=DriverTbl.getSelectedRow();
-        String click = (DriverTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "SELECT * FROM driver WHERE roomno='"+click+"'";     
+        String room=deltxt.getText();
+        String sql = "SELECT * FROM driver WHERE roomno='"+room+"'";     
         
         try{
+            
+        
             if(DriverTbl.getSelectedRowCount()==1){
-                
+                int r=DriverTbl.getSelectedRow();
                 ps=con.prepareCall(sql);
                 int i = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?","Deletion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if(i==JOptionPane.YES_OPTION){
@@ -179,6 +182,7 @@ public class ViewDriver extends javax.swing.JFrame {
     private javax.swing.JButton Backbtn;
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JTable DriverTbl;
+    private javax.swing.JTextField deltxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
