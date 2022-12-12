@@ -12,22 +12,21 @@ public class Driver {
     
     int roomno;
     String cartype;
-    int passengers;
-    String location;
-    String time;
+    String passenger;
+    String requirements;
+    String timeslot;
     String date;
     
     public Driver(){
         
     }
     
-    public Driver(int roomno,String cartype,int passengers,String location,String time, String date){
+    public Driver(int roomno,String cartype,String passenger,String requirements,String timeslot, String date){
         this.roomno=roomno;
         this.cartype=cartype;
         this.date=date;
-        this.time=time;
-        this.location=location;
-        this.passengers=passengers;
+        this.timeslot=timeslot;
+        this.passenger=passenger;
         this.requirements=requirements;
         
     }
@@ -39,7 +38,6 @@ public class Driver {
     public void setDate(String date) {
         this.date = date;
     }
-    String requirements;
 
     public int getRoomno() {
         return roomno;
@@ -57,28 +55,20 @@ public class Driver {
         this.cartype = cartype;
     }
 
-    public int getPassengers() {
-        return passengers;
+    public String getPassenger() {
+        return passenger;
     }
 
-    public void setPassengers(int passengers) {
-        this.passengers = passengers;
+    public void setPassenger(String passengers) {
+        this.passenger = passenger;
     }
 
-    public String getLocation() {
-        return location;
+    public String getTimeslot() {
+        return timeslot;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimeslot(String time) {
+        this.timeslot = time;
     }
 
     public String getRequirements() {

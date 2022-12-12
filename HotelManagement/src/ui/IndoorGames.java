@@ -32,7 +32,13 @@ public class IndoorGames extends javax.swing.JFrame {
             SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
         DateTxt.setText(myFormat.format(cal.getTime()));
+        
+        jTextField1.setEditable(false);
     }
+    void getInfo(String roomno){
+     jTextField1.setText(roomno);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +53,6 @@ public class IndoorGames extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TimeSlotLbl = new javax.swing.JLabel();
         RoomNoLbl = new javax.swing.JLabel();
-        RoomNoCombo = new javax.swing.JComboBox<>();
         TimeSlotCombo = new javax.swing.JComboBox<>();
         GameLbl = new javax.swing.JLabel();
         GameCombo = new javax.swing.JComboBox<>();
@@ -55,10 +60,10 @@ public class IndoorGames extends javax.swing.JFrame {
         DateTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Submitbtn = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
@@ -75,11 +80,8 @@ public class IndoorGames extends javax.swing.JFrame {
         RoomNoLbl.setText("Room No");
         getContentPane().add(RoomNoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 113, 116, 27));
 
-        RoomNoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210" }));
-        getContentPane().add(RoomNoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 113, 142, 27));
-
         TimeSlotCombo.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        TimeSlotCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6:00AM -7:00AM", "7:00AM-8:00AM", "8:00AM-9:00AM", "9:00AM-10:00AM", "10:00AM-11:00AM", "11:00AM-12:00PM", "12:00PM-1:00PM", "1:00PM-2:00PM", "2:00PM-3:00PM", "3:00PM-4:00PM", "4:00PM-5:00PM", "5:00PM-6:00PM", "6:00PM-7:00PM", "7:00PM-8:00PM", "8:00PM-9:00PM", "9:00PM-10:00PM", "10:00PM-11:00PM" }));
+        TimeSlotCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time Slot", "6:00AM -7:00AM", "7:00AM-8:00AM", "8:00AM-9:00AM", "9:00AM-10:00AM", "10:00AM-11:00AM", "11:00AM-12:00PM", "12:00PM-1:00PM", "1:00PM-2:00PM", "2:00PM-3:00PM", "3:00PM-4:00PM", "4:00PM-5:00PM", "5:00PM-6:00PM", "6:00PM-7:00PM", "7:00PM-8:00PM", "8:00PM-9:00PM", "9:00PM-10:00PM", "10:00PM-11:00PM" }));
         getContentPane().add(TimeSlotCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 160, -1, -1));
 
         GameLbl.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
@@ -88,8 +90,8 @@ public class IndoorGames extends javax.swing.JFrame {
         getContentPane().add(GameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 142, 25));
 
         GameCombo.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
-        GameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Billiards", "Table Tennis", "PlayStation", "Carrom", "Chess" }));
-        getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 108, -1));
+        GameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Game", "Billiards", "Table Tennis", "PlayStation", "Carrom", "Chess" }));
+        getContentPane().add(GameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 140, -1));
 
         BackButton.setBackground(new java.awt.Color(0, 204, 204));
         BackButton.setFont(new java.awt.Font("AppleGothic", 1, 24)); // NOI18N
@@ -118,6 +120,7 @@ public class IndoorGames extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 150, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Indoor games.jpeg"))); // NOI18N
         jLabel2.setText("S");
@@ -128,22 +131,17 @@ public class IndoorGames extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
+        
+        
         setVisible(false);
-        new CustomerServiceJFrame().setVisible(true);
+        new CustomerLogin().setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
         // TODO add your handling code here:
-        String roomno = (String)RoomNoCombo.getSelectedItem();
-        String game = (String)GameCombo.getSelectedItem();
+        String roomno = jTextField1.getText();
+        String gametype = (String)GameCombo.getSelectedItem();
         String date = DateTxt.getText();
-        
-        
-           
-                game=(String)GameCombo.getSelectedItem();
-            
-       
-       
         String time = (String)TimeSlotCombo.getSelectedItem();
         if(TimeSlotCombo.equals("Select Time Slot")){
             JOptionPane.showMessageDialog(null, "Please select time slot");
@@ -155,26 +153,19 @@ public class IndoorGames extends javax.swing.JFrame {
             g.setTime(time);
             g.setDate(date);
            
-            g.setGame(game);
-            
-            
-            
-            
-            
+            g.setGame(gametype);
+
             try{
-                String sql = "INSERT INTO games(roomno,time,date,game) VALUES (?,?,?,?)";
+                String sql = "INSERT INTO games(roomno,gametype,date,time) VALUES (?,?,?,?)";
                 ps=con.prepareStatement(sql);
                 ps.setString(1,roomno);
-                ps.setString(2, time);
+                ps.setString(4, time);
                 ps.setString(3,date);
-                
-                ps.setString(4, game);
+                ps.setString(2, gametype);
                 ps.execute();
 
-                buttonGroup1.clearSelection();
-                TimeSlotCombo.setSelectedItem("Select Time");
-                
-                GameCombo.setSelectedItem("Select Game");
+                JOptionPane.showMessageDialog(null, "Your slot is booked");
+                new CustomerServiceJFrame().setVisible(true);
                 
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
@@ -222,7 +213,6 @@ public class IndoorGames extends javax.swing.JFrame {
     private javax.swing.JTextField DateTxt;
     private javax.swing.JComboBox<String> GameCombo;
     private javax.swing.JLabel GameLbl;
-    private javax.swing.JComboBox<String> RoomNoCombo;
     private javax.swing.JLabel RoomNoLbl;
     private javax.swing.JButton Submitbtn;
     private javax.swing.JComboBox<String> TimeSlotCombo;
@@ -231,5 +221,6 @@ public class IndoorGames extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

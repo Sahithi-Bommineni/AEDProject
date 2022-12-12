@@ -486,7 +486,7 @@
     <Component class="javax.swing.JLabel" name="lblMN">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="392" y="70" width="170" height="20"/>
+          <AbsoluteConstraints x="390" y="250" width="170" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -500,7 +500,7 @@
     <Component class="javax.swing.JLabel" name="lblNation">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="180" width="140" height="20"/>
+          <AbsoluteConstraints x="320" y="290" width="140" height="20"/>
         </Constraint>
       </Constraints>
     </Component>

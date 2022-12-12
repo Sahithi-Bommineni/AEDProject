@@ -65,10 +65,7 @@ public class ViewChef extends javax.swing.JFrame {
 
         OrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Room No", "Meal Type", "Veg/Non Veg", "NoOfPeople", "Date", "Status"
@@ -132,7 +129,7 @@ public class ViewChef extends javax.swing.JFrame {
         // TODO add your handling code here:
         int r=OrdersTbl.getSelectedRow();
         String click = (OrdersTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "DELETE * FROM chef WHERE roomno='"+click+"'";     
+        String sql = "DELETE FROM chef WHERE roomno='"+click+"'";     
         
         try{
             if(OrdersTbl.getSelectedRowCount()==1){
@@ -169,8 +166,7 @@ public class ViewChef extends javax.swing.JFrame {
                 String mealtype = rs.getString(2);
                 String foodtype = rs.getString(3);
                 String guestcount = rs.getString(4);
-                String date = rs.getString(5);
-                String status = rs.getString(6);
+                String status = rs.getString(5);
             }  
         }catch(Exception e)
         {

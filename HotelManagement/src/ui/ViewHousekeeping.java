@@ -123,7 +123,7 @@ public class ViewHousekeeping extends javax.swing.JFrame {
         // TODO add your handling code here:
         String roomno = searchtxt.getText();
         //String click = (HouseKeepingTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "Delete * FROM housekeeping WHERE roomno='"+roomno+"'";     
+        String sql = "DELETE FROM housekeeping WHERE roomno='"+roomno+"'";     
         
         try{
             if(HouseKeepingTbl.getSelectedRowCount()==1){

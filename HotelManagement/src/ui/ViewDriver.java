@@ -117,7 +117,7 @@ public class ViewDriver extends javax.swing.JFrame {
         
         int r=DriverTbl.getSelectedRow();
         String click = (DriverTbl.getModel().getValueAt(r, 0).toString());
-        String sql = "DELETE FROM driver WHERE roomno='"+click+"'";
+        String sql = "DELETE * FROM driver WHERE roomno='"+click+"'";
         try{
             if(DriverTbl.getSelectedRowCount()==1){
                 ps=con.prepareCall(sql);
@@ -140,7 +140,7 @@ public class ViewDriver extends javax.swing.JFrame {
         // TODO add your handling code here:
                 ManagerLoginJFrame manpanel = new ManagerLoginJFrame();
         manpanel.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_BackbtnActionPerformed
 
     private void DriverTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DriverTblMouseClicked

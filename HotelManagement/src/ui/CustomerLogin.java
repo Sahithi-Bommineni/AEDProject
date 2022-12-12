@@ -27,6 +27,30 @@ public class CustomerLogin extends javax.swing.JFrame {
         initComponents();
         con = ConnectionProvider.getCon();
     }
+    
+    /*void callfunc(){
+        String query = "SELECT * FROM checkin WHERE roomno=?";    
+                try{
+                ps=con.prepareStatement(query);
+                rs=ps.executeQuery();
+                if(rs.next())
+                {
+                    String roomno=rs.getString(10);
+                    //String occupancy=rs.getString(14);
+                    this.dispose();
+        CustomerServiceJFrame food = new CustomerServiceJFrame();
+        food.setVisible(true);
+        food.getInfo(roomno);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Credentials");
+                    jTextField1.setText("");
+                    jPasswordField1.setText("");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,11 +67,11 @@ public class CustomerLogin extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         CustomerLoginLbl = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(150, 118));
-        setPreferredSize(new java.awt.Dimension(970, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
@@ -57,7 +81,7 @@ public class CustomerLogin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel1.setText("Username");
@@ -72,6 +96,15 @@ public class CustomerLogin extends javax.swing.JFrame {
         CustomerLoginLbl.setFont(new java.awt.Font("Big Caslon", 1, 48)); // NOI18N
         CustomerLoginLbl.setText("Guest Login");
         getContentPane().add(CustomerLoginLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 270, -1));
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Guest BAckground.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -350, -1, -1));
@@ -95,7 +128,7 @@ public class CustomerLogin extends javax.swing.JFrame {
         }
         else
         {
-            
+            String roomno = jTextField1.getText();
             //ResultSet rs = select.getData("select * from members where username='"+email+"'and password='"+password+"'");
             try{
                 String sql = "SELECT * FROM checkin WHERE roomno=? AND name=?";
@@ -104,8 +137,10 @@ public class CustomerLogin extends javax.swing.JFrame {
                 ps.setString(2,jPasswordField1.getText());
                 //ps.setString(WIDTH, sql);
                 rs=ps.executeQuery();
+                
                 if(rs.next())
                 {
+                    //callfunc();
                     /*check=1;
                     if(rs.getString(8).equals(true))
                     {
@@ -113,19 +148,30 @@ public class CustomerLogin extends javax.swing.JFrame {
                     new ManagerLoginJFrame().setVisible(true);
                     }*/
                     //JOptionPane.showMessageDialog(null, "Login Successful");
+                    roomno=rs.getString(10);
+                    //String occupancy=rs.getString(14);
                     this.dispose();
-                    new CustomerServiceJFrame().setVisible(true);
+                    CustomerServiceJFrame food = new CustomerServiceJFrame();
+                    food.setVisible(true);
+                    food.getInfo(roomno);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Incorrect Credentials");
                     jTextField1.setText("");
                     jPasswordField1.setText("");
                 }
-            }catch(Exception e){
+                }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
                 }
-        }
+        }     
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        HomePage homepanel = new HomePage();
+        homepanel.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +211,7 @@ public class CustomerLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CustomerLoginLbl;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

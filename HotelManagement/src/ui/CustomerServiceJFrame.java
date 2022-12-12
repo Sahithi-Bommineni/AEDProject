@@ -27,6 +27,13 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         initComponents();
         
         con = ConnectionProvider.getCon();
+        
+        jTextField1.setEditable(false);
+    }
+    
+    void getInfo(String roomno){
+     jTextField1.setText(roomno);
+     
     }
 
     /**
@@ -45,13 +52,13 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         Foodbtn = new javax.swing.JButton();
         GamesButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(300, 118, 800, 500));
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -121,6 +128,13 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 20));
 
+        jTextField1.setFont(new java.awt.Font("Big Caslon", 1, 24)); // NOI18N
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 140, 50));
+
+        jLabel4.setFont(new java.awt.Font("Big Caslon", 0, 36)); // NOI18N
+        jLabel4.setText("Room No:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 180, 40));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CustomerService_2.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, -150, 1370, 1080));
 
@@ -129,64 +143,95 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
 
     private void HouseKeepingbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HouseKeepingbtnActionPerformed
         // TODO add your handling code here:
-        HousekeepingserviceJFrame housekeeping = new HousekeepingserviceJFrame();
-        housekeeping.setVisible(true);
-        this.dispose();
+        String roomno = jTextField1.getText();
+        
+        try{
+           String sql = "SELECT * FROM checkin WHERE roomno='"+roomno+"'";
+           ps=con.prepareStatement(sql);
+           rs=ps.executeQuery();
+           if(rs.next())
+                {
+                    //String roomno=rs.getString(10);
+                    String occupancy=rs.getString(14);
+                    
+                    HousekeepingserviceJFrame housekeeping = new HousekeepingserviceJFrame();
+                    housekeeping.setVisible(true);
+                    dispose();
+                    housekeeping.getInfo(roomno);
+                }
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
+        
     }//GEN-LAST:event_HouseKeepingbtnActionPerformed
 
     private void GamesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GamesButtonActionPerformed
         // TODO add your handling code here:
-        IndoorGames games = new IndoorGames();
-        games.setVisible(true);
-        this.dispose();
+        String roomno = jTextField1.getText();
+        
+        try{
+           String sql = "SELECT * FROM checkin WHERE roomno='"+roomno+"'";
+           ps=con.prepareStatement(sql);
+           rs=ps.executeQuery();
+           if(rs.next())
+                {
+                    //String roomno=rs.getString(10);
+                    String occupancy=rs.getString(14);
+                    
+                    IndoorGames games = new IndoorGames();
+                    games.setVisible(true);
+                    dispose();
+                    games.getInfo(roomno);
+                }
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                }
     }//GEN-LAST:event_GamesButtonActionPerformed
 
     private void DriverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DriverbtnActionPerformed
         // TODO add your handling code here:
-        String sql = "SELECT * FROM checkin WHERE roomno=?";
+        String roomno = jTextField1.getText();
+        
         try{
+           String sql = "SELECT * FROM checkin WHERE roomno='"+roomno+"'";
            ps=con.prepareStatement(sql);
            rs=ps.executeQuery();
-                if(rs.next())
+           if(rs.next())
                 {
-                    String roomno=rs.getString(10);
+                    //String roomno=rs.getString(10);
                     String occupancy=rs.getString(14);
                     
-        DriverServiceJFrame driver = new DriverServiceJFrame();
-        driver.setVisible(true);
-        this.dispose();
-        driver.getInfo(roomno,occupancy);
-        }
+                    dispose();
+                    DriverServiceJFrame driver = new DriverServiceJFrame();
+                    driver.setVisible(true);
+                    driver.getInfo(roomno,occupancy);
+                }
         }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
                 }
-        DriverServiceJFrame driver = new DriverServiceJFrame();
-        driver.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_DriverbtnActionPerformed
 
     private void FoodbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodbtnActionPerformed
         // TODO add your handling code here:
-        String sql = "SELECT * FROM checkin WHERE roomno=?";
+        String roomno = jTextField1.getText();
+        
         try{
+           String sql = "SELECT * FROM checkin WHERE roomno='"+roomno+"'";
            ps=con.prepareStatement(sql);
            rs=ps.executeQuery();
                 if(rs.next())
                 {
-                    String roomno=rs.getString(10);
+                    //String roomno=rs.getString(10);
                     String occupancy=rs.getString(14);
                     
-                    this.dispose();
-        FoodServiceJFrame food = new FoodServiceJFrame();
-        food.setVisible(true);
-        food.getInfo(roomno,occupancy);
-        }
+                    dispose();
+                    FoodServiceJFrame food = new FoodServiceJFrame();
+                    food.setVisible(true);
+                    food.getInfo(roomno,occupancy);
+                }
         }catch(Exception e){
                 JOptionPane.showMessageDialog(null, e);
-                }
-        
-        
-        
+                }        
     }//GEN-LAST:event_FoodbtnActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -240,5 +285,7 @@ public class CustomerServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

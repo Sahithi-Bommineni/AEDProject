@@ -4,17 +4,44 @@
  */
 package ui;
 
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author koushalamshala
  */
 public class EmployeeDirectory extends javax.swing.JFrame {
 
+     Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     /**
      * Creates new form EmployeeDirectory
      */
     public EmployeeDirectory() {
         initComponents();
+        con = ConnectionProvider.getCon();
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
+        try{
+            String sql = "SELECT * FROM employee";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -71,6 +98,9 @@ public class EmployeeDirectory extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ManagerLoginJFrame chefpanel = new ManagerLoginJFrame();
+        chefpanel.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
