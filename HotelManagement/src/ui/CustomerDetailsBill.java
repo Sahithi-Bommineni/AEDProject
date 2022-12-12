@@ -62,9 +62,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     private void initComponents() {
 
         CustomerDetailsBillLbl = new javax.swing.JLabel();
-        SearchCheckOutLbl = new javax.swing.JLabel();
-        SearchCheckOuttxt = new javax.swing.JTextField();
-        SearchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -80,15 +77,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
         CustomerDetailsBillLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerDetailsBillLbl.setText("CUSTOMER DETAILS BILL");
         getContentPane().add(CustomerDetailsBillLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 180, 31));
-
-        SearchCheckOutLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        SearchCheckOutLbl.setText("Search By Check Out Date");
-        getContentPane().add(SearchCheckOutLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 112, 166, -1));
-        getContentPane().add(SearchCheckOuttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 109, 179, -1));
-
-        SearchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        SearchBtn.setText("Search");
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(794, 109, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -221,9 +209,6 @@ public class CustomerDetailsBill extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CustomerDetailsBillLbl;
     private javax.swing.JButton ExitBtn;
-    private javax.swing.JButton SearchBtn;
-    private javax.swing.JLabel SearchCheckOutLbl;
-    private javax.swing.JTextField SearchCheckOuttxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
